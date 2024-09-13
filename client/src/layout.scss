@@ -1,0 +1,25 @@
+@import './responsive.scss';
+
+.layout {
+    // background-color: blueviolet;
+    height: 100vh;
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+
+
+
+    @include large {
+        background-color: rgb(241, 233, 233);
+    }
+
+    @include medium {
+        background-color: rgb(175, 175, 209);
+    }
+
+    @include small {
+        background-color: rgb(212, 195, 164);
+    }
+}
