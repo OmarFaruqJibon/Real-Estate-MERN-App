@@ -1,8 +1,27 @@
+@import '../../responsive.scss';
+
 nav {
     display: flex;
     justify-content: space-between;
     height: 67px;
     align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: white;
+
+    a {
+        transition: all 0.4s ease;
+        padding: 9px 15px;
+        // border-radius: 5px;
+
+        @include small {
+            display: none;
+        }
+
+        &:hover {
+            scale: 1.05;
+        }
+    }
 
     .left-side {
         flex: 3;
@@ -15,6 +34,16 @@ nav {
             display: flex;
             align-items: center;
             gap: 5px;
+
+            span {
+                @include medium {
+                    display: none;
+                }
+
+                @include small {
+                    display: initial;
+                }
+            }
         }
 
         .menu-items {
@@ -22,32 +51,61 @@ nav {
             gap: 15px;
         }
 
-        .menu-items a {
-            padding: 5px 10px;
-            border-radius: 5px;
-        }
-
-        .menu-items a:hover {
-            background-color: crimson;
-            color: white;
-            transition: all 0.75s ease-out allow-discrete;
-        }
     }
 
     .right-side {
         flex: 2;
         display: flex;
+        justify-content: flex-end;
         gap: 15px;
 
-        a {
-            padding: 5px 10px;
-            border-radius: 5px;
+        .register {
+            background-color: rgb(114, 206, 21);
         }
 
-        a:hover {
-            background-color: crimson;
+        .menu-icon {
+            display: none;
+            cursor: pointer;
+            z-index: 999;
+
+            @include small {
+                display: initial;
+            }
+        }
+
+        .side-menu {
+            position: absolute;
+            top: 0;
+            right: -50%;
+            background-color: black;
             color: white;
-            transition: all 0.75s ease-out allow-discrete;
+            height: 100vh;
+            width: 40%;
+            transition: all 1s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 17px;
+            font-weight: 300;
+            margin-top: 67px;
+            padding-top: 20px;
+            opacity: 1;
+
+            &.active {
+                right: 0;
+            }
+
+            @include small {
+                a {
+                    display: initial;
+                }
+            }
+
+            .side-menu-devider {
+                width: 80%;
+                margin-top: 30px;
+                margin-bottom: 30px;
+            }
         }
     }
 }

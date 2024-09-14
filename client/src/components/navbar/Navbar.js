@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Navbar.scss';
 
 const Navbar = () => {
+    const [menuOpen, setMenuOpen] = useState(false);
+
     return (
         <nav>
             <div className="left-side">
@@ -9,7 +11,9 @@ const Navbar = () => {
                 <div className="logo">
                     <a href="/">
                         <img width={'30px'} src="https://i.postimg.cc/Cx4G0wVH/favicon.png" alt="Logo" />
-                        RealState
+                        <span>
+                            RealState
+                        </span>
                     </a>
                 </div>
 
@@ -26,7 +30,21 @@ const Navbar = () => {
 
             <div className="right-side">
                 <a href="/">Sign in</a>
-                <a href="/">Sign up</a>
+                <a className='register' href="/">Sign up</a>
+
+                <div className="menu-icon">
+                    <img width={'25px'} src="https://i.postimg.cc/NMbG8mX1/menu.png" alt="menu icon"
+                        onClick={() => setMenuOpen(!menuOpen)} />
+                </div>
+
+                <div className={menuOpen ? "side-menu active" : "side-menu"}>
+                    <a href="/">Home</a>
+                    <a href="/">About</a>
+                    <a href="/">Contact</a>
+                    <hr className='side-menu-devider' />
+                    <a href="/">Sign in</a>
+                    <a className='register' href="/">Sign up</a>
+                </div>
             </div>
         </nav>
     );
