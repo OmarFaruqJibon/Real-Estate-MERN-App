@@ -1,12 +1,13 @@
-@import './responsive.scss';
+@import '../../responsive.scss';
 
 .layout {
     // background-color: blueviolet;
-    height: 100vh;
+    // height: auto;
     max-width: 90%;
     margin-left: auto;
     margin-right: auto;
-
+    // display: flex;
+    // flex-direction: column;
 
 
     @include large {
@@ -19,5 +20,11 @@
 
     @include small {
         background-color: rgb(212, 195, 164);
+    }
+
+    .content {
+        background-color: #ddd0c8f8;
+        // flex: 1;
+        // height: auto;
     }
 }
