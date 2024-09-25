@@ -1,30 +1,27 @@
 @import '../../responsive.scss';
 
 .layout {
-    // background-color: blueviolet;
-    // height: auto;
+    height: 100vh;
     max-width: 90%;
     margin-left: auto;
     margin-right: auto;
-    // display: flex;
-    // flex-direction: column;
 
 
     @include large {
-        background-color: rgb(241, 233, 233);
+        // background-color: rgb(241, 233, 233);
     }
 
     @include medium {
-        background-color: rgb(175, 175, 209);
+        // background-color: rgb(175, 175, 209);
     }
 
     @include small {
-        background-color: rgb(212, 195, 164);
+        // background-color: rgb(212, 195, 164);
     }
 
     .content {
-        background-color: #ddd0c8f8;
+        // background-color: #ddd0c8f8;
         // flex: 1;
-        // height: auto;
+        height: 100vh;
     }
 }

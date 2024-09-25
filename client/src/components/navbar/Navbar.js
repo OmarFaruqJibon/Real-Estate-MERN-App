@@ -19,6 +19,7 @@ const Navbar = () => {
 
                 <div className="menu-items">
                     <a href="/">Home</a>
+                    <a href="/list">List</a>
                     <a href="/">About</a>
                     <a href="/">Contact</a>
 
