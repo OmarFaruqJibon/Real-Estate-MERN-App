@@ -6,38 +6,41 @@ const Filter = () => {
             <h3>Search Result for <b>London</b></h3>
             <div className="input-area">
 
-                <label class="location" for="city">
+                <label className="location" for="city">
                     Location
                     <input id="city" name="city" type="text" placeholder='City Location' />
                 </label>
 
                 <form action="#">
-                    <label for="lang">Type
-                        <select name="languages" id="lang">
-                            <option value="javascript">Rent</option>
-                            <option value="php">Buy</option>
-                            <option value="java">Ex</option>
+                    <label htmlFor="type">Type
+                        <select name="type" id="type">
+                            <option value="">Select</option>
+                            <option value="buy">Buy</option>
+                            <option value="rent">Rent</option>
+                            <option value="commercial">Commercial</option>
                         </select>
                     </label>
 
-                    <label for="lang">Property
-                        <select name="languages" id="lang">
-                            <option value="javascript">Any</option>
-                            <option value="php">PHP</option>
-                            <option value="java">Java</option>
+                    <label htmlFor="Property">Property
+                        <select name="Property" id="Property">
+                            <option value="">Select</option>
+                            <option value="apparment">Apparment</option>
+                            <option value="duplex">Duplex</option>
+                            <option value="house">House</option>
+                            <option value="condo">Condo</option>
                         </select>
                     </label>
 
-                    <label for="lang">Min Price
-                        <input type="number" placeholder='any' />
+                    <label htmlFor="minPrice">Min Price
+                        <input type="number" placeholder='any' name='minPrice' id='minPrice' />
                     </label>
 
-                    <label for="lang">Max Price
-                        <input type="number" placeholder='any' />
+                    <label htmlFor="maxPrice">Max Price
+                        <input type="number" placeholder='any' name='maxPrice' id='maxPrice' />
                     </label>
 
-                    <label for="lang">Bedroom
-                        <input type="text" placeholder='any' />
+                    <label htmlFor="bedroom">Bedroom
+                        <input type="text" placeholder='any' name='bedroom' id='bedroom' />
                     </label>
 
 

@@ -8,7 +8,7 @@ const List = () => {
 
     const data = listData;
 
-
+    // console.log(data);
 
     return (
 
@@ -17,6 +17,7 @@ const List = () => {
             <div className="listContainer">
                 <div className="wrapper">
                     <Filter />
+
                     {data.map(item => (
                         <Card key={item.id} item={item} />
                     ))}

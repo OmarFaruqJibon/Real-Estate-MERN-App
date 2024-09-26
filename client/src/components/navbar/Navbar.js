@@ -10,9 +10,9 @@ const Navbar = () => {
 
                 <div className="logo">
                     <a href="/">
-                        <img width={'30px'} src="https://i.postimg.cc/Cx4G0wVH/favicon.png" alt="Logo" />
+                        <img width={'30px'} src="https://i.postimg.cc/vBXGxfBF/Haven-home-logo2.png" alt="Logo" />
                         <span>
-                            RealState
+                            Haven Houses
                         </span>
                     </a>
                 </div>
