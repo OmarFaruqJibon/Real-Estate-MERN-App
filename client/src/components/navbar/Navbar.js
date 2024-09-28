@@ -31,8 +31,8 @@ const Navbar = () => {
 
 
             <div className="right-side">
-                <a href="/">Sign in</a>
-                <a className='register' href="/">Sign up</a>
+                <Link to={`/signin`}>Sign In</Link>
+                <Link className='register' to={`/register`}>Sign Up</Link>
 
                 <div className="menu-icon">
                     <img width={'25px'} src="https://i.postimg.cc/NMbG8mX1/menu.png" alt="menu icon"
@@ -40,12 +40,13 @@ const Navbar = () => {
                 </div>
 
                 <div className={menuOpen ? "side-menu active" : "side-menu"}>
-                    <a href="/">Home</a>
-                    <a href="/">About</a>
-                    <a href="/">Contact</a>
+                    <Link to={`/`}>Home</Link>
+                    <Link to={`/list`}>List</Link>
+                    <Link to={`/about`}>About</Link>
+                    <Link to={`/contact`}>Contact</Link>
                     <hr className='side-menu-devider' />
-                    <a href="/">Sign in</a>
-                    <a className='register' href="/">Sign up</a>
+                    <Link to={`/signin`}>Sign IN</Link>
+                    <Link className='register' to={`/register`}>Sign Up</Link>
                 </div>
             </div>
         </nav>

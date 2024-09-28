@@ -6,22 +6,27 @@ const Card = ({ item }) => {
     return (
         <div className="single-card">
             <div className="img-container">
-                <Link to={`/${item.id}`}>
+                <Link to={`${item.id}`}>
                     <img src={item.img} alt="" />
                 </Link>
             </div>
 
             <div className="text-container">
 
-                <Link to={`${item.id}`}><h3 className='item-title'>{item.title}</h3></Link>
+                <Link to={`${item.id}`}>
+                    <h3 className='item-title'>
+                        {item.title}
+                    </h3>
+                </Link>
 
                 <p className="item-location">
                     <img src="https://i.postimg.cc/52HLZYyw/location.png" alt="location" />
                     <span>{item.address}</span>
                 </p>
 
-                <h3 className="item-price">$ {item.price}</h3>
-
+                <h3 className="item-price">
+                    $ {item.price}
+                </h3>
 
                 <div className="bottom-info">
 

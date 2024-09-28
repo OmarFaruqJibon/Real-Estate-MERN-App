@@ -6,9 +6,9 @@ export const listData = [
         bedroom: 2,
         bathroom: 1,
         price: 1000,
-        address: "456 Park Avenue, London",
-        latitude: 51.5074,
-        longitude: -0.1278,
+        address: "456 Park Avenue, Rajshahi, Bangladesh",
+        latitude: 24.370595188015535,
+        longitude: 88.57281804017344,
     },
     {
         id: 2,
@@ -17,9 +17,9 @@ export const listData = [
         bedroom: 3,
         bathroom: 2,
         price: 1500,
-        address: "789 Oxford Street, London",
-        latitude: 52.4862,
-        longitude: -1.8904,
+        address: "789 Oxford Street, Dhaka, Bangladesh",
+        latitude: 23.78901750937147,
+        longitude: 90.26758320911902
     },
     {
         id: 3,
@@ -28,9 +28,9 @@ export const listData = [
         bedroom: 1,
         bathroom: 1,
         price: 800,
-        address: "101 Baker Street, London",
-        latitude: 53.4808,
-        longitude: -2.2426,
+        address: "101 Baker Street, Rajshahi, Bangladesh",
+        latitude: 25.633647763422896,
+        longitude: 88.89242437943362
     },
     {
         id: 4,
@@ -39,9 +39,9 @@ export const listData = [
         bedroom: 2,
         bathroom: 1,
         price: 1000,
-        address: "234 Kingsway, London,",
-        latitude: 53.8008,
-        longitude: -1.5491,
+        address: "234 Kingsway, Khulna, Bangladesh,",
+        latitude: 23.356946263119877,
+        longitude: 89.71354289727
     },
     {
         id: 5,
@@ -50,9 +50,9 @@ export const listData = [
         bedroom: 3,
         bathroom: 2,
         price: 1500,
-        address: "567 Victoria Road, London",
-        latitude: 53.4084,
-        longitude: -2.9916,
+        address: "567 Victoria Road, Barishal, Bangladesh",
+        latitude: 22.760525842677133,
+        longitude: 90.4826953681792
     },
     {
         id: 6,
@@ -61,9 +61,9 @@ export const listData = [
         bedroom: 1,
         bathroom: 1,
         price: 800,
-        address: "890 Regent Street, London",
-        latitude: 54.9783,
-        longitude: -1.6174,
+        address: "890 Regent Street, Chittagonj, Bangladesh",
+        latitude: 22.34707383024393,
+        longitude: 91.88345215133437
     },
     {
         id: 7,
@@ -72,9 +72,9 @@ export const listData = [
         bedroom: 2,
         bathroom: 1,
         price: 1000,
-        address: "112 Piccadilly, London",
-        latitude: 53.3811,
-        longitude: -1.4701,
+        address: "112 Piccadilly, Cox's Bazar, Bangladesh",
+        latitude: 21.480720608145155,
+        longitude: 92.11691162533603
     },
     {
         id: 8,
@@ -83,9 +83,9 @@ export const listData = [
         bedroom: 3,
         bathroom: 2,
         price: 1500,
-        address: "8765 Main High Street, London",
-        latitude: 51.4545,
-        longitude: -2.5879,
+        address: "8765 Main High Street, Dinajpur, Bangladesh",
+        latitude: 24.75386077287001,
+        longitude: 90.67770268877563
     },
 ];
 
@@ -104,7 +104,7 @@ export const singlePostData = {
     size: 861,
     latitude: 51.5074,
     longitude: -0.1278,
-    city: "London",
+    city: "Dhaka, Bangladesh",
     address: "1234 Broadway St",
     school: "250m away",
     bus: "100m away",

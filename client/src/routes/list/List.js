@@ -35,7 +35,7 @@ const List = () => {
 
 
             <div className="mapContainer">
-                <Map />
+                <Map items={data} />
             </div>
         </div>
     );
