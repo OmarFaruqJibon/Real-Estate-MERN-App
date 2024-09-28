@@ -17,10 +17,12 @@ const List = () => {
             <div className="listContainer">
                 <div className="wrapper">
                     <Filter />
+                    <div className="card-wrapper">
+                        {data.map(item => (
+                            <Card key={item.id} item={item} />
+                        ))}
+                    </div>
 
-                    {data.map(item => (
-                        <Card key={item.id} item={item} />
-                    ))}
 
 
                 </div>
