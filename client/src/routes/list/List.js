@@ -3,6 +3,7 @@ import { listData } from './../../lib/dummy';
 import './list.scss';
 import Filter from '../../components/filter/Filter';
 import Card from '../../components/card/Card';
+import Map from '../../components/map/Map';
 
 const List = () => {
 
@@ -34,7 +35,7 @@ const List = () => {
 
 
             <div className="mapContainer">
-                <h3>Map</h3>
+                <Map />
             </div>
         </div>
     );
