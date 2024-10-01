@@ -7,6 +7,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import Layout from './routes/layout/Layout';
+import Property from './routes/property/Property';
 
 
 const router = createBrowserRouter([
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
       {
         path: "/list",
         element: <List />
+      },
+      {
+        path: "/list/:id",
+        element: <Property />
       }
     ]
   },

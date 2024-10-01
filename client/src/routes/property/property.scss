@@ -1,0 +1,89 @@
+.property {
+    display: flex;
+
+    .left-side {
+        display: flex;
+        flex-direction: column;
+        flex: 3;
+
+        .left-side-wrapper {
+            padding-right: 30px;
+
+            .img-container {
+                margin-bottom: 50px;
+            }
+
+            .info-container {
+                display: flex;
+                flex-direction: column;
+
+
+                .top {
+                    display: flex;
+                    justify-content: space-between;
+                    margin-bottom: 50px;
+                    align-items: center;
+
+                    .property-info {
+                        display: flex;
+                        flex-direction: column;
+
+                        .title {
+                            font-weight: 500;
+                            margin-bottom: 8px;
+                        }
+
+                        .location {
+                            font-weight: 300;
+                            font-size: 14px;
+                            display: flex;
+                            align-items: center;
+                            margin-bottom: 10px;
+
+                            img {
+                                width: 17px;
+                            }
+                        }
+
+                        .price {
+                            font-weight: 600;
+                            background-color: yellowgreen;
+                            width: 67px;
+                            border-radius: 4px;
+                            padding-left: 9px;
+                        }
+                    }
+
+                    .user-info {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+
+                        img {
+                            width: 50px;
+                            height: 48px;
+                            border-radius: 50%;
+                        }
+                    }
+                }
+
+                .bottom {
+                    .property-details {
+                        text-align: justify;
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+    }
+
+    .right-side {
+        display: flex;
+        flex-direction: column;
+        flex: 3;
+
+        .right-side-wrapper {
+            padding: 0 20px;
+        }
+    }
+}

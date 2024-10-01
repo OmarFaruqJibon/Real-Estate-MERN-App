@@ -34,6 +34,7 @@ const Navbar = () => {
                 <Link to={`/signin`}>Sign In</Link>
                 <Link className='register' to={`/register`}>Sign Up</Link>
 
+
                 <div className="menu-icon">
                     <img width={'25px'} src="https://i.postimg.cc/NMbG8mX1/menu.png" alt="menu icon"
                         onClick={() => setMenuOpen(!menuOpen)} />
