@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import Layout from './routes/layout/Layout';
 import Property from './routes/property/Property';
+import Profile from './routes/profile/Profile';
 
 
 const router = createBrowserRouter([
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
       {
         path: "/list/:id",
         element: <Property />
+      },
+      {
+        path: "/profile",
+        element: <Profile />
       }
     ]
   },

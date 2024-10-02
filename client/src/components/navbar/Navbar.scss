@@ -62,6 +62,31 @@ nav {
         justify-content: flex-end;
         gap: 15px;
 
+        .navbar-profile {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+
+            span {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+
+                img {
+                    width: 40px;
+                    height: 36px;
+                    border-radius: 50%;
+                }
+            }
+
+            .profile-btn {
+                background-color: yellowgreen;
+                padding: 4px 14px;
+                cursor: pointer;
+
+            }
+        }
+
         .register {
             background-color: yellowgreen;
             color: black;
@@ -102,6 +127,10 @@ nav {
             @include small {
                 a {
                     display: initial;
+                }
+
+                .navbar-profile {
+                    flex-direction: column;
                 }
             }
 

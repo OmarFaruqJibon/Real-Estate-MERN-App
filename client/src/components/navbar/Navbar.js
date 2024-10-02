@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
 
+    const user = true;
+
     return (
         <nav>
             <div className="left-side">
@@ -31,8 +33,24 @@ const Navbar = () => {
 
 
             <div className="right-side">
-                <Link to={`/signin`}>Sign In</Link>
-                <Link className='register' to={`/register`}>Sign Up</Link>
+
+                {user ?
+                    <div className='navbar-profile'>
+                        <span>
+                            <img src="https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="" /> Will Smith
+                        </span>
+                        <Link className='profile-btn' to={`/profile`}>Profile</Link>
+                    </div >
+                    :
+                    <div>
+                        <Link to={`/signin`}>Sign In</Link>
+                        <Link className='register' to={`/register`}>Sign Up</Link>
+                    </div >
+                }
+
+
+
+
 
 
                 <div className="menu-icon">
@@ -46,8 +64,19 @@ const Navbar = () => {
                     <Link to={`/about`}>About</Link>
                     <Link to={`/contact`}>Contact</Link>
                     <hr className='side-menu-devider' />
-                    <Link to={`/signin`}>Sign IN</Link>
-                    <Link className='register' to={`/register`}>Sign Up</Link>
+                    {user ?
+                        <div className='navbar-profile'>
+                            <span>
+                                <img src="https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="" /> Will Smith
+                            </span>
+                            <Link className='profile-btn' to={`/profile`}>Profile</Link>
+                        </div >
+                        :
+                        <div>
+                            <Link to={`/signin`}>Sign In</Link>
+                            <Link className='register' to={`/register`}>Sign Up</Link>
+                        </div >
+                    }
                 </div>
             </div>
         </nav>
