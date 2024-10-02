@@ -47,10 +47,10 @@
                     .post {
                         display: flex;
                         flex-direction: column;
-                        gap: 20px;
+                        gap: 13px;
 
-                        h1 {
-                            font-weight: 400;
+                        h2 {
+                            font-weight: 500;
                         }
 
                         .address {
@@ -67,12 +67,12 @@
                         }
 
                         .price {
-                            padding: 5px;
-                            background-color: rgba(254, 205, 81, 0.438);
+                            padding: 1px 12px;
+                            background-color: yellowgreen;
                             border-radius: 5px;
                             width: max-content;
-                            font-size: 20px;
-                            font-weight: 300;
+                            font-size: 16px;
+                            font-weight: 500;
                         }
                     }
 
@@ -81,11 +81,9 @@
                         flex-direction: column;
                         align-items: center;
                         justify-content: center;
-                        gap: 20px;
+                        gap: 10px;
                         padding: 0px 50px;
-                        border-radius: 10px;
-                        background-color: rgba(254, 205, 81, 0.209);
-                        font-weight: 600;
+                        font-weight: 500;
 
                         @include small {
                             padding: 20px 50px;
@@ -104,6 +102,7 @@
                     margin-top: 50px;
                     color: #555;
                     line-height: 20px;
+                    text-align: justify;
                 }
             }
         }
@@ -122,7 +121,7 @@
         }
 
         .wrapper {
-            padding: 0px 20px;
+            padding: 0px 15px;
             display: flex;
             flex-direction: column;
             gap: 20px;
@@ -138,8 +137,7 @@
 
             .title {
                 font-weight: bold;
-                font-size: 18px;
-                margin-bottom: 10px;
+                font-size: 17px;
             }
 
             .feature {
@@ -153,11 +151,12 @@
 
                 .featureText {
                     span {
-                        font-weight: bold;
+                        font-weight: 600;
                     }
 
                     p {
                         font-size: 14px;
+                        font-weight: 300;
                     }
                 }
             }
@@ -166,7 +165,7 @@
                 display: flex;
                 flex-direction: column;
                 gap: 20px;
-                padding: 20px 10px;
+                padding: 10px 10px;
                 background-color: white;
                 border-radius: 10px;
             }
@@ -174,7 +173,7 @@
             .listHorizontal {
                 display: flex;
                 justify-content: space-between;
-                padding: 20px 10px;
+                padding: 15px 10px;
                 background-color: white;
                 border-radius: 10px;
             }

@@ -14,7 +14,7 @@ const Property = ({ id }) => {
                     <div className="info">
                         <div className="top">
                             <div className="post">
-                                <h1>{singlePostData.title}</h1>
+                                <h2>{singlePostData.title}</h2>
                                 <div className="address">
                                     <img src="https://i.postimg.cc/52HLZYyw/location.png" alt="" />
                                     <span>{singlePostData.address}</span>

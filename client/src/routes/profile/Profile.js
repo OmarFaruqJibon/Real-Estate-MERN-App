@@ -13,27 +13,24 @@ const Profile = () => {
                         <button>Update Profile</button>
                     </div>
                     <div className="info">
+                        <img
+                            src="https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                            alt=""
+                        />
                         <span>
-                            Avatar:
-                            <img
-                                src="https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-                                alt=""
-                            />
+                            <b>Username:</b> John Doe
                         </span>
                         <span>
-                            Username: <b>John Doe</b>
-                        </span>
-                        <span>
-                            E-mail: <b>john@gmail.com</b>
+                            <b>E-mail:</b> john@gmail.com
                         </span>
                     </div>
                     <div className="title">
-                        <h1>My List</h1>
+                        <h3>My List</h3>
                         <button>Create New Post</button>
                     </div>
                     <List />
                     <div className="title">
-                        <h1>Saved List</h1>
+                        <h3>Saved List</h3>
                     </div>
                     <List />
                 </div>
