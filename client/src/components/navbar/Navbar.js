@@ -13,10 +13,10 @@ const Navbar = () => {
 
                 <div className="logo">
                     <Link to={`/`}>
-                        <img width={'30px'} src="https://i.postimg.cc/vBXGxfBF/Haven-home-logo2.png" alt="Logo" />
-                        <span>
+                        <img width={'110px'} src="https://i.postimg.cc/J7P8GRFf/logo.png" alt="Logo" />
+                        {/* <span>
                             Haven Houses
-                        </span>
+                        </span> */}
                     </Link>
                 </div>
 
@@ -28,8 +28,6 @@ const Navbar = () => {
 
                 </div>
             </div>
-
-
 
 
             <div className="right-side">
@@ -47,10 +45,6 @@ const Navbar = () => {
                         <Link className='register' to={`/register`}>Sign Up</Link>
                     </div >
                 }
-
-
-
-
 
 
                 <div className="menu-icon">

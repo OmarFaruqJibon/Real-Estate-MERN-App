@@ -1,0 +1,135 @@
+.chat {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 0 10px;
+
+    .messages {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        overflow-y: scroll;
+
+
+
+        .message {
+            background-color: white;
+            padding: 13px;
+            border-radius: 11px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            cursor: pointer;
+            border-bottom: 1px solid #cbcbcb;
+
+            img {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                object-fit: cover;
+            }
+
+            span {
+                font-weight: bold;
+            }
+
+            p {
+                font-weight: 300;
+                font-size: 15px;
+            }
+        }
+    }
+
+    .chatBoxWrapper {
+        display: flex;
+
+        .chatBox {
+            flex: 1;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding-bottom: 100px;
+            width: 400px;
+
+            .top {
+                background-color: #f7c14b85;
+                padding: 15px;
+                font-weight: bold;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                .user {
+                    display: flex;
+                    align-items: center;
+                    gap: 12px;
+
+                    img {
+                        width: 30px;
+                        height: 30px;
+                        border-radius: 50%;
+                        object-fit: cover;
+                    }
+                }
+
+                .close {
+                    cursor: pointer;
+                }
+            }
+
+            .center {
+                height: 290px;
+                overflow: scroll;
+                padding: 18px;
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+
+                .chatMessage {
+                    width: 65%;
+
+                    &.own {
+                        align-self: flex-end;
+                        text-align: right;
+                    }
+
+                    p {
+                        font-size: 15px;
+                    }
+
+                    span {
+                        font-size: 12px;
+                        background-color: #f7c14b39;
+                        padding: 2px;
+                        border-radius: 5px;
+                        font-weight: 300;
+                    }
+                }
+            }
+
+            .bottom {
+                border-top: 2px solid #f7c14b85;
+                height: 50px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                textarea {
+                    flex: 3;
+                    height: 100%;
+                    border: none;
+                    padding: 20px;
+                }
+
+                button {
+                    flex: 1;
+                    background-color: #f7c14b85;
+                    height: 100%;
+                    border: none;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}

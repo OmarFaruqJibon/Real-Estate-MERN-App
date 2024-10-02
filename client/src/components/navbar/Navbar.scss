@@ -7,9 +7,11 @@ nav {
     align-items: center;
     padding-left: 20px;
     padding-right: 20px;
-    color: white;
-    background-color: #010227;
-    font-weight: 300;
+    color: rgb(0, 0, 0);
+    // background-color: #010227;
+    font-weight: 500;
+    border-bottom: 1px solid rgb(206, 206, 206);
+    // margin-bottom: 20px;
 
     a {
         transition: all 0.4s ease;
@@ -51,7 +53,7 @@ nav {
         .menu-items {
             display: flex;
             gap: 15px;
-            font-weight: 300;
+            font-weight: 500;
         }
 
     }
@@ -85,11 +87,16 @@ nav {
                 cursor: pointer;
 
             }
+
+            @include small {
+                display: none;
+            }
+
         }
 
         .register {
             background-color: yellowgreen;
-            color: black;
+            color: rgb(0, 0, 0);
         }
 
         .menu-icon {
@@ -126,6 +133,10 @@ nav {
 
             @include small {
                 a {
+                    display: initial;
+                }
+
+                .navbar-profile {
                     display: initial;
                 }
 
