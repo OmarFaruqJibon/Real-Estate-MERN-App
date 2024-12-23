@@ -13,9 +13,6 @@ const Home = () => {
                 <Search />
             </div>
 
-
-
-
         </div>
     );
 };

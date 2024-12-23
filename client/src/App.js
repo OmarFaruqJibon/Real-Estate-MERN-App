@@ -9,6 +9,8 @@ import {
 import Layout from './routes/layout/Layout';
 import Property from './routes/property/Property';
 import Profile from './routes/profile/Profile';
+import About from './routes/about/About';
+import Contact from './routes/contact/Contact';
 
 
 const router = createBrowserRouter([
@@ -32,7 +34,15 @@ const router = createBrowserRouter([
       {
         path: "/profile",
         element: <Profile />
-      }
+      },
+      {
+        path: "/about",
+        element: <About />
+      },
+      {
+        path: "/contact",
+        element: <Contact />
+      },
     ]
   },
 
