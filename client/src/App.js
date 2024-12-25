@@ -11,6 +11,8 @@ import Property from './routes/property/Property';
 import Profile from './routes/profile/Profile';
 import About from './routes/about/About';
 import Contact from './routes/contact/Contact';
+import Register from './routes/register/Register';
+import Login from './routes/login/Login';
 
 
 const router = createBrowserRouter([
@@ -43,6 +45,14 @@ const router = createBrowserRouter([
         path: "/contact",
         element: <Contact />
       },
+      {
+        path: "/register",
+        element: <Register />
+      },
+      {
+        path: "/login",
+        element: <Login />
+      }
     ]
   },
 

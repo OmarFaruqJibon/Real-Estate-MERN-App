@@ -5,19 +5,44 @@ import jwt from 'jsonwebtoken';
 export const register = async (req, res) => {
     const { username, email, password } = req.body;
 
-    const hashedPassword = await bcrypt.hash(password, 10);  //hashed the users password
+    try {
+        // hash password
+        const hashedPassword = await bcrypt.hash(password, 10);
+        // console.log(hashedPassword);
 
-    const newUser = await prisma.user.create({
-        data: {
-            username,
-            email,
-            password: hashedPassword,
-        },
-    });
+        // create new user and save to the database
+        const newUser = await prisma.user.create({
+            data: {
+                username,
+                email,
+                password: hashedPassword,
+            },
+        });
+        // console.log(newUser);
 
-    console.log(newUser);
-
+        res.status(201).json({ message: "User created successfully" });
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({ message: "Failed to create user!" });
+    }
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 export const login = async (req, res) => {
 
@@ -28,22 +53,17 @@ export const login = async (req, res) => {
         const user = await prisma.user.findUnique({
             where: { username }
         });
-
         if (!user) return res.status(400).json({ message: "Invalid User!" });
-
 
         // CHECK IF THE PASSWORD IS CORRECT
         const isPasswordValid = await bcrypt.compare(password, user.password);
-
         if (!isPasswordValid)
             return res.status(400).json({ message: "Invalid Password!" });
 
 
         // GENERATE COOKIE TOKEN AND SEND TO THE USER
-
         const age = 1000 * 60 * 60 * 24 * 7;
-
-        const token = jwt.sign({
+        const token = jwt.sign({ //generate jwt token
             id: user.id
         }, process.env.JWT_SECRET_KEY, { expiresIn: age });
 
@@ -53,7 +73,6 @@ export const login = async (req, res) => {
             maxAge: age
         }).status(200).json({ message: "Login Successfully!" })
 
-
     } catch (err) {
         console.log(err);
         res.status(500).json({ message: "Failed to login!" });
@@ -62,9 +81,7 @@ export const login = async (req, res) => {
 
 
 
-
 export const logout = (req, res) => {
 
     res.clearCookie("token").status(200).json({ message: "Logout Success." })
-
 }
