@@ -28,22 +28,6 @@ export const register = async (req, res) => {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const login = async (req, res) => {
 
     const { username, password } = req.body; //get user info from input form
@@ -67,11 +51,13 @@ export const login = async (req, res) => {
             id: user.id
         }, process.env.JWT_SECRET_KEY, { expiresIn: age });
 
+        const { password: userPassword, ...userInformation } = user;
+
         res.cookie("token", token, {
             httpOnly: true,
             // secure: true,
             maxAge: age
-        }).status(200).json({ message: "Login Successfully!" })
+        }).status(200).json(userInformation)
 
     } catch (err) {
         console.log(err);
