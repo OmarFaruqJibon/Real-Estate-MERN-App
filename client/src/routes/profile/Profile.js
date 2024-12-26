@@ -12,7 +12,7 @@ const Profile = () => {
         try {
             const res = await apiCall.post("/auth/logout");
             localStorage.removeItem("user");
-            console.log("logout");
+            // console.log("logout");
             navigate("/");
         } catch (error) {
             console.log(error);
