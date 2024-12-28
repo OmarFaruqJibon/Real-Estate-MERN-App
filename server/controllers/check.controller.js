@@ -1,12 +1,9 @@
 import jwt from 'jsonwebtoken';
 
 export const logIn = async (req, res) => {
-    console.log(req.userId);
-
+    // console.log(req.userId);
     res.status(200).json({ message: "You are authenticated!!" });
-
 }
-
 
 export const adminLogIn = (req, res) => {
 

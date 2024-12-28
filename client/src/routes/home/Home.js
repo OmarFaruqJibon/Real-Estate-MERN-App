@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './Home.scss';
 import Search from '../../components/search/Search';
+import { AuthContext } from '../../context/AuthContex';
 
 const Home = () => {
+
+    const { currentUser } = useContext(AuthContext);
+
+    console.log(currentUser);
+
     return (
         <div className='home'>
             <div className='banner'>
