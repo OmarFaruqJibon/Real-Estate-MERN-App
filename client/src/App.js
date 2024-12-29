@@ -17,7 +17,7 @@ import Login from './routes/login/Login';
 
 const router = createBrowserRouter([
 
-  {
+  { //Normal user can see these routes
     path: "/",
     element: <Layout />,
     children: [
@@ -51,7 +51,7 @@ const router = createBrowserRouter([
       }
     ]
   },
-  {
+  { //Only registered users can see these routes
     path: "/",
     element: <AuthenticatedLayout />,
     children: [
