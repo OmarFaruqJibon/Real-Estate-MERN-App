@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import './Navbar.scss';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthContex';
 
 const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
-    const [user, settUser] = useState(
-        JSON.parse(localStorage.getItem("user")) || null
-    );
-    console.log(user);
+    const { currentUser } = useContext(AuthContext);
+
+
+    // console.log(currentUser);
+
     return (
         <nav>
             <div className="left-side">
@@ -35,10 +37,10 @@ const Navbar = () => {
 
             <div className="right-side">
 
-                {user ?
+                {currentUser ?
                     <div className='navbar-profile'>
                         <span>
-                            <img src={user.avater} alt="" /> {user.username}
+                            <img src={currentUser.avater || "https://i.postimg.cc/J7dgwngh/profile-picture.png"} alt="profile-image" /> {currentUser.username}
                         </span>
                         <Link className='profile-btn' to={`/profile`}>Profile</Link>
                     </div >
@@ -61,10 +63,11 @@ const Navbar = () => {
                     <Link to={`/about`}>About</Link>
                     <Link to={`/contact`}>Contact</Link>
                     <hr className='side-menu-devider' />
-                    {user ?
+
+                    {currentUser ?
                         <div className='navbar-profile'>
                             <span>
-                                <img src="https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="" /> Will Smith
+                                <img src={currentUser.avater || "https://i.postimg.cc/J7dgwngh/profile-picture.png"} alt="profile-image" /> {currentUser.username}
                             </span>
                             <Link className='profile-btn' to={`/profile`}>Profile</Link>
                         </div >

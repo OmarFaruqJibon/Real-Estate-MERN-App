@@ -6,7 +6,7 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import Layout from './routes/layout/Layout';
+import { Layout, AuthenticatedLayout } from './routes/layout/Layout';
 import Property from './routes/property/Property';
 import Profile from './routes/profile/Profile';
 import About from './routes/about/About';
@@ -34,10 +34,6 @@ const router = createBrowserRouter([
         element: <Property />
       },
       {
-        path: "/profile",
-        element: <Profile />
-      },
-      {
         path: "/about",
         element: <About />
       },
@@ -55,6 +51,16 @@ const router = createBrowserRouter([
       }
     ]
   },
+  {
+    path: "/",
+    element: <AuthenticatedLayout />,
+    children: [
+      {
+        path: "/profile",
+        element: <Profile />
+      },
+    ]
+  }
 
 ]);
 
