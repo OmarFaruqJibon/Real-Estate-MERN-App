@@ -19,14 +19,12 @@ const Register = () => {
         const username = formData.get("username");
         const email = formData.get("email");
         const password = formData.get("password");
-        const avater = formData.get("avater");
 
         try {
             const res = await apiCall.post("/auth/register", {
                 username,
                 email,
                 password,
-                avater,
             });
             console.log(res.data);
 
@@ -47,7 +45,6 @@ const Register = () => {
                     <input name="username" type="text" placeholder="Username" />
                     <input name="email" type="text" placeholder="Email" />
                     <input name="password" type="password" placeholder="Password" />
-                    <input name="avater" type="text" placeholder="Avater Link" />
                     <button disabled={isLoading}>Register</button>
                     {error && <span>{error}</span>}
                     <span className='already'>Already Have an Account? <Link to="/login">Login Here</Link></span>

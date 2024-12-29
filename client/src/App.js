@@ -13,6 +13,7 @@ import About from './routes/about/About';
 import Contact from './routes/contact/Contact';
 import Register from './routes/register/Register';
 import Login from './routes/login/Login';
+import UpdateProfile from './routes/updateProfile/UpdateProfile';
 
 
 const router = createBrowserRouter([
@@ -58,6 +59,10 @@ const router = createBrowserRouter([
       {
         path: "/profile",
         element: <Profile />
+      },
+      {
+        path: "/profile/update",
+        element: <UpdateProfile />
       },
     ]
   }

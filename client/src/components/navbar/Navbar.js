@@ -40,7 +40,7 @@ const Navbar = () => {
                 {currentUser ?
                     <div className='navbar-profile'>
                         <span>
-                            <img src={currentUser.avater || "https://i.postimg.cc/J7dgwngh/profile-picture.png"} alt="profile-image" /> {currentUser.username}
+                            <img src={currentUser.avatar || "https://i.postimg.cc/J7dgwngh/profile-picture.png"} alt="profile-image" /> {currentUser.username}
                         </span>
                         <Link className='profile-btn' to={`/profile`}>Profile</Link>
                     </div >
@@ -67,7 +67,7 @@ const Navbar = () => {
                     {currentUser ?
                         <div className='navbar-profile'>
                             <span>
-                                <img src={currentUser.avater || "https://i.postimg.cc/J7dgwngh/profile-picture.png"} alt="profile-image" /> {currentUser.username}
+                                <img src={currentUser.avatar || "https://i.postimg.cc/J7dgwngh/profile-picture.png"} alt="profile-image" /> {currentUser.username}
                             </span>
                             <Link className='profile-btn' to={`/profile`}>Profile</Link>
                         </div >
