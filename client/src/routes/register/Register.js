@@ -19,14 +19,16 @@ const Register = () => {
         const username = formData.get("username");
         const email = formData.get("email");
         const password = formData.get("password");
+        const avater = formData.get("avater");
 
         try {
             const res = await apiCall.post("/auth/register", {
                 username,
                 email,
                 password,
+                avater,
             });
-            // console.log(res.config.data);
+            console.log(res.data);
 
             navigate("/login");
         } catch (err) {
@@ -45,13 +47,14 @@ const Register = () => {
                     <input name="username" type="text" placeholder="Username" />
                     <input name="email" type="text" placeholder="Email" />
                     <input name="password" type="password" placeholder="Password" />
+                    <input name="avater" type="text" placeholder="Avater Link" />
                     <button disabled={isLoading}>Register</button>
                     {error && <span>{error}</span>}
-                    <Link to="/login">Do you have an account?</Link>
+                    <span className='already'>Already Have an Account? <Link to="/login">Login Here</Link></span>
                 </form>
             </div>
             <div className="imgContainer">
-                <img src="/bg.png" alt="" />
+                <img src="https://i.postimg.cc/8CkqcYc6/Login-bro.png" alt="log in image" />
             </div>
         </div>
     );

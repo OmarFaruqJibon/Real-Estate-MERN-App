@@ -2,10 +2,13 @@ import React, { useState } from 'react';
 import './Login.scss';
 import { Link, useNavigate } from "react-router-dom";
 import apiCall from '../../lib/apiCall';
+import { useContext } from 'react';
+import { AuthContext } from '../../context/AuthContex';
 
 const Login = () => {
     const [error, setError] = useState("");
     const [isLoading, setIsLoading] = useState(false);
+    const { updateUser } = useContext(AuthContext);
 
     const navigate = useNavigate();
 
@@ -25,7 +28,8 @@ const Login = () => {
                 password,
             });
 
-            localStorage.setItem("user", JSON.stringify(res.data))
+            // localStorage.setItem("user", JSON.stringify(res.data))
+            updateUser(res.data);
 
             navigate("/");
         } catch (err) {
@@ -36,7 +40,7 @@ const Login = () => {
     };
 
     return (
-        <div className="login">
+        <div className="registerPage">
             <div className="formContainer">
                 <form onSubmit={handleSubmit}>
                     <h1>Welcome back</h1>
@@ -44,11 +48,12 @@ const Login = () => {
                     <input name="password" type="password" placeholder="Password" />
                     <button disabled={isLoading}>Login</button>
                     {error && <span>{error}</span>}
-                    <Link to="/register">{"Don't"} you have an account?</Link>
+                    <span className='already'>Already Have an Account? <Link to="/register">Register Here</Link></span>
+
                 </form>
             </div>
             <div className="imgContainer">
-                <img src="/bg.png" alt="" />
+                <img src="https://i.postimg.cc/8CkqcYc6/Login-bro.png" alt="log in image" />
             </div>
         </div>
     );

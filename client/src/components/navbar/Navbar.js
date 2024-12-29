@@ -4,9 +4,10 @@ import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
-
-    const user = true;
-
+    const [user, settUser] = useState(
+        JSON.parse(localStorage.getItem("user")) || null
+    );
+    console.log(user);
     return (
         <nav>
             <div className="left-side">
@@ -25,8 +26,8 @@ const Navbar = () => {
                     <Link to={`/list`}>List</Link>
                     <Link to={`/about`}>About</Link>
                     <Link to={`/contact`}>Contact</Link>
-                    <Link to={`/register`}>Register</Link>
-                    <Link to={`/login`}>Login</Link>
+                    {/* <Link to={`/register`}>Register</Link>
+                    <Link to={`/login`}>Login</Link> */}
 
                 </div>
             </div>
@@ -37,13 +38,13 @@ const Navbar = () => {
                 {user ?
                     <div className='navbar-profile'>
                         <span>
-                            <img src="https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="" /> Will Smith
+                            <img src={user.avater} alt="" /> {user.username}
                         </span>
                         <Link className='profile-btn' to={`/profile`}>Profile</Link>
                     </div >
                     :
                     <div>
-                        <Link to={`/signin`}>Sign In</Link>
+                        <Link to={`/login`}>Sign In</Link>
                         <Link className='register' to={`/register`}>Sign Up</Link>
                     </div >
                 }
@@ -69,7 +70,7 @@ const Navbar = () => {
                         </div >
                         :
                         <div>
-                            <Link to={`/signin`}>Sign In</Link>
+                            <Link to={`/login`}>Sign In</Link>
                             <Link className='register' to={`/register`}>Sign Up</Link>
                         </div >
                     }
