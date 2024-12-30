@@ -6,10 +6,7 @@ import Card from '../../components/card/Card';
 import Map from '../../components/map/Map';
 
 const List = () => {
-
     const data = listData;
-
-    // console.log(data);
 
     return (
 
@@ -23,16 +20,8 @@ const List = () => {
                             <Card key={item.id} item={item} />
                         ))}
                     </div>
-
-
-
                 </div>
-
             </div>
-
-
-
-
 
             <div className="mapContainer">
                 <Map items={data} />
