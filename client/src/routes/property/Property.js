@@ -1,32 +1,44 @@
 import React from 'react';
 import './property.scss';
-import { singlePostData, userData } from './../../lib/dummy';
 import Slider from '../../components/slider/Slider';
 import Map from './../../components/map/Map';
+import { useLoaderData } from 'react-router-dom';
 
 const Property = ({ id }) => {
+
+    const { post } = useLoaderData()
+    console.log(post);
 
     return (
         <div className="singlePage">
             <div className="details">
                 <div className="wrapper">
-                    <Slider images={singlePostData.images} />
+
+                    <Slider images={post.images} />
+
                     <div className="info">
                         <div className="top">
                             <div className="post">
-                                <h2>{singlePostData.title}</h2>
+
+                                <h2>{post.title}</h2>
                                 <div className="address">
                                     <img src="https://i.postimg.cc/52HLZYyw/location.png" alt="" />
-                                    <span>{singlePostData.address}</span>
+                                    <span>{post.address}</span>
                                 </div>
-                                <div className="price">$ {singlePostData.price}</div>
+                                <div className="price">$ {post.price}</div>
                             </div>
+
+                            {/* Post creator information */}
                             <div className="user">
-                                <img src={userData.img} alt="" />
-                                <span>{userData.name}</span>
+                                <img src={post.user.avatar} alt="" />
+                                <span>{post.user.username}</span>
                             </div>
+
                         </div>
-                        <div className="bottom">{singlePostData.description}</div>
+
+                        <div className="bottom">
+                            <p>{post.postDetail.description}</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -97,7 +109,7 @@ const Property = ({ id }) => {
                     </div>
                     <p className="title">Location</p>
                     <div className="mapContainer">
-                        <Map items={[singlePostData]} />
+                        <Map items={[post]} />
                     </div>
                     <div className="buttons">
                         <button>

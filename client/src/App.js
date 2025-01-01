@@ -14,6 +14,8 @@ import Contact from './routes/contact/Contact';
 import Register from './routes/register/Register';
 import Login from './routes/login/Login';
 import UpdateProfile from './routes/updateProfile/UpdateProfile';
+import AddPost from './routes/addPost/AddPost';
+import { propertyLoader } from './lib/loader';
 
 
 const router = createBrowserRouter([
@@ -31,8 +33,9 @@ const router = createBrowserRouter([
         element: <List />
       },
       {
-        path: "/list/:id",
-        element: <Property />
+        path: "/:id",
+        element: <Property />,
+        loader: propertyLoader
       },
       {
         path: "/about",
@@ -63,6 +66,10 @@ const router = createBrowserRouter([
       {
         path: "/profile/update",
         element: <UpdateProfile />
+      },
+      {
+        path: "/addPost",
+        element: <AddPost />
       },
     ]
   }
