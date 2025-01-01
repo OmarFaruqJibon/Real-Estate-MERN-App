@@ -3,6 +3,7 @@ import './property.scss';
 import Slider from '../../components/slider/Slider';
 import Map from './../../components/map/Map';
 import { useLoaderData } from 'react-router-dom';
+import DOMPurify from 'dompurify';
 
 const Property = ({ id }) => {
 
@@ -36,51 +37,69 @@ const Property = ({ id }) => {
 
                         </div>
 
-                        <div className="bottom">
-                            <p>{post.postDetail.description}</p>
+                        <div className="bottom"
+                            dangerouslySetInnerHTML={
+                                {
+                                    __html: DOMPurify.sanitize(post.postDetail.description),
+                                }}>
                         </div>
+
                     </div>
                 </div>
             </div>
             <div className="features">
                 <div className="wrapper">
                     <p className="title">General</p>
+
                     <div className="listVertical">
+
                         <div className="feature">
                             <img src="https://i.postimg.cc/rFGfKjCM/utilities-1.png" alt="" />
                             <div className="featureText">
                                 <span>Utilities</span>
-                                <p>Renter is responsible</p>
+                                {post.postDetail.utilities === "owner" ? (
+                                    <p>Owner is responsible</p>
+                                ) : (
+                                    <p>Tenant is responsible</p>
+                                )}
                             </div>
                         </div>
+
                         <div className="feature">
                             <img src="https://i.postimg.cc/qgVW0FG3/hand.png" alt="" />
                             <div className="featureText">
                                 <span>Pet Policy</span>
-                                <p>Pets Allowed</p>
+                                {post.postDetail.policy === "allowed" ? (
+                                    <p>Pets Allowed</p>
+                                ) : (
+                                    <p>Pets not Allowed</p>
+                                )}
                             </div>
                         </div>
+
                         <div className="feature">
                             <img src="https://i.postimg.cc/qgVW0FG3/hand.png" alt="" />
                             <div className="featureText">
                                 <span>Property Fees</span>
-                                <p>Must have 3x the rent in total household income</p>
+                                <p>{post.postDetail.fees}</p>
                             </div>
                         </div>
                     </div>
+
+
                     <p className="title">Sizes</p>
                     <div className="sizes">
                         <div className="size">
                             <img src="https://i.postimg.cc/zD6r0tT5/room.png" alt="" />
-                            <span>80 sqft</span>
+                            <span>{post.postDetail.size} sqft</span>
                         </div>
                         <div className="size">
                             <img src="https://i.postimg.cc/T14h90rB/bed-1.png" alt="" />
-                            <span>2 beds</span>
+                            <span>{post.bedroom} beds</span>
                         </div>
                         <div className="size">
                             <img src="https://i.postimg.cc/ZRYRz2H1/bathroom-1.png" alt="" />
-                            <span>1 bathroom</span>
+                            <span>{post.bathroom} bathroom</span>
                         </div>
                     </div>
                     <p className="title">Nearby Places</p>
@@ -89,21 +108,21 @@ const Property = ({ id }) => {
                             <img src="https://i.postimg.cc/T3XXXKk4/school.png" alt="" />
                             <div className="featureText">
                                 <span>School</span>
-                                <p>250m away</p>
+                                <p>{post.postDetail.school}m away</p>
                             </div>
                         </div>
                         <div className="feature">
                             <img src="https://i.postimg.cc/K8rhcmwv/bus-stop.png" alt="" />
                             <div className="featureText">
                                 <span>Bus Stop</span>
-                                <p>100m away</p>
+                                <p>{post.postDetail.bus}m away</p>
                             </div>
                         </div>
                         <div className="feature">
                             <img src="https://i.postimg.cc/tC6Hf3z6/restuarant.png" alt="" />
                             <div className="featureText">
-                                <span>Restaurant</span>
-                                <p>200m away</p>
+                                <span>Hospital</span>
+                                <p>{post.postDetail.hospital}m away</p>
                             </div>
                         </div>
                     </div>

@@ -164,7 +164,7 @@ function AddPost() {
                     {images.map((image, index) => (
                         <img src={image} key={index} alt="" />
                     ))}
-                    <br />
+                    <br /> <br />
                     <UploadWidget
                         uwConfig={{
                             multiple: true,
