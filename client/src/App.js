@@ -15,7 +15,7 @@ import Register from './routes/register/Register';
 import Login from './routes/login/Login';
 import UpdateProfile from './routes/updateProfile/UpdateProfile';
 import AddPost from './routes/addPost/AddPost';
-import { propertyLoader } from './lib/loader';
+import { listPageLoader, propertyLoader } from './lib/loader';
 
 
 const router = createBrowserRouter([
@@ -30,7 +30,8 @@ const router = createBrowserRouter([
       },
       {
         path: "/list",
-        element: <List />
+        element: <List />,
+        loader: listPageLoader
       },
       {
         path: "/:id",

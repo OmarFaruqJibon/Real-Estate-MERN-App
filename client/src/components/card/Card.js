@@ -3,17 +3,18 @@ import './card.scss';
 import { Link } from 'react-router-dom';
 
 const Card = ({ item }) => {
+    console.log(item);
     return (
         <div className="single-card">
             <div className="img-container">
-                <Link to={`${item.id}`}>
-                    <img src={item.img} alt="" />
+                <Link to={`/${item.id}`}>
+                    <img src={item.images[0]} alt="" />
                 </Link>
             </div>
 
             <div className="text-container">
 
-                <Link to={`${item.id}`}>
+                <Link to={`/${item.id}`}>
                     <h3 className='item-title'>
                         {item.title}
                     </h3>
