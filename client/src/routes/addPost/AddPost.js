@@ -34,7 +34,7 @@ function AddPost() {
                     images: images,
                 },
                 postDetail: {
-                    description: value.description,
+                    description: value,
                     utilities: inputs.utilities,
                     policy: inputs.policy,
                     fees: inputs.fees,
