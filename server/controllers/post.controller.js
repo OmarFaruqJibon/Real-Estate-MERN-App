@@ -18,78 +18,14 @@ export const getPosts = async (req, res) => {
             },
         });
 
+        // setTimeout(() => {
+        // }, 3000);
         res.status(200).json(posts);
-
     } catch (err) {
         console.log(err);
         res.status(500).json({ message: "Failed to get posts" });
     }
 };
-
-
-
-
-// export const getPosts = async (req, res) => {
-
-//     try {
-//         const posts = await prisma.post.findMany();
-
-//         res.status(200).json(posts);
-//         console.log(posts);
-
-//     } catch (err) {
-//         console.log(err);
-//         res.status(500).json({ message: "Failed to get posts" });
-//     }
-// };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 export const getPost = async (req, res) => {
