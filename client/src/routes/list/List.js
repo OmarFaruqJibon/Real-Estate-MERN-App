@@ -1,5 +1,4 @@
 import React from 'react';
-import { listData } from './../../lib/dummy';
 import './list.scss';
 import Filter from '../../components/filter/Filter';
 import Card from '../../components/card/Card';
@@ -7,10 +6,8 @@ import Map from '../../components/map/Map';
 import { useLoaderData } from 'react-router-dom';
 
 const List = () => {
-    // const data = listData;
-
-    const posts = useLoaderData();
-    console.log(posts);
+    const data = useLoaderData();
+    console.log(data);
 
     return (
 
@@ -20,7 +17,7 @@ const List = () => {
                 <div className="wrapper">
                     <Filter />
                     <div className="card-wrapper">
-                        {posts.map(item => (
+                        {data?.map(item => (
                             <Card key={item.id} item={item} />
                         ))}
                     </div>
@@ -28,7 +25,7 @@ const List = () => {
             </div>
 
             <div className="mapContainer">
-                <Map items={posts} />
+                <Map items={data} />
             </div>
         </div>
     );

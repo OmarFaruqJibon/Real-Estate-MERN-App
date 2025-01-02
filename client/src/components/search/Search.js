@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 import './Search.scss';
 import { Link } from 'react-router-dom';
 
-const types = ["Buy", "Rent"];
+const types = ["buy", "rent"];
 
 const Search = () => {
     const [query, setQuery] = useState({
-        type: "Buy",
-        location: "",
-        miniPrice: 0,
-        maxPrice: 0
+        type: "buy",
+        city: "",
+        minPrice: 0,
+        maxPrice: 0,
     });
 
     const switchType = (val) => {
@@ -24,7 +24,7 @@ const Search = () => {
         <div className='searchBar'>
             <div className="type">
 
-                {types.map((type) => (
+                {types?.map((type) => (
                     <button
                         key={type}
                         onClick={() => switchType(type)}
