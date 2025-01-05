@@ -3,7 +3,7 @@ import prisma from "../lib/prisma.js";
 
 export const getPosts = async (req, res) => {
     const query = req.query;
-    console.log(query);
+    // console.log(query);
     try {
         const posts = await prisma.post.findMany({
             where: {
@@ -44,8 +44,38 @@ export const getPost = async (req, res) => {
             },
         });
 
-        // const token = req.cookies?.token;
 
+
+        let userId;
+        const token = req.cookies.token;
+
+        if (!token) {
+            userId = null;
+        } else {
+            jwt.verify(token, process.env.JWT_SECRET_KEY, async (err, payload) => {
+                if (err) {
+                    userId = null;
+                } else {
+                    userId = payload.id;
+                }
+            })
+        }
+
+        const saved = await prisma.savedPost.findUnique({
+            where: {
+                userId_postId: {
+                    postId: id,
+                    userId,
+                },
+            },
+        });
+        res.status(200).json({ ...post, isSaved: saved ? true : false });
+
+
+
+
+
+        // const token = req.cookies?.token;
         // if (token) {
         //     jwt.verify(token, process.env.JWT_SECRET_KEY, async (err, payload) => {
         //         if (!err) {
@@ -64,7 +94,7 @@ export const getPost = async (req, res) => {
         // res.status(200).json({ ...post, isSaved: false });
 
 
-        res.status(200).json({ post });
+        // res.status(200).json({ post });
 
 
     } catch (err) {

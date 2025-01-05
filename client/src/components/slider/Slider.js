@@ -4,17 +4,26 @@ import { useState } from "react";
 
 
 function Slider({ images }) {
+
+    if (!images || images.length === 0) {
+        console.log("No images available");
+    }
+    // return <div>{images[0].title}</div>; // Access safely
+
+
+
     const [imageIndex, setImageIndex] = useState(null);
+    // console.log(images);
 
     const changeSlide = (direction) => {
         if (direction === "left") {
             if (imageIndex === 0) {
-                setImageIndex(images.length - 1);
+                setImageIndex(images?.length - 1);
             } else {
                 setImageIndex(imageIndex - 1);
             }
         } else {
-            if (imageIndex === images.length - 1) {
+            if (imageIndex === images?.length - 1) {
                 setImageIndex(0);
             } else {
                 setImageIndex(imageIndex + 1);

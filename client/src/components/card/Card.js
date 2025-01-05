@@ -8,7 +8,7 @@ const Card = ({ item }) => {
         <div className="single-card">
             <div className="img-container">
                 <Link to={`/${item.id}`}>
-                    <img src={item.images[0]} alt="" />
+                    <img src={item?.images[0]} alt="" />
                 </Link>
             </div>
 

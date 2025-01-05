@@ -7,7 +7,7 @@ import { Await, useLoaderData } from 'react-router-dom';
 
 const List = () => {
     const data = useLoaderData();
-    console.log(data);
+    // console.log(data);
 
     return (
 
@@ -19,11 +19,11 @@ const List = () => {
 
                     <Suspense fallback={<p>Loading...</p>}>
                         <Await
-                            resolve={data.postResponse}
+                            resolve={data?.postResponse}
                             errorElement={<p>Error loading posts!</p>}
                         >
                             {(postResponse) =>
-                                postResponse.data.map((post) => (
+                                postResponse?.data.map((post) => (
                                     <Card key={post.id} item={post} />
                                 ))
                             }
@@ -47,10 +47,10 @@ const List = () => {
 
                 <Suspense fallback={<p>Loading...</p>}>
                     <Await
-                        resolve={data.postResponse}
+                        resolve={data?.postResponse}
                         errorElement={<p>Error loading posts!</p>}
                     >
-                        {(postResponse) => <Map items={postResponse.data} />}
+                        {(postResponse) => <Map items={postResponse?.data} />}
                     </Await>
                 </Suspense>
 

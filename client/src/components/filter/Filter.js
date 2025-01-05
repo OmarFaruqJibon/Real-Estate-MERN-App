@@ -28,7 +28,7 @@ const Filter = () => {
             <h3>Search Result for <b>{searchParams.get("city")}</b></h3>
 
             <div className="input-area">
-                <label className="location" for="city">
+                <label className="location" htmlFor="city">
                     Location
                     <input
                         id="city"

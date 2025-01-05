@@ -1,7 +1,8 @@
 import Card from '../card/Card'
-import './list.scss'
+import './List.scss'
 
 function List({ posts }) {
+    console.log(posts);
     return (
         <div className='list'>
             {posts.map(item => (
@@ -11,4 +12,4 @@ function List({ posts }) {
     )
 }
 
-export default List
+export default List;
