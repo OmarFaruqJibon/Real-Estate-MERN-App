@@ -15,7 +15,7 @@ import Register from './routes/register/Register';
 import Login from './routes/login/Login';
 import UpdateProfile from './routes/updateProfile/UpdateProfile';
 import AddPost from './routes/addPost/AddPost';
-import { listPageLoader, propertyLoader } from './lib/loader';
+import { listPageLoader, profileLoader, propertyLoader } from './lib/loader';
 
 
 const router = createBrowserRouter([
@@ -62,7 +62,8 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/profile",
-        element: <Profile />
+        element: <Profile />,
+        loader: profileLoader
       },
       {
         path: "/profile/update",

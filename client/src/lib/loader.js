@@ -14,3 +14,12 @@ export const listPageLoader = async ({ request, params }) => {
         postResponse: postPromise,
     });
 };
+
+
+
+export const profileLoader = async () => {
+    const postPromise = apiCall("/users/profilePosts");
+    return defer({
+        postResponse: postPromise,
+    });
+};

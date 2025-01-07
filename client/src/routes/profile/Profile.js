@@ -1,16 +1,18 @@
-import React, { useContext } from 'react';
+import React, { Suspense, useContext } from 'react';
 import './profile.scss';
 // import List from './../list/List';
 import Chat from '../../components/chat/Chat';
 import apiCall from './../../lib/apiCall';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLoaderData, Await } from 'react-router-dom';
 import { AuthContext } from './../../context/AuthContex';
 import List from './../../components/list/List';
 
 const Profile = () => {
-    const navigate = useNavigate();
+    const data = useLoaderData();
+    console.log(data);
 
     const { currentUser, updateUser } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const handleLogout = async () => {
         try {
@@ -23,7 +25,6 @@ const Profile = () => {
             console.log(error);
         }
     }
-
 
     return (
         <div className="profilePage">
@@ -54,14 +55,33 @@ const Profile = () => {
                         <h3>My List</h3>
                         <Link to={"/addPost"}><button>Create New Post</button></Link>
                     </div>
-                    {/* <List /> */}
+                    <Suspense fallback={<p>Loading...</p>}>
+                        <Await
+                            resolve={data?.postResponse}
+                            errorElement={<p>Error loading posts!</p>}
+                        >
+                            {(postResponse) =>
+                                <List posts={postResponse.data.userPosts} />
+                            }
+                        </Await>
+                    </Suspense>
 
 
                     {/* SAVED LIST SECTION */}
                     <div className="title">
                         <h3>Saved List</h3>
                     </div>
-                    {/* <List /> */}
+                    <Suspense fallback={<p>Loading...</p>}>
+                        <Await
+                            resolve={data?.postResponse}
+                            errorElement={<p>Error loading posts!</p>}
+                        >
+                            {(postResponse) =>
+                                <List posts={postResponse.data.savedPosts} />
+                            }
+                        </Await>
+                    </Suspense>
+
                 </div>
             </div>
 
