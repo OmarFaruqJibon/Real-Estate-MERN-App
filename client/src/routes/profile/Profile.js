@@ -9,7 +9,7 @@ import List from './../../components/list/List';
 
 const Profile = () => {
     const data = useLoaderData();
-    console.log(data);
+    // console.log(data);
 
     const { currentUser, updateUser } = useContext(AuthContext);
     const navigate = useNavigate();
@@ -92,7 +92,20 @@ const Profile = () => {
             {/* CHAT SECTION */}
             <div className="chatContainer">
                 <div className="wrapper">
-                    <Chat />
+
+                    <Suspense fallback={<p>Loading...</p>}>
+                        <Await
+                            resolve={data?.chatResponse}
+                            errorElement={<p>Error loading chats!</p>}
+                        >
+                            {(chatResponse) =>
+                                <Chat chats={chatResponse.data} />
+                            }
+                        </Await>
+                    </Suspense>
+
+
+
                 </div>
             </div>
 

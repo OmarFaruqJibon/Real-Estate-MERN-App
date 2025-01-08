@@ -2,7 +2,7 @@ import Card from '../card/Card'
 import './List.scss'
 
 function List({ posts }) {
-    console.log(posts);
+    // console.log(posts);
 
 
     return (
