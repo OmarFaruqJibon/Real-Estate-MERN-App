@@ -1,14 +1,24 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import "./chat.scss";
 import { AuthContext } from "../../context/AuthContex";
 import apiCall from "../../lib/apiCall";
 import { format } from 'timeago.js';
+import { SocketContext } from "../../context/SocketContex";
 
 function Chat({ chats }) {
     const [chat, setChat] = useState(null);
     const { currentUser } = useContext(AuthContext);
+    const { socket } = useContext(SocketContext);
 
-    console.log(chats);
+    // console.log(socket);
+
+    const messageEndRef = useRef();
+
+    // const decrease = useNotificationStore((state) => state.decrease);
+
+    useEffect(() => {
+        messageEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    }, [chat]);
 
     const handleOpenChat = async (id, receiver) => {
         try {
@@ -30,10 +40,13 @@ function Chat({ chats }) {
 
         try {
             const res = await apiCall.post("/messages/" + chat.id, { text });
-
             setChat((prev) => ({ ...prev, messages: [...prev.messages, res.data] }));
-
             e.target.reset();
+
+            socket.emit("sendMessage", {
+                receiverId: chat.receiver.id,
+                data: res.data,
+            });
 
 
         } catch (err) {
@@ -41,18 +54,39 @@ function Chat({ chats }) {
         }
     };
 
+    useEffect(() => {
+        const read = async () => {
+            try {
+                await apiCall.put("/chats/read/" + chat.id);
+            } catch (err) {
+                console.log(err);
+            }
+        };
+
+        if (chat && socket) {
+            socket.on("getMessage", (data) => {
+                if (chat.id === data.chatId) {
+                    setChat((prev) => ({ ...prev, messages: [...prev.messages, data] }));
+                    read();
+                }
+            });
+        }
+        return () => {
+            socket.off("getMessage");
+        };
+    }, [socket, chat]);
+
+
     return (
         <div className="chat">
-
-
             <div className="messages">
                 <h3>Messages</h3>
                 {chats.map((c) => (
                     <div className="message" key={c.id}
                         style={{
-                            backgroundColor: c.seenBy.includes(currentUser.id)
+                            backgroundColor: c.seenBy.includes(currentUser.id) || chat?.id === c.id
                                 ? "white"
-                                : "yellow"
+                                : "#ffff77"
                         }}
                         onClick={() => handleOpenChat(c.id, c.receiver)}
                     >
@@ -60,7 +94,7 @@ function Chat({ chats }) {
                             src={c.receiver.avatar || "https://i.postimg.cc/J7dgwngh/profile-picture.png"}
                             alt="receiver-profile-picture"
                         />
-                        <span>{c.receiver.username}</span>
+                        <span>{c.receiver.username.toUpperCase()}</span>
                         <p>{c.lastMessage}...</p>
                     </div>
                 ))}
@@ -78,7 +112,7 @@ function Chat({ chats }) {
                                 <img
                                     src={chat.receiver.avatar || "https://i.postimg.cc/J7dgwngh/profile-picture.png"} alt=""
                                 />
-                                {chat.receiver.username}
+                                {chat.receiver.username.toUpperCase()}
                             </div>
                             <span className="close" onClick={() => setChat(null)}>X</span>
                         </div>
@@ -96,7 +130,7 @@ function Chat({ chats }) {
                                     <span>{format(message.createdAt)}</span>
                                 </div>
                             ))}
-
+                            {/* <div ref={messageEndRef}></div> */}
                         </div>
 
 

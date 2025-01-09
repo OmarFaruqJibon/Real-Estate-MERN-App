@@ -30,7 +30,7 @@ export const getChats = async (req, res) => {
         }
 
         res.status(200).send(chats);
-        console.log(chats);
+        // console.log(chats);
 
     } catch (error) {
         console.log(error);
