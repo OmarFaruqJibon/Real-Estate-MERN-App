@@ -55,15 +55,15 @@ const Filter = () => {
                         </select>
                     </label>
 
-                    <label htmlFor="Property">Property
+                    <label htmlFor="property">Property
                         <select
-                            name="Property"
-                            id="Property"
+                            name="property"
+                            id="property"
                             onChange={handleChange}
                             defaultValue={query.property}
                         >
                             <option value="">Select</option>
-                            <option value="apparment">Apparment</option>
+                            <option value="apartment">Apartment</option>
                             <option value="duplex">Duplex</option>
                             <option value="house">House</option>
                             <option value="condo">Condo</option>
