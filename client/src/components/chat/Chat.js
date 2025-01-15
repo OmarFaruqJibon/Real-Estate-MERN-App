@@ -11,8 +11,6 @@ function Chat({ chats }) {
     const { currentUser } = useContext(AuthContext);
     const { socket } = useContext(SocketContext);
 
-    // console.log(socket);
-
     const messageEndRef = useRef();
 
     const decrease = useNotificationStore((state) => state.decrease);
@@ -85,6 +83,7 @@ function Chat({ chats }) {
         <div className="chat">
             <div className="messages">
                 <h3>Messages</h3>
+
                 {chats.map((c) => (
                     <div className="message" key={c.id}
                         style={{

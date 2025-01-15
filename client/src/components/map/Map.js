@@ -20,7 +20,7 @@ const Map = ({ items }) => {
         <MapContainer center={
             items?.length === 1
                 ? [items[0]?.latitude, items[0]?.longitude]
-                : [52.4797, -1.90269]
+                : [24.169076766887795, 90.58402181897154]
         } zoom={7} scrollWheelZoom={true} className='map'>
 
             <TileLayer

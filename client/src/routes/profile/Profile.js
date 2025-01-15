@@ -3,13 +3,17 @@ import './profile.scss';
 // import List from './../list/List';
 import Chat from '../../components/chat/Chat';
 import apiCall from './../../lib/apiCall';
-import { Link, useNavigate, useLoaderData, Await } from 'react-router-dom';
+import { Link, useNavigate, useLoaderData, Await, useLocation } from 'react-router-dom';
 import { AuthContext } from './../../context/AuthContex';
 import List from './../../components/list/List';
 
 const Profile = () => {
     const data = useLoaderData();
-    // console.log(data);
+
+    const location = useLocation();
+    const { userId } = location.state || {}; // Extract userId from state
+    console.log(userId);
+
 
     const { currentUser, updateUser } = useContext(AuthContext);
     const navigate = useNavigate();

@@ -2,21 +2,21 @@ import React, { useContext, useState } from 'react';
 import './property.scss';
 import Slider from '../../components/slider/Slider';
 import Map from './../../components/map/Map';
-import { useLoaderData, useNavigate } from 'react-router-dom';
+import { Link, useLoaderData, useNavigate } from 'react-router-dom';
 import DOMPurify from 'dompurify';
 import apiCall from '../../lib/apiCall';
 import { AuthContext } from '../../context/AuthContex';
+
+
 const Property = ({ id }) => {
 
     const post = useLoaderData()
-    console.log(post);
+    // console.log(post);
 
 
     const [saved, setSaved] = useState(post?.isSaved);
     const { currentUser } = useContext(AuthContext);
     const navigate = useNavigate();
-    // console.log(currentUser.id);
-
 
 
     const handleSave = async () => {
@@ -27,9 +27,23 @@ const Property = ({ id }) => {
         try {
             await apiCall.post("/users/save", { postId: post?.id, });
         } catch (err) {
-            console.log("error found in property js");
+            console.log("error found in saving post!");
             console.log(err);
             setSaved((prev) => !prev);
+        }
+    };
+
+    const handleSendMessage = async (e) => {
+        if (!currentUser) {
+            navigate("/login");
+        }
+        try {
+            await apiCall.post("/chats", { receiverId: e, });
+            // console.log(e);
+
+        } catch (err) {
+            console.log("error found in sending message btn");
+            console.log(err);
         }
     };
 
@@ -156,18 +170,21 @@ const Property = ({ id }) => {
                     <div className="mapContainer">
                         <Map items={[post]} />
                     </div>
+
+
                     <div className="buttons">
-                        <button>
-                            <img src="https://i.postimg.cc/X74w1F2r/chat-1.png" alt="" />
-
-                            Send a Message
-                        </button>
 
 
-                        {/* <button>
-                            <img src="https://i.postimg.cc/tRh3zDz0/bookmark-1.png" alt="" />
-                            Save the Place
-                        </button> */}
+
+                        <Link to={"/profile"}>
+                            <button
+                                onClick={() => handleSendMessage(post.userId)}
+                            >
+                                <img src="https://i.postimg.cc/X74w1F2r/chat-1.png" alt="" />
+                                Send a Message
+                            </button>
+                        </Link>
+
 
 
                         <button
