@@ -61,12 +61,12 @@ const Navbar = () => {
                 }
 
 
-                <div className="menu-icon">
+                {/* <div className="menu-icon">
                     <img width={'25px'} src="https://i.postimg.cc/NMbG8mX1/menu.png" alt="menu icon"
                         onClick={() => setMenuOpen(!menuOpen)} />
-                </div>
+                </div> */}
 
-                <div className={menuOpen ? "side-menu active" : "side-menu"}>
+                {/* <div className={menuOpen ? "side-menu active" : "side-menu"}>
                     <Link to={`/`}>Home</Link>
                     <Link to={`/list`}>List</Link>
                     <Link to={`/about`}>About</Link>
@@ -86,7 +86,7 @@ const Navbar = () => {
                             <Link className='register' to={`/register`}>Sign Up</Link>
                         </div >
                     }
-                </div>
+                </div> */}
             </div>
         </nav>
     );

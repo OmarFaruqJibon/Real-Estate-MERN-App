@@ -2,8 +2,9 @@
 
 .profilePage {
     display: flex;
-    height: 100%;
+    // height: 100%;
     padding-top: 15px;
+    overflow: scroll;
 
     @include medium {
         flex-direction: column;
@@ -17,7 +18,7 @@
 
         @include medium {
             flex: none;
-            height: max-content;
+            // height: max-content;
         }
 
         .wrapper {
@@ -80,7 +81,7 @@
 
     .chatContainer {
         flex: 2;
-        height: 100%;
+        // height: 100%;
 
         @include medium {
             flex: none;
@@ -89,7 +90,7 @@
 
         .wrapper {
             // padding: 0px 20px;
-            height: 100%;
+            // height: 100%;
         }
     }
 }

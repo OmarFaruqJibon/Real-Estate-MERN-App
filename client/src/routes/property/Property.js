@@ -7,7 +7,6 @@ import DOMPurify from 'dompurify';
 import apiCall from '../../lib/apiCall';
 import { AuthContext } from '../../context/AuthContex';
 
-
 const Property = ({ id }) => {
 
     const post = useLoaderData()
@@ -33,22 +32,41 @@ const Property = ({ id }) => {
         }
     };
 
-    const handleSendMessage = async (e) => {
+    // const handleSendMessage = async (e) => {
+    //     if (!currentUser) {
+    //         navigate("/login");
+    //     }
+    //     try {
+    //         await apiCall.post("/chats", { receiverId: e, });
+    //         // Redirect to the profile page
+    //         navigate(`/profile`);
+
+    //         // Force a refresh of the profile page to fetch the latest data
+    //         window.location.reload();
+
+    //     } catch (err) {
+    //         console.log("error found in sending message btn");
+    //         console.log(err);
+    //     }
+    // };
+
+    const handleSendMessage = async (userId) => {
         if (!currentUser) {
             navigate("/login");
+            return;
         }
+
         try {
-            await apiCall.post("/chats", { receiverId: e, });
-            // console.log(e);
+            // Send a request to create or get the chat
+            const response = await apiCall.post("/chats", { receiverId: userId });
+
+            // Redirect to the profile page with the chatId in the state
+            navigate("/profile", { state: { chatId: response.data.id } });
 
         } catch (err) {
-            console.log("error found in sending message btn");
-            console.log(err);
+            console.log("Error found in sending message btn", err);
         }
     };
-
-
-
 
     return (
         <div className="singlePage">
@@ -125,8 +143,6 @@ const Property = ({ id }) => {
                             </div>
                         </div>
                     </div>
-
-
                     <p className="title">Sizes</p>
                     <div className="sizes">
                         <div className="size">
@@ -170,11 +186,7 @@ const Property = ({ id }) => {
                     <div className="mapContainer">
                         <Map items={[post]} />
                     </div>
-
-
                     <div className="buttons">
-
-
 
                         <Link to={"/profile"}>
                             <button
@@ -184,9 +196,6 @@ const Property = ({ id }) => {
                                 Send a Message
                             </button>
                         </Link>
-
-
-
                         <button
                             onClick={handleSave}
                             style={{
@@ -196,9 +205,6 @@ const Property = ({ id }) => {
                             <img src="https://i.postimg.cc/tRh3zDz0/bookmark-1.png" alt="" />
                             {saved ? "Place Saved" : "Save the Place"}
                         </button>
-
-
-
 
                     </div>
                 </div>

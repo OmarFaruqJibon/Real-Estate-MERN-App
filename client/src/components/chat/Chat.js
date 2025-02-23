@@ -5,15 +5,23 @@ import apiCall from "../../lib/apiCall";
 import { format } from 'timeago.js';
 import { SocketContext } from "../../context/SocketContex";
 import { useNotificationStore } from "../../lib/notificationStore";
-
-function Chat({ chats }) {
+function Chat({ chats, openChatId }) {
     const [chat, setChat] = useState(null);
     const { currentUser } = useContext(AuthContext);
     const { socket } = useContext(SocketContext);
 
     const messageEndRef = useRef();
-
     const decrease = useNotificationStore((state) => state.decrease);
+
+    // Automatically open the chat if openChatId is provided
+    useEffect(() => {
+        if (openChatId) {
+            const targetChat = chats.find((c) => c.id === openChatId);
+            if (targetChat) {
+                handleOpenChat(targetChat.id, targetChat.receiver);
+            }
+        }
+    }, [openChatId, chats]);
 
     useEffect(() => {
         messageEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -26,18 +34,15 @@ function Chat({ chats }) {
                 decrease();
             }
             setChat({ ...res.data, receiver });
-
         } catch (error) {
             console.log(error.message);
         }
-    }
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
         const formData = new FormData(e.target);
         const text = formData.get("text");
-
         if (!text) return;
 
         try {
@@ -49,8 +54,6 @@ function Chat({ chats }) {
                 receiverId: chat.receiver.id,
                 data: res.data,
             });
-
-
         } catch (err) {
             console.log(err);
         }
@@ -78,7 +81,6 @@ function Chat({ chats }) {
         };
     }, [socket, chat]);
 
-
     return (
         <div className="chat">
             <div className="messages">
@@ -87,29 +89,25 @@ function Chat({ chats }) {
                 {chats.map((c) => (
                     <div className="message" key={c.id}
                         style={{
-                            backgroundColor: c.seenBy.includes(currentUser.id) || chat?.id === c.id
+                            backgroundColor: c?.seenBy.includes(currentUser.id) || chat?.id === c.id
                                 ? "white"
                                 : "#ffff77"
                         }}
                         onClick={() => handleOpenChat(c.id, c.receiver)}
                     >
                         <img
-                            src={c.receiver.avatar || "https://i.postimg.cc/J7dgwngh/profile-picture.png"}
+                            src={c?.receiver.avatar || "https://i.postimg.cc/J7dgwngh/profile-picture.png"}
                             alt="receiver-profile-picture"
                         />
-                        <span>{c.receiver.username.toUpperCase()}</span>
-                        <p>{c.lastMessage}...</p>
+                        <span>{c?.receiver.username.toUpperCase()}</span>
+                        <p>{c?.lastMessage}...</p>
                     </div>
                 ))}
-
-
-
             </div>
 
             <div className="chatBoxWrapper">
                 {chat && (
                     <div className="chatBox">
-
                         <div className="top">
                             <div className="user">
                                 <img
@@ -121,7 +119,6 @@ function Chat({ chats }) {
                         </div>
 
                         <div className="center">
-
                             {chat.messages.map((message) => (
                                 <div className="chatMessage" key={message.id}
                                     style={{
@@ -133,17 +130,12 @@ function Chat({ chats }) {
                                     <span>{format(message.createdAt)}</span>
                                 </div>
                             ))}
-                            {/* <div ref={messageEndRef}></div> */}
+                            <div ref={messageEndRef}></div>
                         </div>
-
-
                         <form onSubmit={handleSubmit} className="bottom">
                             <textarea name="text"></textarea>
                             <button>Send</button>
                         </form>
-
-
-
                     </div>
                 )}
             </div>

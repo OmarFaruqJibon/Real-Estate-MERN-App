@@ -1,11 +1,10 @@
-import React, { Suspense, useContext } from 'react';
+import React, { Suspense, useContext, useEffect, useState } from 'react';
 import './profile.scss';
-// import List from './../list/List';
 import Chat from '../../components/chat/Chat';
 import apiCall from './../../lib/apiCall';
 import { Link, useNavigate, useLoaderData, Await, useLocation } from 'react-router-dom';
 import { AuthContext } from './../../context/AuthContex';
-import List from './../../components/list/List';
+// import List from './../../components/list/List';
 
 const Profile = () => {
     const data = useLoaderData();
@@ -13,16 +12,23 @@ const Profile = () => {
     const location = useLocation();
     const { userId } = location.state || {}; // Extract userId from state
     console.log(userId);
-
-
     const { currentUser, updateUser } = useContext(AuthContext);
     const navigate = useNavigate();
+
+    const [chatId, setChatId] = useState(null);
+    // Extract chatId from the navigation state
+    useEffect(() => {
+        if (location.state?.chatId) {
+            setChatId(location.state.chatId);
+        }
+    }, [location.state]);
+
+
 
     const handleLogout = async () => {
         try {
             await apiCall.post("/auth/logout");
             updateUser(null)
-            // console.log("logout");
 
             navigate("/");
         } catch (error) {
@@ -54,8 +60,8 @@ const Profile = () => {
                         <button onClick={handleLogout} className='logout-btn'>Logout</button>
                     </div>
 
-
-                    <div className="title">
+                    {/* My LIST SECTION */}
+                    {/* <div className="title">
                         <h3>My List</h3>
                         <Link to={"/addPost"}><button>Create New Post</button></Link>
                     </div>
@@ -68,11 +74,11 @@ const Profile = () => {
                                 <List posts={postResponse.data.userPosts} />
                             }
                         </Await>
-                    </Suspense>
+                    </Suspense> */}
 
 
                     {/* SAVED LIST SECTION */}
-                    <div className="title">
+                    {/* <div className="title">
                         <h3>Saved List</h3>
                     </div>
                     <Suspense fallback={<p>Loading...</p>}>
@@ -84,7 +90,7 @@ const Profile = () => {
                                 <List posts={postResponse.data.savedPosts} />
                             }
                         </Await>
-                    </Suspense>
+                    </Suspense> */}
 
                 </div>
             </div>
@@ -103,7 +109,7 @@ const Profile = () => {
                             errorElement={<p>Error loading chats!</p>}
                         >
                             {(chatResponse) =>
-                                <Chat chats={chatResponse.data} />
+                                <Chat chats={chatResponse.data} openChatId={chatId} />
                             }
                         </Await>
                     </Suspense>
