@@ -5,8 +5,11 @@ import apiCall from "../../lib/apiCall";
 import { format } from 'timeago.js';
 import { SocketContext } from "../../context/SocketContex";
 import { useNotificationStore } from "../../lib/notificationStore";
-function Chat({ chats, openChatId }) {
+
+
+function Chat({ chats: initialChats, openChatId }) {
     const [chat, setChat] = useState(null);
+    const [chats, setChats] = useState(initialChats);
     const { currentUser } = useContext(AuthContext);
     const { socket } = useContext(SocketContext);
 
@@ -23,22 +26,35 @@ function Chat({ chats, openChatId }) {
         }
     }, [openChatId, chats]);
 
+    // Scroll to the bottom of the chat when messages are updated
     useEffect(() => {
         messageEndRef.current?.scrollIntoView({ behavior: "smooth" });
     }, [chat]);
 
+    // Handle opening a chat
     const handleOpenChat = async (id, receiver) => {
         try {
             const res = await apiCall("/chats/" + id);
+
+            // Mark the chat as seen by the current user
             if (!res.data.seenBy.includes(currentUser.id)) {
-                decrease();
+                await apiCall.put("/chats/read/" + id); // Update the backend
+                setChats((prevChats) =>
+                    prevChats.map((c) =>
+                        c.id === id
+                            ? { ...c, seenBy: [...c.seenBy, currentUser.id] }
+                            : c
+                    )
+                );
             }
+
             setChat({ ...res.data, receiver });
         } catch (error) {
             console.log(error.message);
         }
     };
 
+    // Handle sending a message
     const handleSubmit = async (e) => {
         e.preventDefault();
         const formData = new FormData(e.target);
@@ -50,6 +66,7 @@ function Chat({ chats, openChatId }) {
             setChat((prev) => ({ ...prev, messages: [...prev.messages, res.data] }));
             e.target.reset();
 
+            // Emit the new message via socket
             socket.emit("sendMessage", {
                 receiverId: chat.receiver.id,
                 data: res.data,
@@ -59,27 +76,40 @@ function Chat({ chats, openChatId }) {
         }
     };
 
+    // Listen for new messages via socket
     useEffect(() => {
-        const read = async () => {
-            try {
-                await apiCall.put("/chats/read/" + chat.id);
-            } catch (err) {
-                console.log(err);
-            }
-        };
-
-        if (chat && socket) {
+        if (socket) {
             socket.on("getMessage", (data) => {
-                if (chat.id === data.chatId) {
-                    setChat((prev) => ({ ...prev, messages: [...prev.messages, data] }));
-                    read();
+                // Update the chat's seenBy array if the message belongs to the currently open chat
+                if (chat?.id === data.chatId) {
+                    setChat((prev) => ({
+                        ...prev,
+                        messages: [...prev.messages, data],
+                        seenBy: [...prev.seenBy, currentUser.id], // Mark as seen by the current user
+                    }));
                 }
+
+                // Update the chats list to reflect the new message
+                setChats((prevChats) =>
+                    prevChats.map((c) =>
+                        c.id === data.chatId
+                            ? {
+                                ...c,
+                                lastMessage: data.text, // Update the last message
+                                seenBy: chat?.id === data.chatId
+                                    ? [...c.seenBy, currentUser.id] // Mark as seen if the chat is open
+                                    : c.seenBy.filter((id) => id !== currentUser.id), // Mark as unread if the chat is not open
+                            }
+                            : c
+                    )
+                );
             });
+
+            return () => {
+                socket.off("getMessage");
+            };
         }
-        return () => {
-            socket.off("getMessage");
-        };
-    }, [socket, chat]);
+    }, [socket, chat, currentUser.id]);
 
     return (
         <div className="chat">
