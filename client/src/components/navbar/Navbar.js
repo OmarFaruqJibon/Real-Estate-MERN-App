@@ -13,30 +13,29 @@ const Navbar = () => {
 
     if (currentUser) fetch();
 
+
     return (
         <nav>
             <div className="left-side">
 
                 <div className="logo">
                     <Link to={`/`}>
-                        <img width={'110px'} src="https://i.postimg.cc/J7P8GRFf/logo.png" alt="Logo" />
-                        {/* <span>
-                            Haven Houses
-                        </span> */}
+                        <img width={'45px'} src="https://i.postimg.cc/x8Nbmdjd/haven-house-logo.png" alt="Logo" />
+                        <h2>
+                            Haven House
+                        </h2>
                     </Link>
-                </div>
-
-                <div className="menu-items">
-                    <Link to={`/`}>Home</Link>
-                    <Link to={`/list`}>List</Link>
-                    <Link to={`/about`}>About</Link>
-                    <Link to={`/contact`}>Contact</Link>
-                    {/* <Link to={`/register`}>Register</Link>
-                    <Link to={`/login`}>Login</Link> */}
-
                 </div>
             </div>
 
+            <div className="menu-items">
+                <Link to={`/`}>Home</Link>
+                <Link to={`/list`}>Properties</Link>
+                <Link to={`/about`}>About</Link>
+                <Link to={`/contact`}>Contact</Link>
+
+
+            </div>
 
             <div className="right-side">
 
@@ -93,3 +92,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
