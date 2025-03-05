@@ -29,22 +29,37 @@ const Search = () => {
                         key={type}
                         onClick={() => switchType(type)}
                         className={query.type === type ? "active" : ""}
-                    >{type}</button>
+                    >
+                        {type} Properties
+                    </button>
                 ))}
 
             </div>
 
             <form className='form' action="">
-                <input type="text" name="city" id="city" placeholder='City' onChange={handleChange} />
 
-                <input type="number" name="minPrice" id="minPrice" placeholder='Minimum Price' onChange={handleChange} />
+                <div className="input-item">
+                    <label htmlFor="city">Location</label>
+                    <input type="text" name="city" id="city" placeholder='City' onChange={handleChange} />
+                </div>
 
-                <input type="text" name="maxPrice" id="maxPrice" placeholder='Maximum Price' onChange={handleChange} /> <br />
+                <div className="input-item">
+                    <label htmlFor="minPrice">Min Price</label>
+                    <input type="number" name="minPrice" id="minPrice" placeholder='$100' onChange={handleChange} />
+                </div>
 
-                <Link to={`/list?type=${query.type}&city=${query.city}&minPrice=${query.minPrice}&maxPrice=${query.maxPrice}`}
-                >
-                    <button> Search </button>
-                </Link>
+                <div className="input-item">
+                    <label htmlFor="maxPrice">Max Price</label>
+                    <input type="text" name="maxPrice" id="maxPrice" placeholder='$15000' onChange={handleChange} />
+                </div>
+
+                <div className="input-item-btn">
+                    <Link to={`/list?type=${query.type}&city=${query.city}&minPrice=${query.minPrice}&maxPrice=${query.maxPrice}`}
+                    >
+                        <input className='button' type="button" value="Search" />
+                        {/* <button> Search </button> */}
+                    </Link>
+                </div>
 
             </form>
         </div>

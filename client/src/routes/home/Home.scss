@@ -16,6 +16,11 @@
 
 .hero-overlay h1 {
     font-size: 4rem;
+
+    @include small {
+        font-size: 3rem;
+        padding: 0px 20px;
+    }
 }
 
 .search-bar {
