@@ -1,14 +1,15 @@
-@import "../../responsive.scss";
+@import "../../../responsive.scss";
 
-.how-works-container {
+.services-container {
     text-align: center;
     margin: 0 auto;
     width: 90%;
     margin-top: 100px;
+    margin-bottom: 50px;
 
     .top {
         text-align: center;
-        margin-bottom: 50px;
+        margin-bottom: 35px;
 
         span {
             color: #09aa57;
@@ -27,45 +28,39 @@
         }
     }
 
-    .card {
+    .service-cards {
         display: flex;
         text-align: center;
         justify-content: space-evenly;
         flex-wrap: wrap;
         gap: 20px;
+        height: 100%;
 
-        @include small {
-            flex: 1 1 100%;
-            gap: 20px;
-        }
 
-        @include medium {
-            flex: 1 1 calc(50% - 20px);
-        }
-
-        .card-one {
+        .service-card {
             padding: 30px 25px;
             flex: 1 1 calc(25% - 20px);
+            flex-direction: column;
+
+            @include small {
+                flex: 1 1 100%;
+                gap: 20px;
+            }
+
+            @include medium {
+                flex: 1 1 calc(50% - 20px);
+            }
+
 
             .image {
-                position: relative;
                 margin-bottom: 15px;
 
                 img {
-                    margin-bottom: 30px;
-                    height: 200px;
+                    // margin-bottom: 30px;
+                    height: 100px;
                 }
 
-                p {
-                    background-color: #09aa57;
-                    color: white;
-                    padding: 12px;
-                    border-radius: 50%;
-                    width: 50px;
-                    position: absolute;
-                    left: 37%;
-                    top: 75%;
-                }
+
             }
 
             .card-text {

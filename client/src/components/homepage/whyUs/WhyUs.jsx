@@ -6,9 +6,8 @@ const WhyUs = () => {
   return (
     <section className="why-us-container">
       <div className="top">
-        <h1>
-          <span>Why</span> Choose Us?
-        </h1>
+        <span>WHY US</span>
+        <h1>Why Choose Us?</h1>
         <p>
           We have over 8 years of experience and knowledge on how to sell more.
         </p>

@@ -1,59 +1,59 @@
 import React from "react";
-import "./HowWorks.scss";
+import "./Services.scss";
 
-const HowWorks = () => {
+const Services = () => {
   return (
-    <section className="how-works-container">
+    <section className="services-container">
       <div className="top">
-        <span>Work flow</span>
-        <h1>How it Works</h1>
+        <span>SERVICES</span>
+        <h1>Our Services</h1>
       </div>
 
-      <div className="card">
-        <div className="card-one">
+      <div className="service-cards">
+        <div className="service-card">
           <div className="image">
-            <img src="https://i.postimg.cc/htkhqWns/client1-png.webp" alt="" />
-            <p>1</p>
+            <img src="https://i.postimg.cc/BvG4Wjkg/searching.png" alt="" />
+            {/* <p>1</p> */}
           </div>
 
           <div className="card-text">
-            <h3>Choose A Category</h3>
+            <h3>Find Places Anywhere</h3>
             <p>
               Quis ipsum suspendisse ultrices, risus commodo viverra maecenas
             </p>
           </div>
         </div>
-        <div className="card-one">
+        <div className="service-card">
           <div className="image">
-            <img src="https://i.postimg.cc/mDRDtYtF/client2-png.webp" alt="" />
-            <p>2</p>
+            <img src="https://i.postimg.cc/CKXFvvYR/realtor.png" alt="" />
+            {/* <p>2</p> */}
           </div>
           <div className="card-text">
-            <h3>Find Real Esate</h3>
+            <h3>We Have Agents</h3>
             <p>
               Quis ipsum suspendisse ultrices, risus commodo viverra maecenas
             </p>
           </div>
         </div>
-        <div className="card-one">
+        <div className="service-card">
           <div className="image">
-            <img src="https://i.postimg.cc/4d53tY92/client3-png.webp" alt="" />
-            <p>3</p>
+            <img src="https://i.postimg.cc/xCm9BKTt/plan.png" alt="" />
+            {/* <p>3</p> */}
           </div>
           <div className="card-text">
-            <h3>Take The Key</h3>
+            <h3>Chat With Agent</h3>
             <p>
               Quis ipsum suspendisse ultrices, risus commodo viverra maecenas
             </p>
           </div>
         </div>
-        <div className="card-one">
+        <div className="service-card">
           <div className="image">
-            <img src="https://i.postimg.cc/vm5TYqHs/client4-png.webp" alt="" />
-            <p>4</p>
+            <img src="https://i.postimg.cc/Gt1bRH4r/real-estate.png" alt="" />
+            {/* <p>4</p> */}
           </div>
           <div className="card-text">
-            <h3>Live Happy</h3>
+            <h3>Buy & Rent Properties</h3>
             <p>
               Quis ipsum suspendisse ultrices, risus commodo viverra maecenas
             </p>
@@ -64,4 +64,4 @@ const HowWorks = () => {
   );
 };
 
-export default HowWorks;
+export default Services;

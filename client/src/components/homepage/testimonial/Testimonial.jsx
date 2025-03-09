@@ -41,8 +41,11 @@ const testimonials = [
 
 const Testimonial = () => {
   return (
-    <div className="testimonial-container">
-      <h2 className="testimonial-heading">What Our Users Say</h2>
+    <section className="testimonial-container">
+      <div className="top">
+        <span>TESTIMONIAL</span>
+        <h1>What Our Users Say</h1>
+      </div>
 
       <Swiper
         modules={[Pagination, Navigation, Autoplay]}
@@ -84,7 +87,7 @@ const Testimonial = () => {
           </SwiperSlide>
         ))}
       </Swiper>
-    </div>
+    </section>
   );
 };
 

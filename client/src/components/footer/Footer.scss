@@ -1,0 +1,158 @@
+@import "../../responsive.scss";
+
+
+.footer {
+    background-image: url('https://i.postimg.cc/2yCVnrm9/piotr-chrobot-6o-Usye-YXg-Tg-unsplash.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    padding: 50px 20px;
+    margin-top: 60px;
+    z-index: 0;
+    position: relative;
+
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: -1;
+        opacity: .8;
+        background: #0a0014;
+    }
+
+    .footer-content {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+
+        @include small {
+            gap: 70px;
+        }
+
+        @include medium {
+            gap: 30px;
+        }
+
+        .single-content {
+            text-align: center;
+            flex: 1 1 calc(25% - 20px);
+
+            h1 {
+                font-size: 23px;
+                font-weight: 400;
+                margin-bottom: 35px;
+            }
+
+            p {
+                font-size: 13px;
+                font-weight: 300;
+            }
+
+            @include small {
+                flex: 1 1 100%;
+                gap: 20px;
+            }
+
+            @include medium {
+                flex: 1 1 calc(50% - 20px);
+            }
+
+            .social {
+                display: flex;
+                margin-top: 37px;
+                justify-content: center;
+                gap: 30px;
+
+                svg {
+                    cursor: pointer;
+                }
+
+                svg:hover {
+                    stroke: white;
+                }
+            }
+
+            .contacts {
+                display: flex;
+                flex-direction: column;
+                margin-top: 15px;
+                gap: 15px;
+
+                .contact {
+                    display: flex;
+                    gap: 12px;
+                    align-items: center;
+
+                    span {
+                        font-weight: 300;
+                        font-size: 12px;
+                    }
+                }
+
+                .community:hover {
+                    cursor: pointer;
+
+                    svg {
+                        stroke: white;
+                    }
+
+                    span {
+                        color: #09aa57;
+                    }
+                }
+            }
+
+            .places {
+                display: flex;
+                margin-top: 15px;
+                gap: 40px;
+
+                .place {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 12px;
+                    align-items: center;
+
+                    span {
+                        font-weight: 300;
+                        font-size: 12px;
+                    }
+
+                    div {
+                        display: flex;
+                        gap: 6px;
+                        align-items: center;
+                        cursor: pointer;
+                    }
+
+                    div:hover {
+                        svg {
+                            stroke: white;
+                        }
+
+                        span {
+                            color: #09aa57;
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+
+    hr {
+        margin-top: 70px;
+        margin-bottom: 50px;
+        background-color: rgb(83, 83, 83);
+        height: 1px;
+        border: 0;
+    }
+
+    .copyright {
+        font-weight: 300;
+        font-size: 12px;
+        margin-bottom: 30px;
+    }
+}

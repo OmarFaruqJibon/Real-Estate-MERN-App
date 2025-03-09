@@ -1,4 +1,4 @@
-@import "../../responsive.scss";
+@import "../../../responsive.scss";
 
 .why-us-container {
     text-align: center;
@@ -9,14 +9,14 @@
         text-align: center;
         margin-bottom: 50px;
 
+        span {
+            color: #09aa57;
+        }
+
         h1 {
             font-size: 36px;
             margin-bottom: 10px;
             color: #2a303b;
-
-            span {
-                color: #09aa57;
-            }
         }
 
         p {

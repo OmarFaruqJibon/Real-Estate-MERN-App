@@ -6,7 +6,11 @@ import { Link } from "react-router-dom";
 const FeaturedProperties = () => {
   return (
     <section className="featured-properties">
-      <h1>Featured Properties</h1>
+      <div className="top">
+        <span>PROPERTY</span>
+        <h1>Featured Properties</h1>
+      </div>
+
       <div className="property-list">
         <div className="property-card">
           <Link to={"/list"}>

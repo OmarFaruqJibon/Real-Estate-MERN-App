@@ -1,11 +1,17 @@
 import React, { useContext } from 'react';
 import './Home.scss';
-import Search from '../../components/search/Search';
 import { AuthContext } from '../../context/AuthContex';
-import Testimonial from '../../components/testimonial/Testimonial';
-import WhyUs from '../../components/whyUs/WhyUs';
-import FeaturedProperties from '../../components/featuredProperties/FeaturedProperties';
-import HowWorks from '../../components/howWorks/HowWorks';
+import Search from '../../components/homepage/search/Search';
+import FeaturedProperties from '../../components/homepage/featuredProperties/FeaturedProperties';
+import WhyUs from '../../components/homepage/whyUs/WhyUs';
+import Testimonial from '../../components/homepage/testimonial/Testimonial';
+import HowWorks from '../../components/homepage/howWorks/HowWorks';
+import Services from '../../components/homepage/services/Services';
+import Statistics from '../../components/homepage/statistics/Statistics';
+import Agent from '../../components/homepage/agent/Agent';
+import Footer from '../../components/footer/Footer';
+
+
 
 
 
@@ -36,6 +42,10 @@ const Home = () => {
                 </div>
             </section>
 
+            {/* Our services */}
+            <Services />
+
+
             {/* Featured Properties */}
             <FeaturedProperties />
 
@@ -43,24 +53,30 @@ const Home = () => {
             {/* Why us */}
             <WhyUs />
 
+            {/* statistics */}
+            <Statistics />
+
+
 
             {/* How it works */}
             <HowWorks />
+
+
+
             {/* Testimonials */}
             <Testimonial />
 
 
+            {/* agent */}
+            <Agent />
+
+
+
             {/* Footer */}
-            <footer className="footer">
-                <div className="footer-content">
-                    <p>&copy; 2025 South Real Estate. All rights reserved.</p>
-                    <p>Contact us at example@email.com</p>
-                </div>
-            </footer>
+            <Footer />
+
+
         </div>
-
-
-
 
 
 

@@ -1,0 +1,70 @@
+@import "../../../responsive.scss";
+
+.statistics-container {
+    background-image: url('https://i.postimg.cc/2yCVnrm9/piotr-chrobot-6o-Usye-YXg-Tg-unsplash.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: auto;
+    padding: 50px 20px;
+    margin-top: 60px;
+    margin-bottom: 50px;
+    z-index: 0;
+    position: relative;
+
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        content: '';
+        opacity: .7;
+        background: #09aa57;
+        z-index: -1;
+    }
+
+
+    .stat-body {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+
+        @include small {
+            row-gap: 30px;
+        }
+
+        @include medium {
+            column-gap: 30px;
+        }
+
+        .counter {
+            text-align: center;
+            flex: 1 1 calc(20% - 20px);
+
+            @include small {
+                padding: 0px;
+                row-gap: 30px;
+                flex: 1 1 calc(50% - 20px);
+            }
+
+            @include medium {
+                // flex: 1 1 calc(50% - 20px);
+            }
+
+            h3 {
+                color: white;
+                font-weight: 700;
+                font-size: 30px;
+            }
+
+            p {
+                color: rgb(196, 196, 196);
+            }
+        }
+    }
+
+
+
+
+}
