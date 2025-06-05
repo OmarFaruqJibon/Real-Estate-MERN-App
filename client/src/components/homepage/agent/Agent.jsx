@@ -28,7 +28,7 @@ const Agent = () => {
   return (
     <section className="agent-container">
       <div className="top">
-        <span>OUR AGENTS</span>
+        <span className="lined-title">OUR AGENTS</span>
         <h1>Meets Our Agents</h1>
       </div>
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import './slider.scss';
 import { useState } from "react";
+import { ArrowLeft, ArrowRight, Minimize2, X } from 'lucide-react';
 
 
 function Slider({ images }) {
@@ -8,12 +9,8 @@ function Slider({ images }) {
     if (!images || images.length === 0) {
         console.log("No images available");
     }
-    // return <div>{images[0].title}</div>; // Access safely
-
-
 
     const [imageIndex, setImageIndex] = useState(null);
-    // console.log(images);
 
     const changeSlide = (direction) => {
         if (direction === "left") {
@@ -36,16 +33,16 @@ function Slider({ images }) {
             {imageIndex !== null && (
                 <div className="fullSlider">
                     <div className="arrow" onClick={() => changeSlide("left")}>
-                        <img src="/arrow.png" alt="" />
+                        <ArrowLeft color='#09aa57' size={50} />
                     </div>
                     <div className="imgContainer">
                         <img src={images[imageIndex]} alt="" />
                     </div>
                     <div className="arrow" onClick={() => changeSlide("right")}>
-                        <img src="/arrow.png" className="right" alt="" />
+                        <ArrowRight color='#09aa57' size={50} />
                     </div>
                     <div className="close" onClick={() => setImageIndex(null)}>
-                        X
+                        <X color='red' size={40} />
                     </div>
                 </div>
             )}

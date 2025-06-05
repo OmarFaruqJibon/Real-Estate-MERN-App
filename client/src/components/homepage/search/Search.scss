@@ -11,12 +11,14 @@
     .type {
 
         button {
-            text-transform: capitalize;
+            text-transform: uppercase;
             padding: 17px 30px;
             font-size: 15px;
             font-weight: 600;
-            color: #6b6b6b;
-            margin-right: 5px;
+            color: #2c2c2c;
+            background-color: white;
+            // margin-right: 5px;
+            border-radius: 0px;
 
             @include small {
                 padding: 17px 20px;

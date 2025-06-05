@@ -17,8 +17,23 @@
         text-align: center;
         margin-bottom: 60px;
 
-        span {
+        .lined-title {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             color: #09aa57;
+            position: relative;
+        }
+
+        .lined-title::before,
+        .lined-title::after {
+            content: "";
+            display: inline-block;
+            flex: none;
+            width: 40px;
+            height: 1px;
+            background-color: #09aa57;
+            margin: 0 10px;
         }
 
         h1 {
@@ -44,6 +59,7 @@
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             flex: 1 1 calc(33.33% - 20px);
+            transition: transform 0.3s ease;
 
             @include small {
                 padding: 0px;
@@ -56,11 +72,6 @@
 
             h3 {
                 text-align: left;
-            }
-
-            h3:hover {
-                color: #0FB45F;
-                transition: 0.2s;
             }
 
             img {
@@ -95,6 +106,15 @@
                 }
             }
 
+        }
+
+        .property-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            border-bottom: 3px solid #09aa57;
+
+            h3 {
+                color: #09aa57;
+            }
         }
     }
 

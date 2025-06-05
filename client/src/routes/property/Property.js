@@ -6,17 +6,14 @@ import { Link, useLoaderData, useNavigate } from 'react-router-dom';
 import DOMPurify from 'dompurify';
 import apiCall from '../../lib/apiCall';
 import { AuthContext } from '../../context/AuthContex';
+import { Send, SendHorizontal } from 'lucide-react';
 
 const Property = ({ id }) => {
-
     const post = useLoaderData()
-    // console.log(post);
-
 
     const [saved, setSaved] = useState(post?.isSaved);
     const { currentUser } = useContext(AuthContext);
     const navigate = useNavigate();
-
 
     const handleSave = async () => {
         if (!currentUser) {
@@ -69,10 +66,11 @@ const Property = ({ id }) => {
     };
 
     return (
+
+
         <div className="singlePage">
             <div className="details">
                 <div className="wrapper">
-
                     <Slider images={post?.images} />
 
                     <div className="info">
@@ -81,10 +79,22 @@ const Property = ({ id }) => {
 
                                 <h2>{post?.title}</h2>
                                 <div className="address">
-                                    <img src="https://i.postimg.cc/52HLZYyw/location.png" alt="" />
+                                    <img src="https://i.postimg.cc/mg8RNbwp/location.png" alt="location" />
                                     <span>{post?.address}</span>
                                 </div>
-                                <div className="price">$ {post?.price}</div>
+                                <div className="price">
+                                    <span>$ {post?.price}</span>
+                                    <Link to={"/profile"}>
+                                        <button
+                                            onClick={() => handleSendMessage(post.userId)}
+                                        >
+                                            {/* <img src="https://i.postimg.cc/X74w1F2r/chat-1.png" alt="" /> */}
+                                            <SendHorizontal size={15} color='white' />
+                                            Chat with agent
+                                        </button>
+                                    </Link>
+                                </div>
+
                             </div>
 
                             {/* Post creator information */}
@@ -105,10 +115,13 @@ const Property = ({ id }) => {
                     </div>
                 </div>
             </div>
+
+
+
             <div className="features">
                 <div className="wrapper">
-                    <p className="title">General</p>
 
+                    <p className="title">General</p>
                     <div className="listVertical">
 
                         <div className="feature">
@@ -143,6 +156,7 @@ const Property = ({ id }) => {
                             </div>
                         </div>
                     </div>
+
                     <p className="title">Sizes</p>
                     <div className="sizes">
                         <div className="size">
@@ -155,9 +169,10 @@ const Property = ({ id }) => {
                         </div>
                         <div className="size">
                             <img src="https://i.postimg.cc/ZRYRz2H1/bathroom-1.png" alt="" />
-                            <span>{post?.bathroom} bathroom</span>
+                            <span>{post?.bathroom} baths</span>
                         </div>
                     </div>
+
                     <p className="title">Nearby Places</p>
                     <div className="listHorizontal">
                         <div className="feature">
@@ -182,21 +197,26 @@ const Property = ({ id }) => {
                             </div>
                         </div>
                     </div>
+
                     <p className="title">Location</p>
                     <div className="mapContainer">
                         <Map items={[post]} />
                     </div>
+
+
                     <div className="buttons">
 
                         <Link to={"/profile"}>
                             <button
                                 onClick={() => handleSendMessage(post.userId)}
                             >
-                                <img src="https://i.postimg.cc/X74w1F2r/chat-1.png" alt="" />
-                                Send a Message
+                                {/* <img src="https://i.postimg.cc/X74w1F2r/chat-1.png" alt="" /> */}
+                                <SendHorizontal size={15} color='white' />
+                                Chat with agent
                             </button>
                         </Link>
-                        <button
+
+                        {/* <button
                             onClick={handleSave}
                             style={{
                                 backgroundColor: saved ? "#fece51" : "white",
@@ -204,9 +224,10 @@ const Property = ({ id }) => {
                         >
                             <img src="https://i.postimg.cc/tRh3zDz0/bookmark-1.png" alt="" />
                             {saved ? "Place Saved" : "Save the Place"}
-                        </button>
+                        </button> */}
 
                     </div>
+
                 </div>
             </div>
         </div>

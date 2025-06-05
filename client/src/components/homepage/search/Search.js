@@ -22,15 +22,15 @@ const Search = () => {
 
     return (
         <div className='searchBar'>
-            <div className="type">
 
+            <div className="type">
                 {types?.map((type) => (
                     <button
                         key={type}
                         onClick={() => switchType(type)}
                         className={query.type === type ? "active" : ""}
                     >
-                        {type} Properties
+                        {type} Property
                     </button>
                 ))}
 

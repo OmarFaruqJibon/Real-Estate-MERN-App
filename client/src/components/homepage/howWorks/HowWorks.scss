@@ -10,9 +10,25 @@
         text-align: center;
         margin-bottom: 50px;
 
-        span {
+        .lined-title {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             color: #09aa57;
+            position: relative;
         }
+
+        .lined-title::before,
+        .lined-title::after {
+            content: "";
+            display: inline-block;
+            flex: none;
+            width: 40px;
+            height: 1px;
+            background-color: #09aa57;
+            margin: 0 10px;
+        }
+
 
         h1 {
             font-size: 36px;
@@ -46,6 +62,8 @@
         .card-one {
             padding: 30px 25px;
             flex: 1 1 calc(25% - 20px);
+            border-radius: 10px;
+            transition: transform 0.3s ease;
 
             .image {
                 position: relative;
@@ -77,6 +95,15 @@
                 p {
                     color: #636a76;
                 }
+            }
+        }
+
+        .card-one:hover {
+            transform: translateY(-5px) scale(1.02);
+            border-bottom: 3px solid #09aa57;
+
+            h3 {
+                color: #09aa57;
             }
         }
 

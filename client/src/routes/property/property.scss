@@ -2,18 +2,20 @@
 
 .singlePage {
     display: flex;
-    height: 100%;
+    padding: 13px;
     padding-bottom: 100px;
 
     @include medium {
         flex-direction: column;
-        overflow: scroll;
     }
 
+    @include small {
+        flex-direction: column;
+    }
+
+    // Details section
     .details {
         flex: 3;
-        height: 100%;
-        overflow-y: scroll;
 
         @include medium {
             flex: none;
@@ -22,7 +24,7 @@
         }
 
         .wrapper {
-            padding-right: 50px;
+            // padding-right: 50px;
 
             @include large {
                 padding-right: 20px;
@@ -32,8 +34,16 @@
                 padding-right: 0px;
             }
 
+            @include small {
+                padding-right: 0px;
+            }
+
             .info {
                 margin-top: 50px;
+
+                @include small {
+                    margin-top: 20px;
+                }
 
                 .top {
                     display: flex;
@@ -67,12 +77,32 @@
                         }
 
                         .price {
-                            padding: 1px 12px;
-                            background-color: yellowgreen;
-                            border-radius: 5px;
-                            width: max-content;
-                            font-size: 16px;
-                            font-weight: 500;
+                            display: flex;
+                            align-items: baseline;
+                            gap: 10px;
+
+                            span {
+                                // padding: 5px 20px;
+                                color: #09aa57;
+                                // background-color: #09aa57;
+                                border-radius: 5px;
+                                width: max-content;
+                                font-size: 16px;
+                                font-weight: 500;
+                                margin-top: 20px;
+                            }
+
+                            button {
+                                padding: 7px 15px;
+                                display: flex;
+                                align-items: center;
+                                gap: 5px;
+                                background-color: #09aa57;
+                                color: white;
+                                border: none;
+                                border-radius: 5px;
+                                cursor: pointer;
+                            }
                         }
                     }
 
@@ -86,7 +116,7 @@
                         font-weight: 500;
 
                         @include small {
-                            padding: 20px 50px;
+                            display: none;
                         }
 
                         img {
@@ -108,16 +138,20 @@
         }
     }
 
+
+    // Features section
     .features {
         flex: 2;
         background-color: #fcf5f3;
-        height: 100%;
-        overflow-y: scroll;
 
         @include medium {
             flex: none;
             height: max-content;
             margin-bottom: 50px;
+        }
+
+        @include small {
+            margin-top: 15px;
         }
 
         .wrapper {
@@ -130,6 +164,11 @@
                 padding: 20px;
             }
 
+            @include small {
+                padding: 0px;
+                gap: 3px;
+            }
+
             img {
                 width: 24px;
                 height: 24px;
@@ -138,6 +177,7 @@
             .title {
                 font-weight: bold;
                 font-size: 17px;
+                margin-top: 20px;
             }
 
             .feature {
@@ -176,6 +216,12 @@
                 padding: 15px 10px;
                 background-color: white;
                 border-radius: 10px;
+
+                @include small {
+                    flex-direction: column;
+                    gap: 20px;
+                    padding: 10px 10px;
+                }
             }
 
             .sizes {
@@ -206,12 +252,13 @@
                 justify-content: space-between;
 
                 button {
-                    padding: 20px;
+                    padding: 15px 20px;
                     display: flex;
                     align-items: center;
                     gap: 5px;
-                    background-color: white;
-                    border: 1px solid #fece51;
+                    background-color: #09aa57;
+                    color: white;
+                    border: none;
                     border-radius: 5px;
                     cursor: pointer;
 

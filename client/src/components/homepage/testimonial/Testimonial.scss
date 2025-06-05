@@ -10,9 +10,25 @@
         text-align: center;
         margin-bottom: 35px;
 
-        span {
+        .lined-title {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             color: #09aa57;
+            position: relative;
         }
+
+        .lined-title::before,
+        .lined-title::after {
+            content: "";
+            display: inline-block;
+            flex: none;
+            width: 40px;
+            height: 1px;
+            background-color: #09aa57;
+            margin: 0 10px;
+        }
+
 
         h1 {
             font-size: 36px;

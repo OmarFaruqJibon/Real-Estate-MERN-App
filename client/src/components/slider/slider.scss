@@ -16,7 +16,7 @@
         height: 100vh;
         top: 0;
         left: 0;
-        background-color: black;
+        background-color: rgba(0, 0, 0, 0.952);
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -27,22 +27,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            cursor: pointer;
 
-            img {
-                width: 50px;
-
-                // @include medium {
-                //     width: 30px;
-                // }
-
-                // @include small {
-                //     width: 20px;
-                // }
-
-                &.right {
-                    transform: rotate(180deg);
-                }
-            }
         }
 
         .imgContainer {
@@ -78,9 +64,9 @@
     .bigImage {
         flex: 3;
 
-        // @include small {
-        //     flex: 2;
-        // }
+        @include small {
+            flex: 2;
+        }
     }
 
     .smallImages {
@@ -90,16 +76,16 @@
         justify-content: space-between;
         gap: 20px;
 
-        // @include small {
-        //     flex: 1;
-        // }
+        @include small {
+            flex: 2;
+        }
 
         img {
             height: 100px;
 
-            // @include small {
-            //     height: 80px;
-            // }
+            @include small {
+                // height: 80px;
+            }
         }
     }
 }

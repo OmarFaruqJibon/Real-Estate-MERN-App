@@ -22,7 +22,7 @@ const testimonials = [
   {
     name: "Michael Johnson",
     review: "The AI-generated cover letters are really helpful to me.",
-    rating: 5,
+    rating: 3,
     image: "https://randomuser.me/api/portraits/men/50.jpg",
   },
   {
@@ -43,7 +43,7 @@ const Testimonial = () => {
   return (
     <section className="testimonial-container">
       <div className="top">
-        <span>TESTIMONIAL</span>
+        <span className="lined-title">TESTIMONIAL</span>
         <h1>What Our Users Say</h1>
       </div>
 
@@ -79,7 +79,7 @@ const Testimonial = () => {
               <p className="testimonial-text">"{testimonial.review}"</p>
               <div className="testimonial-stars">
                 {Array.from({ length: testimonial.rating }, (_, i) => (
-                  <Star key={i} fill="gold" stroke="none" size={20} />
+                  <Star key={i} fill="#09aa57" stroke="none" size={20} />
                 ))}
               </div>
               <span className="testimonial-name">- {testimonial.name}</span>

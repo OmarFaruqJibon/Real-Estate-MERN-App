@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
+import AOS from "aos";
 import "./Services.scss";
 
 const Services = () => {
+  useEffect(() => {
+    AOS.init({ duration: 1000 }); // Initialize AOS with a duration of 1000ms
+  }, []);
+
   return (
-    <section className="services-container">
+    <section data-aos="fade-up" className="services-container">
       <div className="top">
-        <span>SERVICES</span>
+        <span className="lined-title">SERVICES</span>
         <h1>Our Services</h1>
       </div>
 

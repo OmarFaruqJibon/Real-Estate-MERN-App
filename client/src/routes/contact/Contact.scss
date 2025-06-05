@@ -1,0 +1,127 @@
+@import "../../responsive.scss";
+
+/* ContactUs.scss */
+.contact-page {
+    font-family: Arial, sans-serif;
+    padding: 50px;
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    background-image: url('https://i.postimg.cc/2yCVnrm9/piotr-chrobot-6o-Usye-YXg-Tg-unsplash.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: auto;
+    z-index: 0;
+    position: relative;
+
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        content: '';
+        opacity: .3;
+        background: #09aa57;
+        z-index: -1;
+    }
+
+    @include small {
+        flex-direction: column;
+    }
+}
+
+.contact-header {
+    color: #f8f9fa;
+    padding: 40px;
+    border-radius: 10px;
+
+}
+
+.contact-form-section {
+    margin: 40px auto;
+    max-width: 500px;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+    @include small {
+        padding: 0px;
+    }
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.form-group label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input::placeholder,
+textarea::placeholder {
+    color: rgb(184, 184, 184);
+    font-style: italic;
+}
+
+.form-group input,
+.form-group textarea {
+    padding: 10px;
+    width: 450px;
+    border: none;
+    border-radius: 5px;
+    background: #00000029;
+    border-bottom: 1px solid #09aa57;
+
+    @include small {
+        width: 310px;
+    }
+}
+
+.contact-btn {
+    padding: 12px;
+    background: #09aa57;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.contact-btn:hover {
+    background: #039c4d;
+}
+
+.contact-details {
+    margin-top: 30px;
+    padding: 20px;
+    color: #ffffff;
+    border-radius: 10px;
+
+
+    h2,
+    p {
+        padding-bottom: 10px;
+    }
+
+    @include medium {
+        display: none;
+    }
+
+    @include small {
+        display: none;
+    }
+}

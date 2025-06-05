@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './filter.scss';
 import { useSearchParams } from 'react-router-dom';
+import { Search } from 'lucide-react';
 
 const Filter = () => {
     const [searchParams, setSearchParams] = useSearchParams();
@@ -25,7 +26,7 @@ const Filter = () => {
 
     return (
         <div className='filter'>
-            <h3>Search Result for <b>{searchParams.get("city")}</b></h3>
+            <h3>Search Result for <b style={{ color: '#09aa57' }}>{searchParams.get("city")}</b></h3>
 
             <div className="input-area">
                 <label className="location" htmlFor="city">
@@ -105,7 +106,8 @@ const Filter = () => {
 
 
                     <button className='submit-btn' type="submit" onClick={handleFilter}>
-                        <img src="https://i.postimg.cc/y6RdGGdD/search-interface-symbol.png" alt="" />
+                        <Search color='white' size={30} />
+                        {/* <img src="https://i.postimg.cc/y6RdGGdD/search-interface-symbol.png" alt="" /> */}
                     </button>
 
                 </form>

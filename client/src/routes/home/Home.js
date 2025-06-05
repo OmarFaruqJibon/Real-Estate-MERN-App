@@ -11,10 +11,6 @@ import Statistics from '../../components/homepage/statistics/Statistics';
 import Agent from '../../components/homepage/agent/Agent';
 import Footer from '../../components/footer/Footer';
 
-
-
-
-
 const Home = () => {
 
     const { currentUser } = useContext(AuthContext);

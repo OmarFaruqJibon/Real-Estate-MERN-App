@@ -5,7 +5,7 @@ const HowWorks = () => {
   return (
     <section className="how-works-container">
       <div className="top">
-        <span>WORK FLOW</span>
+        <span className="lined-title">WORK FLOW</span>
         <h1>How it Works</h1>
       </div>
 

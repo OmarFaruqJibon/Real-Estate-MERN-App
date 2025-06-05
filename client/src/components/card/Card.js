@@ -8,7 +8,7 @@ const Card = ({ item }) => {
         <div className="single-card">
             <div className="img-container">
                 <Link to={`/${item.id}`}>
-                    <img src={item?.images[0]} alt="" />
+                    <img src={item?.images[0]} alt="Property" />
                 </Link>
             </div>
 
@@ -21,7 +21,7 @@ const Card = ({ item }) => {
                 </Link>
 
                 <p className="item-location">
-                    <img src="https://i.postimg.cc/52HLZYyw/location.png" alt="location" />
+                    <img src="https://i.postimg.cc/mg8RNbwp/location.png" alt="location" />
                     <span>{item.address}</span>
                 </p>
 

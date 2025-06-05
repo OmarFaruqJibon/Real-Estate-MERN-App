@@ -7,17 +7,19 @@ import { Link } from 'react-router-dom';
 
 const MapMarker = ({ item }) => {
 
+    // console.log(item);
+
 
     return (
         <Marker position={[item.latitude, item.longitude]}>
             <Popup>
-                <Link to={`${item.id}`} className="popup-wrapper">
+                <Link to={`/${item.id}`} className="popup-wrapper">
                     <div className="img-container">
-                        <img src={item.img} alt="" />
+                        <img src={item?.images[0]} alt="Property" />
                     </div>
                     <div className="text-container">
                         <p>{item.title}</p>
-                        <span>$ {item.price}</span>
+                        <span style={{ color: "#09aa57" }}>$ {item.price}</span>
                     </div>
                 </Link>
             </Popup>

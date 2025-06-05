@@ -14,9 +14,12 @@ nav {
   a {
     transition: all 0.4s ease;
     padding: 9px 15px;
-    // border-radius: 5px;
 
     @include small {
+      display: none;
+    }
+
+    @include medium {
       display: none;
     }
 
@@ -38,18 +41,11 @@ nav {
       gap: 13px;
 
       h2 {
-        @include medium {
-          // display: none;
-        }
-
         @include small {
           display: initial;
         }
       }
     }
-
-
-
   }
 
   .menu-items {
@@ -101,13 +97,15 @@ nav {
           justify-content: center;
           font-size: 13px;
         }
-
       }
 
       @include small {
         display: none;
       }
 
+      @include medium {
+        display: none;
+      }
     }
 
     .register {
@@ -120,29 +118,34 @@ nav {
       display: none;
       cursor: pointer;
       z-index: 999;
+      background-color: transparent !important;
 
       @include small {
+        display: initial;
+      }
+
+      @include medium {
         display: initial;
       }
     }
 
     .side-menu {
-      position: absolute;
+      position: fixed;
       top: 0;
       right: -50%;
-      background-color: black;
+      background-color: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(10px);
       color: white;
       height: 100vh;
       width: 40%;
-      transition: all 1s ease;
+      transition: right 0.5s ease;
       display: flex;
       flex-direction: column;
       align-items: center;
       font-size: 17px;
       font-weight: 300;
-      margin-top: 100px;
-      padding-top: 20px;
-
+      padding-top: 100px;
+      z-index: 998;
 
       &.active {
         right: 0;
@@ -154,18 +157,32 @@ nav {
         }
 
         .navbar-profile {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 10px;
+          margin-top: 20px;
+        }
+      }
+
+      @include medium {
+        a {
           display: initial;
         }
 
         .navbar-profile {
+          display: flex;
           flex-direction: column;
+          align-items: center;
+          gap: 10px;
+          margin-top: 20px;
         }
       }
 
       .side-menu-devider {
         width: 80%;
-        margin-top: 30px;
-        margin-bottom: 30px;
+        margin: 30px 0;
+        border-color: rgba(255, 255, 255, 0.2);
       }
     }
   }

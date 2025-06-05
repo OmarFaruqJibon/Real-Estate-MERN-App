@@ -5,9 +5,9 @@ import { Link } from "react-router-dom";
 
 const FeaturedProperties = () => {
   return (
-    <section className="featured-properties">
+    <section data-aos="fade-right" className="featured-properties">
       <div className="top">
-        <span>PROPERTY</span>
+        <span className="lined-title">PROPERTY</span>
         <h1>Featured Properties</h1>
       </div>
 
