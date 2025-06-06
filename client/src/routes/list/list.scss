@@ -1,9 +1,24 @@
+@import "../../responsive.scss";
+
 .listPage {
     display: flex;
     padding: 10px 20px;
+    padding-bottom: 100px;
+
+    @include small {
+        flex-direction: column;
+    }
+
+    @include medium {
+        flex-direction: column;
+
+    }
+
 
     .listContainer {
         flex: 3;
+
+
 
         .wrapper {
             padding: 10px 25px 5px 5px;
@@ -12,6 +27,11 @@
             gap: 20px;
             overflow-y: scroll;
             padding-bottom: 120px;
+
+            @include small {
+                padding: 0px;
+                gap: 50px;
+            }
 
             .card-wrapper {
                 display: flex;
@@ -29,7 +49,14 @@
 
     .mapContainer {
         flex: 2;
-        // height: 100%;
-        background-color: #f3b9b9;
+        height: 100%;
+
+        @include small {
+            display: none;
+        }
+
+        @include medium {
+            display: none;
+        }
     }
 }

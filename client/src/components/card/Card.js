@@ -35,12 +35,12 @@ const Card = ({ item }) => {
 
                         <p>
                             <img src="https://i.postimg.cc/T14h90rB/bed-1.png" alt="bedroom" />
-                            <span>{item.bedroom} Bedroom</span>
+                            <span>{item.bedroom} Bed</span>
                         </p>
 
                         <p>
                             <img src="https://i.postimg.cc/ZRYRz2H1/bathroom-1.png" alt="bathroom" />
-                            <span>{item.bathroom} Bathroom</span>
+                            <span>{item.bathroom} Bath</span>
                         </p>
                     </div>
 

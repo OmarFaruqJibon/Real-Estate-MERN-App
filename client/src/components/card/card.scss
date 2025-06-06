@@ -1,12 +1,19 @@
+@import "../../responsive.scss";
+
 .single-card {
     display: flex;
     gap: 20px;
     height: 175px;
 
+    @include small {
+        flex-direction: column;
+        height: max-content;
+        gap: 6px;
+    }
+
 
     .img-container {
         flex: 2;
-
 
         img {
             width: 100%;
@@ -20,6 +27,10 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+
+        @include small {
+            gap: 8px;
+        }
 
         img {
             width: 17px;
@@ -39,6 +50,8 @@
 
         .item-price {
             font-weight: 500;
+            color: #09aa57;
+            font-weight: 600;
         }
 
         .bottom-info {

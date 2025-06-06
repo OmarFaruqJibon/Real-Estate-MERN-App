@@ -10,7 +10,6 @@ const List = () => {
     const data = useLoaderData();
     // console.log(data);
 
-
     return (
         <div className='listPage'>
 
