@@ -33,7 +33,7 @@ const Navbar = () => {
             </span>
             <Link className='profile-btn' to="/profile" onClick={handleLinkClick}>
                 {number > 0 && <div className="notification">{number}</div>}
-                <span>Profile</span>
+                <span>PROFILE</span>
             </Link>
         </div>
     );
@@ -48,21 +48,35 @@ const Navbar = () => {
                 </div>
             </div>
 
-            <div className="menu-items">
-                <Link to="/" onClick={handleLinkClick}>Home</Link>
-                <Link to="/list" onClick={handleLinkClick}>Properties</Link>
-                <Link to="/about" onClick={handleLinkClick}>About</Link>
-                <Link to="/contact" onClick={handleLinkClick}>Contact</Link>
+
+
+            <div className="middle-side menu-items">
+                <Link to="/list" onClick={handleLinkClick}>PROPERTY</Link>
+                <Link to="/about" onClick={handleLinkClick}>AGENT</Link>
+                <Link to="/list" onClick={handleLinkClick}>DEVELOPER</Link>
+                <Link to="/about" onClick={handleLinkClick}>ABOUT</Link>
+                <Link to="/contact" onClick={handleLinkClick}>CONTACT</Link>
             </div>
 
+
+
             <div className="right-side">
+
                 {currentUser ? renderUserProfile() : (
+                    <Link className='signin' to="/login" onClick={handleLinkClick}>SIGN IN</Link>
+                )}
+
+                <Link className='register' to="/contact" onClick={handleLinkClick}>LIST YOUR PROPERTY</Link>
+
+
+                {/* {currentUser ? renderUserProfile() : (
                     <div>
                         <Link to="/login" onClick={handleLinkClick}>Sign In</Link>
                         <Link className="register" to="/register" onClick={handleLinkClick}>Sign Up</Link>
                     </div>
-                )}
+                )} */}
 
+                {/* FOR SMALL SCREEN */}
                 <span
                     className="menu-icon"
                     onClick={() => setMenuOpen(!menuOpen)}
@@ -72,33 +86,21 @@ const Navbar = () => {
                 </span>
 
                 <div className={menuOpen ? "side-menu active" : "side-menu"}>
-                    <Link to="/" onClick={handleLinkClick}>Home</Link>
-                    <Link to="/list" onClick={handleLinkClick}>Properties</Link>
-                    <Link to="/about" onClick={handleLinkClick}>About</Link>
-                    <Link to="/contact" onClick={handleLinkClick}>Contact</Link>
+                    <Link to="/list" onClick={handleLinkClick}>PROPERTY</Link>
+                    <Link to="/about" onClick={handleLinkClick}>AGENT</Link>
+                    <Link to="/list" onClick={handleLinkClick}>DEVELOPER</Link>
+                    <Link to="/about" onClick={handleLinkClick}>ABOUT</Link>
+                    <Link to="/contact" onClick={handleLinkClick}>CONTACT</Link>
+
+
 
                     <hr className="side-menu-devider" />
 
-                    {currentUser ? (
-                        <div className="navbar-profile">
-                            <span>
-                                <img
-                                    src={currentUser.avatar || "https://i.postimg.cc/J7dgwngh/profile-picture.png"}
-                                    alt="profile"
-                                />
-                                {currentUser.username}
-                            </span>
-                            <Link className='profile-btn' to="/profile" onClick={handleLinkClick}>
-                                {number > 0 && <div className="notification">{number}</div>}
-                                <span>Profile</span>
-                            </Link>
-                        </div>
-                    ) : (
-                        <div className="navbar-profile">
-                            <Link to="/login" onClick={handleLinkClick}>Sign In</Link>
-                            <Link className="register" to="/register" onClick={handleLinkClick}>Sign Up</Link>
-                        </div>
+                    {currentUser ? renderUserProfile() : (
+                        <Link className='signin' to="/login" onClick={handleLinkClick}>SIGN IN</Link>
                     )}
+                    <Link className='register' to="/contact" onClick={handleLinkClick}>LIST YOUR PROPERTY</Link>
+
                 </div>
             </div>
         </nav>

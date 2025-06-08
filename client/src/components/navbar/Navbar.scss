@@ -29,7 +29,7 @@ nav {
   }
 
   .left-side {
-    flex: 3;
+    flex: 2;
     display: flex;
     align-items: center;
     gap: 40px;
@@ -48,22 +48,26 @@ nav {
     }
   }
 
+  .middle-side {
+    flex: 3;
+  }
+
   .menu-items {
-    display: flex;
-    gap: 15px;
+    font-size: 14px;
     font-weight: 500;
   }
 
   .right-side {
-    flex: 2;
+    flex: 3;
     display: flex;
     justify-content: flex-end;
-    gap: 15px;
+    font-size: 14px;
+    font-weight: 700;
 
     .navbar-profile {
       display: flex;
       align-items: center;
-      gap: 20px;
+      // gap: 20px;
 
       span {
         display: flex;
@@ -78,15 +82,19 @@ nav {
       }
 
       .profile-btn {
-        background-color: #09aa57;
-        padding: 4px 14px;
+        color: #09aa57;
         cursor: pointer;
         position: relative;
+        margin-right: 12px;
+
+        @include small {
+          margin-right: 0px;
+        }
 
         .notification {
           position: absolute;
-          top: -8px;
-          right: -8px;
+          top: -10px;
+          right: -4px;
           background-color: crimson;
           color: white;
           border-radius: 50%;
@@ -108,10 +116,38 @@ nav {
       }
     }
 
+    .signin {
+      color: #09aa57;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .signin:hover {
+      color: #ffffff;
+    }
+
     .register {
       background-color: #09aa57;
-      color: rgb(9, 5, 31);
-      padding: 7px 20px;
+      color: #fff;
+      transition: all 0.3s ease-in-out;
+
+      @include small {
+        width: 80%;
+        margin: 0 auto;
+        border-radius: 7px;
+        text-align: center;
+      }
+
+      @include medium {
+        width: 80%;
+        margin: 0 auto;
+        border-radius: 10px;
+        text-align: center;
+      }
+    }
+
+    .register:hover {
+      background-color: #ffffff;
+      color: #09aa57;
     }
 
     .menu-icon {
@@ -152,6 +188,10 @@ nav {
       }
 
       @include small {
+        font-size: 15px;
+        align-items: stretch;
+        font-weight: 400;
+
         a {
           display: initial;
         }
@@ -163,9 +203,15 @@ nav {
           gap: 10px;
           margin-top: 20px;
         }
+
+
       }
 
       @include medium {
+        font-size: 15px;
+        align-items: stretch;
+        font-weight: 400;
+
         a {
           display: initial;
         }
