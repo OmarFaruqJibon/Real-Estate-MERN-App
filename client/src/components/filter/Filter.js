@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import './filter.scss';
 import { useSearchParams } from 'react-router-dom';
-import { Search } from 'lucide-react';
 
 const Filter = () => {
     const [searchParams, setSearchParams] = useSearchParams();
@@ -20,13 +19,28 @@ const Filter = () => {
             [e.target.name]: e.target.value,
         });
     };
+
     const handleFilter = () => {
         setSearchParams(query);
     };
 
+    const handleReset = () => {
+        const clearedQuery = {
+            type: "",
+            city: "",
+            property: "",
+            minPrice: "",
+            maxPrice: "",
+            bedroom: "",
+        };
+
+        setQuery(clearedQuery);
+        setSearchParams({});
+    };
+
     return (
         <div className='filter'>
-            <h3>Search Result for <b style={{ color: '#09aa57' }}>{searchParams.get("city")}</b></h3>
+            <h4>Search for property</h4>
 
             <div className="input-area">
                 <label className="location" htmlFor="city">
@@ -37,31 +51,38 @@ const Filter = () => {
                         type="text"
                         placeholder='City Location'
                         onChange={handleChange}
-                        defaultValue={query.city}
+                        value={query.city}
                     />
                 </label>
 
-                <form action="#">
+                {/* Use form with onSubmit to prevent reload */}
+                <form
+                    onSubmit={(e) => {
+                        e.preventDefault(); // Prevent default form submission
+                        handleFilter();
+                    }}
+                >
                     <label htmlFor="type">Type
                         <select
                             name="type"
                             id="type"
                             onChange={handleChange}
-                            defaultValue={query.type}
+                            value={query.type}
                         >
                             <option value="">Select</option>
                             <option value="buy">Buy</option>
                             <option value="rent">Rent</option>
                             <option value="commercial">Commercial</option>
                         </select>
+
                     </label>
 
-                    <label htmlFor="property">Property
+                    <label htmlFor="property">Property Category
                         <select
                             name="property"
                             id="property"
                             onChange={handleChange}
-                            defaultValue={query.property}
+                            value={query.property}
                         >
                             <option value="">Select</option>
                             <option value="apartment">Apartment</option>
@@ -71,26 +92,29 @@ const Filter = () => {
                         </select>
                     </label>
 
-                    <label htmlFor="minPrice">Min Price
-                        <input
-                            type="number"
-                            placeholder='any'
-                            name='minPrice'
-                            id='minPrice'
-                            onChange={handleChange}
-                            defaultValue={query.minPrice}
-                        />
-                    </label>
+                    <label htmlFor="minPrice">Price
 
-                    <label htmlFor="maxPrice">Max Price
-                        <input
-                            type="number"
-                            placeholder='any'
-                            name='maxPrice'
-                            id='maxPrice'
-                            onChange={handleChange}
-                            defaultValue={query.maxPrice}
-                        />
+                        <div className="price-group">
+
+                            <input
+                                type="number"
+                                placeholder='Min'
+                                name='minPrice'
+                                id='minPrice'
+                                onChange={handleChange}
+                                value={query.minPrice}
+                            />
+
+                            <input
+                                type="number"
+                                placeholder='Max '
+                                name='maxPrice'
+                                id='maxPrice'
+                                onChange={handleChange}
+                                value={query.maxPrice}
+                            />
+
+                        </div>
                     </label>
 
                     <label htmlFor="bedroom">Bedroom
@@ -100,19 +124,20 @@ const Filter = () => {
                             name='bedroom'
                             id='bedroom'
                             onChange={handleChange}
-                            defaultValue={query.bedroom}
+                            value={query.bedroom}
                         />
                     </label>
 
+                    <div className="btn-group">
+                        <button className='submit-btn' type="submit">
+                            Search
+                        </button>
 
-                    <button className='submit-btn' type="submit" onClick={handleFilter}>
-                        <Search color='white' size={30} />
-                        {/* <img src="https://i.postimg.cc/y6RdGGdD/search-interface-symbol.png" alt="" /> */}
-                    </button>
-
+                        <button className='reset-btn' type="button" onClick={handleReset}>
+                            Reset
+                        </button>
+                    </div>
                 </form>
-
-
             </div>
         </div>
     );

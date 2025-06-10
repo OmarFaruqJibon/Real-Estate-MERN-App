@@ -66,7 +66,7 @@ const Navbar = () => {
                     <Link className='signin' to="/login" onClick={handleLinkClick}>SIGN IN</Link>
                 )}
 
-                <Link className='register' to="/contact" onClick={handleLinkClick}>LIST YOUR PROPERTY</Link>
+                <Link className='register' to="/addPost" onClick={handleLinkClick}>LIST YOUR PROPERTY</Link>
 
 
                 {/* {currentUser ? renderUserProfile() : (
@@ -99,7 +99,7 @@ const Navbar = () => {
                     {currentUser ? renderUserProfile() : (
                         <Link className='signin' to="/login" onClick={handleLinkClick}>SIGN IN</Link>
                     )}
-                    <Link className='register' to="/contact" onClick={handleLinkClick}>LIST YOUR PROPERTY</Link>
+                    <Link className='register' to="/addPost" onClick={handleLinkClick}>LIST YOUR PROPERTY</Link>
 
                 </div>
             </div>

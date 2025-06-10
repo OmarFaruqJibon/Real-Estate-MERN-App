@@ -1,5 +1,16 @@
 @import "../../responsive.scss";
 
+.filter {
+    background: #e7edee;
+    margin-right: 30px;
+    padding: 15px 30px;
+
+    h4 {
+        text-align: center;
+        text-transform: uppercase;
+    }
+}
+
 .input-area {
 
     .location {
@@ -12,16 +23,24 @@
 
         input {
             padding: 7px 5px;
-            border: 1px solid #d9d9d9d4;
+            border: 1px solid #09aa57;
+            outline: none;
+
+            // Optional: Add custom focus style if you want
+            &:focus {
+                border: 1px solid #09aa574f; // or a different green
+                box-shadow: 0 0 0 2px rgba(9, 170, 87, 0.2);
+            }
         }
     }
 
     form {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         align-items: center;
         justify-content: space-between;
         margin-bottom: 20px;
+        // width: 100%;
 
         @include small {
             flex-direction: column;
@@ -30,15 +49,15 @@
         label {
             display: flex;
             flex-direction: column;
-            font-weight: 300;
             font-size: 12px;
             padding: 6px 0px;
-            width: 110px;
+            width: -webkit-fill-available;
         }
 
         select {
             padding: 7px 5px;
-            border: 1px solid #d9d9d9d4;
+            border: 1px solid #09aa57;
+            outline: none;
         }
 
         input {
@@ -46,21 +65,62 @@
             align-items: center;
             justify-content: center;
             padding: 7px 5px;
-            border: 1px solid #d9d9d9d4;
+            border: 1px solid #09aa57;
+            outline: none;
         }
 
-        .submit-btn {
-            padding: 6px 15px;
-            border: none;
-            cursor: pointer;
-            background-color: #09aa57;
-            border-radius: 1px;
+        .price-group {
+            display: flex;
+            gap: 5px;
+            flex-direction: row;
 
-            img {
-                width: 33px;
-                padding: 4px;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 20px;
+            margin-top: 25px;
+
+            .submit-btn {
+                padding: 10px 20px;
+                font-weight: 600;
+                font-size: 14px;
+                border: 1px solid #09aa57;
+                cursor: pointer;
+                background-color: #09aa57;
+                border-radius: 1px;
+                outline: none;
+                color: white;
+                transition: all 0.2s ease-in-out;
+            }
+
+            .submit-btn:hover {
+                background-color: #ffffff;
+                color: #09aa57;
+
+            }
+
+            .reset-btn {
+                padding: 10px 20px;
+                font-weight: 600;
+                font-size: 14px;
+                border: 1px solid #EB8A21;
+                cursor: pointer;
+                background-color: #EB8A21;
+                border-radius: 1px;
+                outline: none;
+                color: white;
+                transition: all 0.2s ease-in-out;
+            }
+
+            .reset-btn:hover {
+                background-color: #ffffff;
+                color: #EB8A21;
+
             }
         }
+
+
 
     }
 

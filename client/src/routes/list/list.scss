@@ -1,62 +1,103 @@
 @import "../../responsive.scss";
 
 .listPage {
-    display: flex;
-    padding: 10px 20px;
-    padding-bottom: 100px;
 
-    @include small {
-        flex-direction: column;
-    }
-
-    @include medium {
-        flex-direction: column;
-
-    }
+    padding: 25px 30px;
 
 
-    .listContainer {
-        flex: 3;
+    .upperPart {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+        margin-top: 20px;
+        background: #e7edee;
+        padding: 16px 15px;
 
-
-
-        .wrapper {
-            padding: 10px 25px 5px 5px;
+        .cityLocation {
             display: flex;
-            flex-direction: column;
-            gap: 20px;
-            overflow-y: scroll;
-            padding-bottom: 120px;
-
-            @include small {
-                padding: 0px;
-                gap: 50px;
-            }
-
-            .card-wrapper {
-                display: flex;
-                flex-direction: column;
-                gap: 35px;
-            }
+            gap: 5px;
         }
 
-        h3 {
-            font-weight: 300;
+        .sort select {
+            width: 175px;
+            border: 1px solid #09aa57;
+            height: 34px;
+            padding: 5px;
+            background-color: #fff !important;
+            cursor: pointer;
+            border-radius: 3px;
+            box-shadow: none;
+            outline: none;
+
+            // Optional: Add custom focus style if you want
+            &:focus {
+                border: 1px solid #067d41; // or a different green
+                box-shadow: 0 0 0 2px rgba(9, 170, 87, 0.2);
+            }
         }
-
-
     }
 
-    .mapContainer {
-        flex: 2;
-        height: 100%;
+
+
+    .listPageWrapper {
+        display: flex;
+        // padding: 10px 20px;
+        padding-bottom: 100px;
 
         @include small {
-            display: none;
+            flex-direction: column;
         }
 
         @include medium {
-            display: none;
+            flex-direction: column;
+
+        }
+
+
+        .listContainer {
+            flex: 4;
+
+
+
+            .wrapper {
+                // padding: 10px 25px 5px 5px;
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                // overflow-y: scroll;
+                padding-bottom: 120px;
+
+                @include small {
+                    padding: 0px;
+                    gap: 50px;
+                }
+
+                .card-wrapper {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 35px;
+                }
+            }
+
+            // h3 {
+            //     font-weight: 300;
+            // }
+
+
+        }
+
+        .mapContainer {
+            flex: 2;
+            height: 100%;
+
+            @include small {
+                display: none;
+            }
+
+            @include medium {
+                display: none;
+            }
         }
     }
 }
