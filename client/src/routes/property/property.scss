@@ -2,8 +2,9 @@
 
 .singlePage {
     display: flex;
-    padding: 13px;
+    padding: 5px 30px;
     padding-bottom: 100px;
+    margin-top: 25px;
 
     @include medium {
         flex-direction: column;
@@ -24,8 +25,6 @@
         }
 
         .wrapper {
-            // padding-right: 50px;
-
             @include large {
                 padding-right: 20px;
             }
@@ -39,7 +38,7 @@
             }
 
             .info {
-                margin-top: 50px;
+                margin-top: 30px;
 
                 @include small {
                     margin-top: 20px;
@@ -48,6 +47,34 @@
                 .top {
                     display: flex;
                     justify-content: space-between;
+                    gap: 30px;
+
+                    .price {
+                        display: flex;
+                        align-items: baseline;
+                        gap: 10px;
+
+                        span {
+                            color: #09aa57;
+                            width: max-content;
+                            font-size: 22px;
+                            font-weight: 700;
+                            margin-top: 44px;
+                            margin-right: 10px;
+                        }
+
+                        button {
+                            padding: 7px 15px;
+                            display: flex;
+                            align-items: center;
+                            gap: 5px;
+                            background-color: #09aa57;
+                            color: white;
+                            border: none;
+                            border-radius: 5px;
+                            cursor: pointer;
+                        }
+                    }
 
                     @include small {
                         flex-direction: column;
@@ -67,8 +94,7 @@
                             display: flex;
                             gap: 5px;
                             align-items: center;
-                            color: #888;
-                            font-size: 14px;
+                            color: #4d4c4c;
 
                             img {
                                 width: 16px;
@@ -76,34 +102,7 @@
                             }
                         }
 
-                        .price {
-                            display: flex;
-                            align-items: baseline;
-                            gap: 10px;
 
-                            span {
-                                // padding: 5px 20px;
-                                color: #09aa57;
-                                // background-color: #09aa57;
-                                border-radius: 5px;
-                                width: max-content;
-                                font-size: 16px;
-                                font-weight: 500;
-                                margin-top: 20px;
-                            }
-
-                            button {
-                                padding: 7px 15px;
-                                display: flex;
-                                align-items: center;
-                                gap: 5px;
-                                background-color: #09aa57;
-                                color: white;
-                                border: none;
-                                border-radius: 5px;
-                                cursor: pointer;
-                            }
-                        }
                     }
 
                     .user {
@@ -128,9 +127,113 @@
                     }
                 }
 
-                .bottom {
-                    margin-top: 50px;
-                    color: #555;
+                .property-sizes {
+                    flex: 2;
+                    background-color: #fcf5f3;
+
+                    @include medium {
+                        flex: none;
+                        height: max-content;
+                        margin-bottom: 50px;
+                    }
+
+                    @include small {
+                        margin-top: 15px;
+                    }
+
+                    .wrapper {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 20px;
+
+                        @include medium {
+                            padding: 20px;
+                        }
+
+                        @include small {
+                            padding: 0px;
+                            gap: 3px;
+                        }
+
+                        img {
+                            width: 24px;
+                            height: 24px;
+                        }
+
+                        .title {
+                            font-weight: bold;
+                            font-size: 17px;
+                            margin-top: 20px;
+                        }
+
+                        .feature {
+                            display: flex;
+                            align-items: center;
+                            gap: 10px;
+
+                            img {
+                                background-color: rgba(254, 205, 81, 0.209);
+                            }
+
+                            .featureText {
+                                span {
+                                    font-weight: 600;
+                                }
+
+                                p {
+                                    font-size: 14px;
+                                    font-weight: 300;
+                                }
+                            }
+                        }
+
+                        .listVertical {
+                            display: flex;
+                            flex-direction: column;
+                            gap: 20px;
+                            padding: 10px 10px;
+                            background-color: white;
+                            border-radius: 10px;
+                        }
+
+                        .listHorizontal {
+                            display: flex;
+                            justify-content: space-between;
+                            padding: 15px 10px;
+                            background-color: white;
+                            border-radius: 10px;
+
+                            @include small {
+                                flex-direction: column;
+                                gap: 20px;
+                                padding: 10px 10px;
+                            }
+                        }
+
+                        .sizes {
+                            display: flex;
+                            justify-content: space-between;
+
+                            @include large {
+                                font-size: 12px;
+                            }
+
+                            .size {
+                                display: flex;
+                                align-items: center;
+                                gap: 10px;
+                                background-color: white;
+                                padding: 10px;
+                                border-radius: 5px;
+                            }
+                        }
+
+                    }
+                }
+
+                .property-description {
+                    margin-top: 35px;
+                    color: #1c1c1c;
                     line-height: 20px;
                     text-align: justify;
                 }
@@ -139,8 +242,8 @@
     }
 
 
-    // Features section
-    .features {
+    // others-info section
+    .others-info {
         flex: 2;
         background-color: #fcf5f3;
 
@@ -167,79 +270,6 @@
             @include small {
                 padding: 0px;
                 gap: 3px;
-            }
-
-            img {
-                width: 24px;
-                height: 24px;
-            }
-
-            .title {
-                font-weight: bold;
-                font-size: 17px;
-                margin-top: 20px;
-            }
-
-            .feature {
-                display: flex;
-                align-items: center;
-                gap: 10px;
-
-                img {
-                    background-color: rgba(254, 205, 81, 0.209);
-                }
-
-                .featureText {
-                    span {
-                        font-weight: 600;
-                    }
-
-                    p {
-                        font-size: 14px;
-                        font-weight: 300;
-                    }
-                }
-            }
-
-            .listVertical {
-                display: flex;
-                flex-direction: column;
-                gap: 20px;
-                padding: 10px 10px;
-                background-color: white;
-                border-radius: 10px;
-            }
-
-            .listHorizontal {
-                display: flex;
-                justify-content: space-between;
-                padding: 15px 10px;
-                background-color: white;
-                border-radius: 10px;
-
-                @include small {
-                    flex-direction: column;
-                    gap: 20px;
-                    padding: 10px 10px;
-                }
-            }
-
-            .sizes {
-                display: flex;
-                justify-content: space-between;
-
-                @include large {
-                    font-size: 12px;
-                }
-
-                .size {
-                    display: flex;
-                    align-items: center;
-                    gap: 10px;
-                    background-color: white;
-                    padding: 10px;
-                    border-radius: 5px;
-                }
             }
 
             .mapContainer {
