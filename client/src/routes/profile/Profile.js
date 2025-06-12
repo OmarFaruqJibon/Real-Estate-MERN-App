@@ -11,7 +11,7 @@ const Profile = () => {
 
     const location = useLocation();
     const { userId } = location.state || {}; // Extract userId from state
-    console.log(userId);
+    // console.log(userId);
     const { currentUser, updateUser } = useContext(AuthContext);
     const navigate = useNavigate();
 
@@ -52,7 +52,7 @@ const Profile = () => {
                         <img src={currentUser.avatar || "https://i.postimg.cc/J7dgwngh/profile-picture.png"} alt="profile-image" />
 
                         <span>
-                            <b>Username:</b>  {currentUser.username}
+                            <b>Username:</b>  {currentUser.username.toUpperCase()}
                         </span>
                         <span>
                             <b>E-mail:</b>  {currentUser.email}

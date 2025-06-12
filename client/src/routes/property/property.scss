@@ -237,6 +237,57 @@
                     line-height: 20px;
                     text-align: justify;
                 }
+
+
+                .property-summary {
+                    margin-top: 30px;
+
+                    .summary-title {
+                        margin-bottom: 10px;
+                    }
+
+
+
+                    .summary-wrapper {
+                        display: flex;
+                        gap: 150px;
+
+                        .left {
+
+                            p {
+                                display: flex;
+                                gap: 5px;
+                                margin-bottom: 10px;
+                            }
+                        }
+
+                        .right {
+                            margin-bottom: 10px;
+
+                            p {
+                                display: flex;
+                                gap: 5px;
+                                margin-bottom: 10px;
+                            }
+                        }
+                    }
+                }
+
+                .property-features {
+                    min-height: 100px;
+                    margin-top: 30px;
+                    margin-bottom: 10px;
+                }
+
+                .floor-plan {
+                    min-height: 100px;
+                    margin-top: 30px;
+                    margin-bottom: 10px;
+                }
+
+
+
+
             }
         }
     }
@@ -263,13 +314,72 @@
             flex-direction: column;
             gap: 20px;
 
-            @include medium {
-                padding: 20px;
-            }
 
-            @include small {
-                padding: 0px;
-                gap: 3px;
+            .seller-details {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 25px;
+                margin-bottom: 40px;
+
+                .contact-info {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 16px;
+
+                    img {
+                        width: 150px;
+                    }
+
+                    .phone {
+                        display: flex;
+                        gap: 10px;
+                        letter-spacing: 2px;
+                    }
+                }
+
+                .action-btn {
+                    display: flex;
+                    justify-content: space-between;
+
+                    .call {
+                        button {
+                            padding: 12px 18px;
+                            display: flex;
+                            align-items: center;
+                            background-color: #09aa57;
+                            color: white;
+                            border: none;
+                            border-radius: 5px;
+                            cursor: pointer;
+                            font-weight: 700;
+                            font-size: 15px;
+                        }
+                    }
+
+                    .chat {
+                        button {
+                            padding: 12px 18px;
+                            display: flex;
+                            align-items: center;
+                            background-color: #faaa39;
+                            color: white;
+                            border: none;
+                            border-radius: 5px;
+                            cursor: pointer;
+                            font-weight: 700;
+                            font-size: 15px;
+
+                            // img {
+                            //     width: 16px;
+                            //     height: 16px;
+                            // }
+                        }
+                    }
+
+                }
+
             }
 
             .mapContainer {
@@ -299,6 +409,16 @@
                 }
 
 
+            }
+
+
+            @include medium {
+                padding: 20px;
+            }
+
+            @include small {
+                padding: 0px;
+                gap: 3px;
             }
         }
     }

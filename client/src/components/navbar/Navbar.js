@@ -29,7 +29,7 @@ const Navbar = () => {
                     src={currentUser.avatar || "https://i.postimg.cc/J7dgwngh/profile-picture.png"}
                     alt="profile"
                 />
-                {currentUser.username}
+                {currentUser.username.toUpperCase()}
             </span>
             <Link className='profile-btn' to="/profile" onClick={handleLinkClick}>
                 {number > 0 && <div className="notification">{number}</div>}

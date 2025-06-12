@@ -6,9 +6,10 @@ import { Link, useLoaderData, useNavigate } from 'react-router-dom';
 import DOMPurify from 'dompurify';
 import apiCall from '../../lib/apiCall';
 import { AuthContext } from '../../context/AuthContex';
-import { Send, SendHorizontal } from 'lucide-react';
+import { ChevronRight, Mail, Phone, Send, SendHorizontal } from 'lucide-react';
 
 const Property = ({ id }) => {
+    const phoneNumber = "+880 1887715152";
     const post = useLoaderData()
 
     const [saved, setSaved] = useState(post?.isSaved);
@@ -77,7 +78,6 @@ const Property = ({ id }) => {
 
                     <div className="info">
 
-
                         {/* TITLE, LOCATION AND PRICE */}
                         <div className="top">
 
@@ -96,8 +96,6 @@ const Property = ({ id }) => {
                                 <span>BDT {post?.price}</span>
                             </div>
                         </div>
-
-
 
                         <div className="property-sizes">
                             <div className="wrapper">
@@ -146,8 +144,6 @@ const Property = ({ id }) => {
                             </div>
                         </div>
 
-
-
                         {/* property description */}
                         {/* <div className="property-description"
                             dangerouslySetInnerHTML={
@@ -155,6 +151,104 @@ const Property = ({ id }) => {
                                     __html: DOMPurify.sanitize(post?.postDetail.description),
                                 }}>
                         </div> */}
+
+
+
+                        <div className="property-summary">
+                            <h3 className="summary-title">Property Summary</h3>
+                            <div className="summary-wrapper">
+
+                                <div className="left">
+                                    <p>
+                                        <ChevronRight strokeWidth={2} />
+                                        Property Type :
+                                    </p>
+                                    <p>
+                                        <ChevronRight strokeWidth={2} />
+                                        Property For :
+                                    </p>
+                                    <p>
+                                        <ChevronRight strokeWidth={2} />
+                                        Property Size :
+                                    </p>
+                                    <p>
+                                        <ChevronRight strokeWidth={2} />
+                                        Bedroom :
+                                    </p>
+
+                                    <p>
+                                        <ChevronRight strokeWidth={2} />
+                                        Bathroom :
+                                    </p>
+                                    <p>
+                                        <ChevronRight strokeWidth={2} />
+                                        Total Floor :
+                                    </p>
+                                    <p>
+                                        <ChevronRight strokeWidth={2} />
+                                        Facing :
+                                    </p>
+                                </div>
+                                <div className="right">
+                                    <p>
+                                        <ChevronRight strokeWidth={2} />
+                                        Location :
+                                    </p>
+
+                                    <p>
+                                        <ChevronRight strokeWidth={2} />
+                                        Floor Avaiable On :
+                                    </p>
+
+                                    <p>
+                                        <ChevronRight strokeWidth={2} />
+                                        Construction Status :
+                                    </p>
+                                    <p>
+                                        <ChevronRight strokeWidth={2} />
+                                        Balconies :
+                                    </p>
+                                    <p>
+                                        <ChevronRight strokeWidth={2} />
+                                        Garages :
+                                    </p>
+                                    <p>
+                                        <ChevronRight strokeWidth={2} />
+                                        Furnishing :
+                                    </p>
+                                    <p>
+                                        <ChevronRight strokeWidth={2} />
+                                        Land Area :
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                        {/* Property Features */}
+
+                        <div className="property-features">
+                            <h3 className="property-features-title">Property Features</h3>
+                            <div className="property-features-wrapper">
+
+                            </div>
+
+                        </div>
+
+                        {/* Floor plan */}
+
+                        <div className="floor-plan">
+                            <h3 className="floor-plan-title">Floor Plan</h3>
+                            <div className="floor-plan-wrapper">
+
+                            </div>
+
+                        </div>
+
+
+
+
 
                     </div>
                 </div>
@@ -169,28 +263,67 @@ const Property = ({ id }) => {
             <div className="others-info">
                 <div className="wrapper">
 
-                    <p className="title">Location</p>
+
+
+
+                    <div className="seller-details">
+                        <h3 className="title">Property Owner Details</h3>
+
+                        <div className="contact-info">
+                            <img src={currentUser.avatar || "https://i.postimg.cc/J7dgwngh/profile-picture.png"} alt="profile-image" />
+
+                            <span>
+                                {currentUser.username.toUpperCase()}
+                            </span>
+                            <span style={{ color: "#09aa57", fontSize: "14px" }}>
+                                Property ID:
+                            </span>
+                            <span className="phone">
+                                <Phone width={20} color='#09aa57' />
+                                +880 1887715152
+                            </span>
+                        </div>
+
+                        <div className="action-btn">
+                            <div className="call">
+                                <a href={`tel:${phoneNumber}`}>
+                                    <button>
+                                        Call Now
+                                    </button>
+                                </a>
+                            </div>
+                            <div className="chat">
+                                <Link to={"/profile"}>
+                                    <button
+                                        onClick={() => handleSendMessage(post.userId)}
+                                    >
+                                        {/* <img src="https://i.postimg.cc/X74w1F2r/chat-1.png" alt="" /> */}
+                                        {/* <SendHorizontal size={15} color='white' /> */}
+                                        Chat Online
+                                    </button>
+                                </Link>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+
+
+
                     <div className="mapContainer">
+                        <p className="title">MAP VIEW</p>
                         <Map items={[post]} />
                     </div>
 
 
-                    <div className="buttons">
-
-                        <Link to={"/profile"}>
-                            <button
-                                onClick={() => handleSendMessage(post.userId)}
-                            >
-                                {/* <img src="https://i.postimg.cc/X74w1F2r/chat-1.png" alt="" /> */}
-                                <SendHorizontal size={15} color='white' />
-                                Chat with agent
-                            </button>
-                        </Link>
 
 
-
-                        {/* SAVE POST BUTTON */}
-                        {/* <button
+                    {/* SAVE POST BUTTON */}
+                    {/* <div className="buttons">
+                        
+                        <button
                             onClick={handleSave}
                             style={{
                                 backgroundColor: saved ? "#fece51" : "white",
@@ -198,9 +331,9 @@ const Property = ({ id }) => {
                         >
                             <img src="https://i.postimg.cc/tRh3zDz0/bookmark-1.png" alt="" />
                             {saved ? "Place Saved" : "Save the Place"}
-                        </button> */}
+                        </button>
 
-                    </div>
+                    </div> */}
 
                 </div>
             </div>
