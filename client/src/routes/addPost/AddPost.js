@@ -1,11 +1,9 @@
 import { useState } from "react";
 import './AddPost.scss';
-import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { useNavigate } from "react-router-dom";
 import apiCall from './../../lib/apiCall';
 import UploadWidget from './../../components/uploadWidget/UploadWidget';
-import MultiStepForm from "../multiStepForm/MultiStepForm";
 
 function AddPost() {
     const [value, setValue] = useState("");
@@ -14,9 +12,7 @@ function AddPost() {
 
 
     // amenities ....................................
-
     const [amenities, setAmenities] = useState([]);
-
     const amenityOptions = [
         "Mosque/Prayer Room", "Lift", "WASA connection", "Hot water", "Cylinder Gas", "Generator",
         "Intercom", "Wi-Fi connectivity", "Satellite or cable TV", "Pool", "Garden", "Guest Parking",
@@ -30,8 +26,6 @@ function AddPost() {
             checked ? [...prev, value] : prev.filter(item => item !== value)
         );
     };
-
-
     // amenities ....................................
 
 
@@ -58,18 +52,19 @@ function AddPost() {
                     images: images,
                 },
                 postDetail: {
+                    propertyId: parseInt(inputs.propertyId),
                     size: parseInt(inputs.size),
                     school: parseInt(inputs.school),
                     bus: parseInt(inputs.bus),
                     hospital: parseInt(inputs.hospital),
                     status: inputs.status,
-                    // description: value,
                     balcony: inputs.balcony,
                     garage: inputs.garage,
                     availableFloor: inputs.availableFloor,
                     totalFloor: inputs.totalFloor,
                     facing: inputs.facing,
                     furnishing: inputs.furnishing,
+                    phone: inputs.phone,
                     amenities: amenities,
                 },
             });
@@ -108,18 +103,29 @@ function AddPost() {
                         {/* BASIC INFO */}
 
                         <div className="item">
+                            <label htmlFor="propertyId">Property ID</label>
+                            <input
+                                id="propertyId"
+                                name="propertyId"
+                                type="number"
+                                defaultValue={Math.floor(10000 + Math.random() * 90000)}
+                                disabled
+                            />
+                        </div>
+
+                        <div className="item">
                             <label htmlFor="type">Property For</label>
-                            <select name="type">
-                                <option value="rent" defaultChecked>
-                                    Rent
-                                </option>
-                                <option value="buy">Buy</option>
+                            <select name="type" id="type" required>
+                                <option value="">-- Select --</option>
+                                <option value="sell">Sell</option>
+                                <option value="rent">Rent</option>
                             </select>
                         </div>
 
                         <div className="item">
                             <label htmlFor="property">Property</label>
-                            <select name="property">
+                            <select name="property" id="property" required>
+                                <option value="">-- Select --</option>
                                 <option value="apartment">Apartment</option>
                                 <option value="house">House</option>
                                 <option value="condo">Condo</option>
@@ -129,25 +135,26 @@ function AddPost() {
 
                         <div className="item">
                             <label htmlFor="title">Title</label>
-                            <input id="title" name="title" type="text" />
+                            <input id="title" name="title" type="text" required />
                         </div>
 
                         <div className="item">
                             <label htmlFor="price">Price</label>
-                            <input id="price" name="price" type="number" />
+                            <input id="price" name="price" type="number" required />
                         </div>
 
                         <div className="item">
                             <label htmlFor="city">City</label>
-                            <input id="city" name="city" type="text" />
+                            <input id="city" name="city" type="text" required />
                         </div>
                         <div className="item">
                             <label htmlFor="address">Full Address</label>
-                            <input id="address" name="address" type="text" />
+                            <input id="address" name="address" type="text" required />
                         </div>
                         <div className="item">
                             <label htmlFor="status">Construction Status</label>
-                            <select name="status">
+                            <select name="status" id="status" required>
+                                <option value="">-- Select --</option>
                                 <option value="ready">Ready</option>
                                 <option value="underconstruction">Under Construction</option>
                                 <option value="almostready">Almost Ready</option>
@@ -160,17 +167,17 @@ function AddPost() {
                         {/* SIZES */}
                         <div className="item">
                             <label htmlFor="size">Total Size (sqft)</label>
-                            <input min={0} id="size" name="size" type="number" />
+                            <input min={0} id="size" name="size" type="number" required />
                         </div>
 
                         <div className="item">
                             <label htmlFor="bedroom">Bedroom Number</label>
-                            <input min={1} id="bedroom" name="bedroom" type="number" />
+                            <input min={1} id="bedroom" name="bedroom" type="number" required />
                         </div>
 
                         <div className="item">
                             <label htmlFor="bathroom">Bathroom Number</label>
-                            <input min={1} id="bathroom" name="bathroom" type="number" />
+                            <input min={1} id="bathroom" name="bathroom" type="number" required />
                         </div>
 
                         <div className="item">
@@ -187,17 +194,18 @@ function AddPost() {
                         </div>
                         <div className="item">
                             <label htmlFor="balcony">Balcony</label>
-                            <select name="balcony">
-                                <option value="balcony1">1 Balcony</option>
-                                <option value="balcony2">2 Balcony</option>
-                                <option value="balcony3">3 Balcony</option>
-                                <option value="balcony4">4 Balcony</option>
-                                <option value="balcony4plus">4+ Balcony</option>
+                            <select name="balcony" id="balcony" required>
+                                <option value="">-- Select --</option>
+                                <option value="1">1 Balcony</option>
+                                <option value="2">2 Balcony</option>
+                                <option value="3">3 Balcony</option>
+                                <option value="4">4 Balcony</option>
+                                <option value="4+">4+ Balcony</option>
                             </select>
                         </div>
                         <div className="item">
                             <label htmlFor="garage">Garage</label>
-                            <select name="garage">
+                            <select name="garage" id="garage" required>
                                 <option value="No-Parking">No Parking</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -214,8 +222,7 @@ function AddPost() {
 
                         <div className="item">
                             <label htmlFor="availableFloor">Available Floor </label>
-
-                            <select name="availableFloor" defaultValue="1">
+                            <select name="availableFloor" id="availableFloor" required defaultValue="1">
                                 {Array.from({ length: 100 }, (_, i) => {
                                     const floor = i + 1;
                                     const suffix = getOrdinalSuffix(floor);
@@ -230,7 +237,6 @@ function AddPost() {
 
                         <div className="item">
                             <label htmlFor="totalFloor">Total Number of Floor </label>
-
                             <select name="totalFloor" defaultValue="1">
                                 {Array.from({ length: 100 }, (_, i) => {
                                     const floor = i + 1;
@@ -246,6 +252,7 @@ function AddPost() {
                         <div className="item">
                             <label htmlFor="facing">Facing</label>
                             <select name="facing">
+                                <option value="">-- Select --</option>
                                 <option value="south">South Facing</option>
                                 <option value="north">North Facing</option>
                                 <option value="east">East Facing</option>
@@ -255,21 +262,13 @@ function AddPost() {
 
                         <div className="item">
                             <label htmlFor="furnishing">Furnishing</label>
-                            <select name="furnishing">
+                            <select name="furnishing" id="furnishing">
+                                <option value="">-- Select --</option>
                                 <option value="furnished">Furnished</option>
                                 <option value="unfurnished">Unfurnished</option>
                                 <option value="semiFurnished">Semi-Furnished</option>
                             </select>
                         </div>
-
-
-
-
-
-
-
-
-
 
                         <div className="item">
                             <label>Amenities</label>
@@ -277,6 +276,7 @@ function AddPost() {
                                 <label>
                                     <input
                                         type="checkbox"
+                                        required
                                         checked={amenities.length === amenityOptions.length}
                                         onChange={(e) => {
                                             if (e.target.checked) {
@@ -303,57 +303,48 @@ function AddPost() {
                             </div>
                         </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                         {/* EXTRA INFO */}
 
-
-
+                        <div className="item">
+                            <label htmlFor="phone">Phone Number</label>
+                            <input id="phone" name="phone" type="number" required />
+                        </div>
 
 
                         {/* MAP LOCATION */}
                         <div className="item">
                             <label htmlFor="latitude">Latitude</label>
-                            <input id="latitude" name="latitude" type="text" />
+                            <input id="latitude" name="latitude" type="text" required />
                         </div>
 
                         <div className="item">
                             <label htmlFor="longitude">Longitude</label>
-                            <input id="longitude" name="longitude" type="text" />
+                            <input id="longitude" name="longitude" type="text" required />
                         </div>
                         {/* MAP LOCATION */}
+
+
+
+                        <div className="item">
+                            <label>Attachments</label>
+
+                            <div className="imgContainer">
+                                {images.map((image, index) => (
+                                    <img src={image} key={index} alt="" />
+                                ))}
+                                <br /> <br />
+                                <UploadWidget
+                                    uwConfig={{
+                                        multiple: true,
+                                        cloudName: "lamadev",
+                                        uploadPreset: "estate",
+                                        folder: "posts",
+                                    }}
+                                    setState={setImages}
+                                />
+                            </div>
+                        </div>
+
 
 
 
@@ -364,21 +355,7 @@ function AddPost() {
                 </div>
 
 
-                <div className="sideContainer">
-                    {images.map((image, index) => (
-                        <img src={image} key={index} alt="" />
-                    ))}
-                    <br /> <br />
-                    <UploadWidget
-                        uwConfig={{
-                            multiple: true,
-                            cloudName: "lamadev",
-                            uploadPreset: "estate",
-                            folder: "posts",
-                        }}
-                        setState={setImages}
-                    />
-                </div>
+
             </div>
 
 

@@ -70,6 +70,24 @@
                         }
                     }
 
+                    .imgContainer {
+                        margin-top: 20px;
+                        display: flex;
+                        flex-direction: row;
+                        gap: 20px;
+                        align-items: center;
+                        justify-content: center;
+                        white-space: pre-line;
+
+                        img {
+                            height: 100px;
+                            object-fit: cover;
+                            border-radius: 5px;
+                            white-space: pre-line;
+                            display: block;
+                        }
+                    }
+
                 }
 
                 .addButton {
@@ -85,26 +103,7 @@
             }
         }
 
-        .sideContainer {
-            margin-top: 20px;
-            // flex: 2;
-            background-color: #fcf5f3;
-            display: flex;
-            flex-direction: row;
-            gap: 20px;
-            align-items: center;
-            justify-content: center;
-            // overflow: scroll;
-            white-space: pre-line;
 
-            img {
-                height: 100px;
-                object-fit: cover;
-                border-radius: 5px;
-                white-space: pre-line;
-                display: block;
-            }
-        }
 
 
     }
