@@ -59,17 +59,21 @@ enum Property {
 }
 
 model PostDetail {
-  id          String  @id @default(auto()) @map("_id") @db.ObjectId
-  description String
-  utilities   String?
-  policy      String?
-  fees        String?
-  size        Int?
-  school      Int?
-  bus         Int?
-  hospital    Int?
-  post        Post    @relation(fields: [postId], references: [id])
-  postId      String  @unique @db.ObjectId
+  id             String   @id @default(auto()) @map("_id") @db.ObjectId
+  size           Int?
+  school         Int?
+  bus            Int?
+  hospital       Int?
+  status         String?
+  balcony        String?
+  garage         String?
+  availableFloor String?
+  totalFloor     String?
+  facing         String?
+  furnishing     String?
+  amenities      String[] // array of selected amenities
+  post           Post     @relation(fields: [postId], references: [id])
+  postId         String   @unique @db.ObjectId
 }
 
 model SavedPost {

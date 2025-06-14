@@ -6,11 +6,12 @@ import { Link, useLoaderData, useNavigate } from 'react-router-dom';
 import DOMPurify from 'dompurify';
 import apiCall from '../../lib/apiCall';
 import { AuthContext } from '../../context/AuthContex';
-import { ChevronRight, Mail, Phone, Send, SendHorizontal } from 'lucide-react';
+import { ChevronRight, CircleCheck, Mail, Phone, Send, SendHorizontal } from 'lucide-react';
 
 const Property = ({ id }) => {
     const phoneNumber = "+880 1887715152";
     const post = useLoaderData()
+    console.log(post);
 
     const [saved, setSaved] = useState(post?.isSaved);
     const { currentUser } = useContext(AuthContext);
@@ -65,6 +66,57 @@ const Property = ({ id }) => {
             console.log("Error found in sending message btn", err);
         }
     };
+
+    console.log(post?.postDetail?.amenities);
+    // .............................................................................
+
+
+    const propertyType = {
+        apartment: "Apartment",
+        house: "House",
+        condo: "Condo",
+        land: "Land"
+    };
+    const propertyFor = {
+        buy: "Buy",
+        rent: "Rent"
+    };
+
+
+    const statusLabels = {
+        ready: "Ready",
+        underconstruction: "Under Construction",
+        almostready: "Almost Ready",
+        upcoming: "Upcoming",
+        used: "Used",
+    };
+
+    const facingLabels = {
+        south: "South Facing",
+        north: "North Facing",
+        east: "East Facing",
+        west: "West Facing",
+    };
+
+    const furnishingLabels = {
+        furnished: "Furnished",
+        unfurnished: "Unfurnished",
+        "semiFurnished": "Semi-Furnished",
+    };
+
+
+
+
+    // .............................................................................
+
+
+
+
+
+
+
+
+
 
     return (
         <div className="singlePage">
@@ -122,23 +174,26 @@ const Property = ({ id }) => {
                                         <img src="https://i.postimg.cc/T3XXXKk4/school.png" alt="" />
                                         <div className="featureText">
                                             <span>School</span>
-                                            <p>{post?.postDetail.school}m away</p>
+                                            <p>{post?.postDetail.school} m away</p>
                                         </div>
                                     </div>
                                     <div className="feature">
                                         <img src="https://i.postimg.cc/K8rhcmwv/bus-stop.png" alt="" />
                                         <div className="featureText">
                                             <span>Bus Stop</span>
-                                            <p>{post?.postDetail.bus}m away</p>
+                                            <p>{post?.postDetail.bus} m away</p>
                                         </div>
                                     </div>
                                     <div className="feature">
                                         <img src="https://i.postimg.cc/tC6Hf3z6/restuarant.png" alt="" />
                                         <div className="featureText">
                                             <span>Hospital</span>
-                                            <p>{post?.postDetail.hospital}m away</p>
+                                            <p>{post?.postDetail.hospital} m away</p>
                                         </div>
                                     </div>
+
+
+
                                 </div>
 
                             </div>
@@ -161,24 +216,27 @@ const Property = ({ id }) => {
                                 <div className="left">
                                     <p>
                                         <ChevronRight strokeWidth={2} />
-                                        Property Type :
+                                        Property Type : {propertyType[post?.property] || "Unknown"}
+
+
                                     </p>
                                     <p>
                                         <ChevronRight strokeWidth={2} />
-                                        Property For :
+                                        Property For : {propertyFor[post?.type] || "Unknown"}
+
                                     </p>
                                     <p>
                                         <ChevronRight strokeWidth={2} />
-                                        Property Size :
+                                        Property Size : {post?.postDetail.size} SQFT
                                     </p>
                                     <p>
                                         <ChevronRight strokeWidth={2} />
-                                        Bedroom :
+                                        Bedroom : {post?.bedroom}
                                     </p>
 
                                     <p>
                                         <ChevronRight strokeWidth={2} />
-                                        Bathroom :
+                                        Bathroom : {post?.bathroom}
                                     </p>
                                     <p>
                                         <ChevronRight strokeWidth={2} />
@@ -186,39 +244,39 @@ const Property = ({ id }) => {
                                     </p>
                                     <p>
                                         <ChevronRight strokeWidth={2} />
-                                        Facing :
+                                        Facing : {facingLabels[post?.postDetail?.facing] || "N/A"}
                                     </p>
                                 </div>
                                 <div className="right">
                                     <p>
                                         <ChevronRight strokeWidth={2} />
-                                        Location :
+                                        Location : {post?.address}
                                     </p>
 
                                     <p>
                                         <ChevronRight strokeWidth={2} />
-                                        Floor Avaiable On :
+                                        Floor Avaiable On : {post?.postDetail?.availableFloor}
+                                    </p>
+                                    <p>
+                                        <ChevronRight strokeWidth={2} />
+                                        Total Floor : {post?.postDetail?.totalFloor}
                                     </p>
 
                                     <p>
                                         <ChevronRight strokeWidth={2} />
-                                        Construction Status :
+                                        Construction Status : {statusLabels[post?.postDetail?.status] || "N/A"}
                                     </p>
                                     <p>
                                         <ChevronRight strokeWidth={2} />
-                                        Balconies :
+                                        Balconies : {post?.postDetail?.balcony}
                                     </p>
                                     <p>
                                         <ChevronRight strokeWidth={2} />
-                                        Garages :
+                                        Garages : {post?.postDetail?.garage}
                                     </p>
                                     <p>
                                         <ChevronRight strokeWidth={2} />
-                                        Furnishing :
-                                    </p>
-                                    <p>
-                                        <ChevronRight strokeWidth={2} />
-                                        Land Area :
+                                        Furnishing : {furnishingLabels[post?.postDetail?.furnishing] || "N/A"}
                                     </p>
 
                                 </div>
@@ -232,9 +290,19 @@ const Property = ({ id }) => {
                             <h3 className="property-features-title">Property Features</h3>
                             <div className="property-features-wrapper">
 
+                                {post?.postDetail?.amenities.map((amenity, index) => (
+                                    <div key={index} className="amenity-item">
+                                        <CircleCheck />
+                                        {amenity}
+                                    </div>
+                                ))}
+
                             </div>
 
                         </div>
+
+
+
 
                         {/* Floor plan */}
 
@@ -245,8 +313,6 @@ const Property = ({ id }) => {
                             </div>
 
                         </div>
-
-
 
 
 
@@ -262,8 +328,6 @@ const Property = ({ id }) => {
             {/* CONTAINS MAP, SELLER INFORMATION */}
             <div className="others-info">
                 <div className="wrapper">
-
-
 
 
                     <div className="seller-details">
@@ -308,15 +372,10 @@ const Property = ({ id }) => {
                     </div>
 
 
-
-
-
-
                     <div className="mapContainer">
                         <p className="title">MAP VIEW</p>
                         <Map items={[post]} />
                     </div>
-
 
 
 
@@ -337,9 +396,6 @@ const Property = ({ id }) => {
 
                 </div>
             </div>
-
-
-
 
 
 
