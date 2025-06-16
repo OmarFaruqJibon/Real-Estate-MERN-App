@@ -246,14 +246,11 @@
                         margin-bottom: 10px;
                     }
 
-
-
                     .summary-wrapper {
                         display: flex;
                         gap: 150px;
 
                         .left {
-
                             p {
                                 display: flex;
                                 gap: 5px;
@@ -277,6 +274,21 @@
                     min-height: 100px;
                     margin-top: 30px;
                     margin-bottom: 10px;
+
+                    .property-features-wrapper {
+                        margin-top: 10px;
+                        display: grid;
+                        grid-template-columns: repeat(2, 1fr);
+                        gap: 0px 20px;
+                        padding: 10px 0;
+
+                        .amenity-item {
+                            display: flex;
+                            gap: 7px;
+                            margin-bottom: 10px;
+                            align-items: center;
+                        }
+                    }
                 }
 
                 .floor-plan {
@@ -419,7 +431,14 @@
 
             .mapContainer {
                 width: 100%;
-                height: 200px;
+                height: 300px;
+
+                .title {
+                    font-weight: bold;
+                    font-size: 16px;
+                    margin-top: 20px;
+                    margin-bottom: 20px;
+                }
             }
 
             .buttons {

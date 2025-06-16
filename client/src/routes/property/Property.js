@@ -67,6 +67,12 @@ const Property = ({ id }) => {
         }
     };
 
+    const formattedDate = new Date(post.createdAt).toLocaleDateString('en-GB', {
+        day: '2-digit',
+        month: 'long',
+        year: 'numeric',
+    });
+
     const propertyType = {
         apartment: "Apartment",
         house: "House",
@@ -122,7 +128,7 @@ const Property = ({ id }) => {
 
                                 {/* PRICE */}
                                 <div className="price">
-                                    <span>BDT {post?.price}</span>
+                                    <span>৳ {post?.price}</span>
                                 </div>
                             </div>
 
@@ -133,7 +139,7 @@ const Property = ({ id }) => {
                                     <div className="sizes">
                                         <div className="size">
                                             <img src="https://i.postimg.cc/zD6r0tT5/room.png" alt="" />
-                                            <span>{post?.postDetail.size} sqft</span>
+                                            <span>{post?.size} sqft</span>
                                         </div>
                                         <div className="size">
                                             <img src="https://i.postimg.cc/T14h90rB/bed-1.png" alt="" />
@@ -168,11 +174,7 @@ const Property = ({ id }) => {
                                                 <p>{post?.postDetail.hospital} m away</p>
                                             </div>
                                         </div>
-
-
-
                                     </div>
-
                                 </div>
                             </div>
 
@@ -181,6 +183,10 @@ const Property = ({ id }) => {
                                 <div className="summary-wrapper">
 
                                     <div className="left">
+                                        <p>
+                                            <ChevronRight strokeWidth={2} />
+                                            List Date : {formattedDate}
+                                        </p>
                                         <p>
                                             <ChevronRight strokeWidth={2} />
                                             Property Type : {propertyType[post?.property] || "Unknown"}
@@ -205,10 +211,7 @@ const Property = ({ id }) => {
                                             <ChevronRight strokeWidth={2} />
                                             Bathroom : {post?.bathroom}
                                         </p>
-                                        <p>
-                                            <ChevronRight strokeWidth={2} />
-                                            Total Floor :
-                                        </p>
+
                                         <p>
                                             <ChevronRight strokeWidth={2} />
                                             Facing : {facingLabels[post?.postDetail?.facing] || "N/A"}
@@ -250,13 +253,14 @@ const Property = ({ id }) => {
                                 </div>
                             </div>
 
+
                             {/* Property Features */}
                             <div className="property-features">
                                 <h3 className="property-features-title">Property Features</h3>
                                 <div className="property-features-wrapper">
                                     {post?.postDetail?.amenities.map((amenity, index) => (
                                         <div key={index} className="amenity-item">
-                                            <CircleCheck />
+                                            <CircleCheck strokeWidth={2} size={20} />
                                             {amenity}
                                         </div>
                                     ))}
@@ -293,19 +297,6 @@ const Property = ({ id }) => {
                                     </div>
                                 )}
                             </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
                         </div>
                     </div>
                 </div>
@@ -359,7 +350,7 @@ const Property = ({ id }) => {
 
 
                         <div className="mapContainer">
-                            <p className="title">MAP VIEW</p>
+                            <p className="title">Location in Map</p>
                             <Map items={[post]} />
                         </div>
 

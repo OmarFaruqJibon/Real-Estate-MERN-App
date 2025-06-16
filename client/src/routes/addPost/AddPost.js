@@ -51,10 +51,11 @@ function AddPost() {
                     latitude: inputs.latitude,
                     longitude: inputs.longitude,
                     images: images,
+                    size: parseInt(inputs.size),
                 },
                 postDetail: {
                     propertyId: parseInt(inputs.propertyId),
-                    size: parseInt(inputs.size),
+
                     school: parseInt(inputs.school),
                     bus: parseInt(inputs.bus),
                     hospital: parseInt(inputs.hospital),

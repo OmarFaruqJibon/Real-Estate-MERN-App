@@ -3,7 +3,13 @@ import './card.scss';
 import { Link } from 'react-router-dom';
 
 const Card = ({ item }) => {
-    // console.log(item);
+    console.log(item);
+    const formattedDate = new Date(item.createdAt).toLocaleDateString('en-GB', {
+        day: '2-digit',
+        month: 'long',
+        year: 'numeric',
+    });
+
     return (
         <div className="single-card">
             <div className="img-container">
@@ -25,9 +31,15 @@ const Card = ({ item }) => {
                     <span>{item.address}</span>
                 </p>
 
-                <h3 className="item-price">
-                    $ {item.price}
-                </h3>
+                <div className="price-date">
+                    <h3 className="item-price">
+                        ৳ {item.price}
+                    </h3>
+
+                    <p className="date">
+                        {formattedDate}
+                    </p>
+                </div>
 
                 <div className="bottom-info">
 
@@ -35,20 +47,25 @@ const Card = ({ item }) => {
 
                         <p>
                             <img src="https://i.postimg.cc/T14h90rB/bed-1.png" alt="bedroom" />
-                            <span>{item.bedroom} Bed</span>
+                            <span>{item?.bedroom} Bed</span>
                         </p>
 
                         <p>
                             <img src="https://i.postimg.cc/ZRYRz2H1/bathroom-1.png" alt="bathroom" />
-                            <span>{item.bathroom} Bath</span>
+                            <span>{item?.bathroom} Bath</span>
+                        </p>
+
+                        <p>
+                            <img src="https://i.postimg.cc/zD6r0tT5/room.png" alt="" />
+                            <span>{item?.size} sqft</span>
                         </p>
                     </div>
 
 
-                    <div className="card-action">
+                    {/* <div className="card-action">
                         <span><img src="https://i.postimg.cc/tRh3zDz0/bookmark-1.png" alt="save" /></span>
                         <span><img src="https://i.postimg.cc/X74w1F2r/chat-1.png" alt="chat" /></span>
-                    </div>
+                    </div> */}
 
                 </div>
             </div>
