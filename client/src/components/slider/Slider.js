@@ -1,7 +1,7 @@
 import React from 'react';
 import './slider.scss';
 import { useState } from "react";
-import { ArrowLeft, ArrowRight, Minimize2, X } from 'lucide-react';
+import { ArrowLeft, ArrowRight, X } from 'lucide-react';
 
 
 function Slider({ images }) {

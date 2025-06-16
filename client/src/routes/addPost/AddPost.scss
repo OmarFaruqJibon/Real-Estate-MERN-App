@@ -86,6 +86,16 @@
                             white-space: pre-line;
                             display: block;
                         }
+
+                        .cloudinary-button {
+                            color: #ffffff;
+                            background-color: #faaa39;
+                            border: none;
+                            font-size: 13px;
+                            font-weight: 600;
+                            outline: none;
+                            padding: 4px 14px;
+                        }
                     }
 
                 }
@@ -96,9 +106,18 @@
                     outline: none;
                     background-color: #09aa57;
                     color: white;
-                    font-weight: bold;
                     cursor: pointer;
                     margin-top: 30px;
+                    font-size: 16px;
+                    font-weight: 600;
+                    transition: transform 0.3s ease;
+                }
+
+                .addButton:hover {
+                    border: 2px solid #09aa57;
+                    background-color: white;
+                    color: #09aa57;
+                    transform: translateY(-3px) scale(1.02);
                 }
             }
         }

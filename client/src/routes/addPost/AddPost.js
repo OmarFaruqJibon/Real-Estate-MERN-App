@@ -8,6 +8,7 @@ import UploadWidget from './../../components/uploadWidget/UploadWidget';
 function AddPost() {
     const [value, setValue] = useState("");
     const [images, setImages] = useState([]);
+    const [floorPlans, setFloorPlans] = useState([]);
     const [error, setError] = useState("");
 
 
@@ -66,6 +67,7 @@ function AddPost() {
                     furnishing: inputs.furnishing,
                     phone: inputs.phone,
                     amenities: amenities,
+                    floorPlans: floorPlans,
                 },
             });
             navigate("/" + res.data.id)
@@ -108,8 +110,8 @@ function AddPost() {
                                 id="propertyId"
                                 name="propertyId"
                                 type="number"
-                                defaultValue={Math.floor(10000 + Math.random() * 90000)}
-                                disabled
+                                value={Math.floor(10000 + Math.random() * 90000)}
+                                readOnly
                             />
                         </div>
 
@@ -185,7 +187,7 @@ function AddPost() {
                             <input min={0} id="school" name="school" type="number" />
                         </div>
                         <div className="item">
-                            <label htmlFor="bus">bus</label>
+                            <label htmlFor="bus">Bus</label>
                             <input min={0} id="bus" name="bus" type="number" />
                         </div>
                         <div className="item">
@@ -276,7 +278,6 @@ function AddPost() {
                                 <label>
                                     <input
                                         type="checkbox"
-                                        required
                                         checked={amenities.length === amenityOptions.length}
                                         onChange={(e) => {
                                             if (e.target.checked) {
@@ -324,19 +325,21 @@ function AddPost() {
                         {/* MAP LOCATION */}
 
 
+                        <p style={{ textAlign: "center", marginTop: "40px" }}>Attachment</p>
 
-                        <div className="item">
-                            <label>Attachments</label>
 
+
+                        <div style={{ alignItems: "center" }} className="item">
+                            <label>Property Pictures</label>
                             <div className="imgContainer">
+
                                 {images.map((image, index) => (
-                                    <img src={image} key={index} alt="" />
+                                    <img src={image} key={index} alt="Property Images" />
                                 ))}
-                                <br /> <br />
                                 <UploadWidget
                                     uwConfig={{
                                         multiple: true,
-                                        cloudName: "lamadev",
+                                        cloudName: "dnfxchy4r",
                                         uploadPreset: "estate",
                                         folder: "posts",
                                     }}
@@ -345,12 +348,48 @@ function AddPost() {
                             </div>
                         </div>
 
+                        <div style={{ alignItems: "center" }} className="item">
+                            <label>Floor Plans</label>
+                            <div className="imgContainer">
+
+                                {floorPlans.map((floorPlan, index) => (
+                                    <img src={floorPlan} key={index} alt="Floor Plans" />
+                                ))}
+                                <UploadWidget
+                                    uwConfig={{
+                                        multiple: true,
+                                        cloudName: "dnfxchy4r",
+                                        uploadPreset: "estate",
+                                        folder: "posts",
+                                    }}
+                                    setState={setFloorPlans}
+                                />
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 
                         <button className="addButton">List Property</button>
                         {error && <span>error</span>}
+
                     </form>
                 </div>
 

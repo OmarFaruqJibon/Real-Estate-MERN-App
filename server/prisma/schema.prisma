@@ -65,7 +65,7 @@ model PostDetail {
   school         Int
   bus            Int
   hospital       Int
-  phone          Int?
+  phone          String?
   status         String?
   balcony        String?
   garage         String
@@ -73,6 +73,7 @@ model PostDetail {
   totalFloor     String
   facing         String
   furnishing     String
+  floorPlans     String[]
   amenities      String[] // array of selected amenities
   post           Post     @relation(fields: [postId], references: [id])
   postId         String   @unique @db.ObjectId
