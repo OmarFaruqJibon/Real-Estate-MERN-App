@@ -60,37 +60,7 @@ const Profile = () => {
                         <button onClick={handleLogout} className='logout-btn'>Logout</button>
                     </div>
 
-                    {/* My LIST SECTION */}
-                    {/* <div className="title">
-                        <h3>My List</h3>
-                        <Link to={"/addPost"}><button>Create New Post</button></Link>
-                    </div>
-                    <Suspense fallback={<p>Loading...</p>}>
-                        <Await
-                            resolve={data?.postResponse}
-                            errorElement={<p>Error loading posts!</p>}
-                        >
-                            {(postResponse) =>
-                                <List posts={postResponse.data.userPosts} />
-                            }
-                        </Await>
-                    </Suspense> */}
 
-
-                    {/* SAVED LIST SECTION */}
-                    {/* <div className="title">
-                        <h3>Saved List</h3>
-                    </div>
-                    <Suspense fallback={<p>Loading...</p>}>
-                        <Await
-                            resolve={data?.postResponse}
-                            errorElement={<p>Error loading posts!</p>}
-                        >
-                            {(postResponse) =>
-                                <List posts={postResponse.data.savedPosts} />
-                            }
-                        </Await>
-                    </Suspense> */}
 
                 </div>
             </div>
@@ -100,7 +70,7 @@ const Profile = () => {
 
 
             {/* CHAT SECTION */}
-            <div className="chatContainer">
+            {/* <div className="chatContainer">
                 <div className="wrapper">
 
                     <Suspense fallback={<p>Loading...</p>}>
@@ -117,7 +87,7 @@ const Profile = () => {
 
 
                 </div>
-            </div>
+            </div> */}
 
         </div>
     );

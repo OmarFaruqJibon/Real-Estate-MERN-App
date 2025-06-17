@@ -53,9 +53,9 @@ const Navbar = () => {
             <div className="middle-side menu-items">
                 <Link to="/list" onClick={handleLinkClick}>PROPERTY</Link>
                 <Link to="/about" onClick={handleLinkClick}>AGENT</Link>
-                <Link to="/list" onClick={handleLinkClick}>DEVELOPER</Link>
                 <Link to="/about" onClick={handleLinkClick}>ABOUT</Link>
                 <Link to="/contact" onClick={handleLinkClick}>CONTACT</Link>
+                <Link to="/chats" onClick={handleLinkClick}>Messages</Link>
             </div>
 
 
@@ -88,9 +88,9 @@ const Navbar = () => {
                 <div className={menuOpen ? "side-menu active" : "side-menu"}>
                     <Link to="/list" onClick={handleLinkClick}>PROPERTY</Link>
                     <Link to="/about" onClick={handleLinkClick}>AGENT</Link>
-                    <Link to="/list" onClick={handleLinkClick}>DEVELOPER</Link>
                     <Link to="/about" onClick={handleLinkClick}>ABOUT</Link>
                     <Link to="/contact" onClick={handleLinkClick}>CONTACT</Link>
+                    <Link to="/chats" onClick={handleLinkClick}>Messages</Link>
 
 
 

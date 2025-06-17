@@ -333,17 +333,40 @@ const Property = ({ id }) => {
                                         </button>
                                     </a>
                                 </div>
-                                <div className="chat">
+
+
+
+                                {/* <div className="chat">
                                     <Link to={"/profile"}>
                                         <button
                                             onClick={() => handleSendMessage(post.userId)}
                                         >
-                                            {/* <img src="https://i.postimg.cc/X74w1F2r/chat-1.png" alt="" /> */}
-                                            {/* <SendHorizontal size={15} color='white' /> */}
+                                            Chat Online
+                                        </button>
+                                    </Link>
+                                </div> */}
+
+
+                                <div className="chat">
+                                    <Link
+                                        to="/chats"
+                                        state={{ chatId: post.chatId, userId: post.userId }} // send chatId or userId if available
+                                    >
+                                        <button onClick={() => handleSendMessage(post.userId)}>
                                             Chat Online
                                         </button>
                                     </Link>
                                 </div>
+
+
+
+
+
+
+
+
+
+
                             </div>
 
                         </div>

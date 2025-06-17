@@ -1,135 +1,281 @@
-.chat {
+@import "../../responsive.scss";
+
+.chatContainerWithNavbar {
+    display: flex;
     height: 100%;
+    width: 100%;
+    background-color: #f0f2f5;
+    overflow: hidden;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+// ----- Sidebar -----
+.sidebar {
+    width: 300px;
+    min-width: 300px;
+    background-color: #fff;
+    border-right: 1px solid #ddd;
     display: flex;
     flex-direction: column;
-    padding: 0 10px;
+    flex-shrink: 0;
 
-    .messages {
+    h3 {
+        padding: 16px;
+        font-size: 18px;
+        border-bottom: 1px solid #eee;
+    }
+
+    .chatList {
         flex: 1;
-        display: flex;
-        flex-direction: column;
-        overflow-y: scroll;
+        overflow-y: auto;
 
-
-
-        .message {
-            background-color: white;
-            padding: 13px;
-            border-radius: 11px;
+        .chatItem {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 10px;
+            padding: 12px;
+            border-bottom: 1px solid #f5f5f5;
             cursor: pointer;
-            border-bottom: 1px solid #cbcbcb;
+            transition: 0.2s ease;
+
+            &.active {
+                background-color: #e7f3ff;
+            }
+
+            &.unseen {
+                background-color: #ffffcc;
+            }
 
             img {
                 width: 40px;
                 height: 40px;
                 border-radius: 50%;
-                object-fit: cover;
             }
 
-            span {
-                font-weight: bold;
-            }
+            .chatInfo {
+                display: flex;
+                flex-direction: column;
 
-            p {
-                font-weight: 300;
-                font-size: 13px;
-                padding-top: 3px;
+                span {
+                    font-weight: 600;
+                }
+
+                p {
+                    font-size: 12px;
+                    color: gray;
+                }
             }
         }
     }
+}
 
-    .chatBoxWrapper {
+// ----- Chat Box -----
+.chatBoxWrapper {
+    flex: 1;
+    min-width: 0; // IMPORTANT: prevent message content from expanding the width
+    display: flex;
+    flex-direction: column;
+    height: 87vh;
+    overflow: hidden;
+}
+
+.chatBox {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+
+// ----- Chat Header -----
+.chatHeader {
+    padding: 16px;
+    background-color: #ededed;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid #ccc;
+
+    img {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+    }
+
+    span {
+        flex: 1;
+        font-weight: bold;
+    }
+
+    .closeBtn {
+        background: none;
+        border: none;
+        font-size: 20px;
+        cursor: pointer;
+    }
+}
+
+// ----- Messages Body -----
+.chatBody {
+    flex: 1;
+    padding: 16px 35px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: #fafafa;
+
+    @include small {
+        padding: 16px 27px;
+    }
+
+    .chatMessage {
         display: flex;
 
-        .chatBox {
-            flex: 1;
-            background-color: white;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            padding-bottom: 15px;
-            width: 400px;
+        &.own {
+            justify-content: flex-end;
+        }
 
-            .top {
-                background-color: #f7c14b85;
-                padding: 15px;
-                font-weight: bold;
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
+        .messageBubble {
+            max-width: 60%;
+            padding: 10px;
+            border-radius: 15px;
+            background-color: #dcf8c6;
+            position: relative;
+            font-size: 14px;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            white-space: pre-wrap;
 
-                .user {
-                    display: flex;
-                    align-items: center;
-                    gap: 12px;
-
-                    img {
-                        width: 30px;
-                        height: 30px;
-                        border-radius: 50%;
-                        object-fit: cover;
-                    }
-                }
-
-                .close {
-                    cursor: pointer;
-                }
+            span {
+                display: block;
+                font-size: 10px;
+                color: #555;
+                margin-top: 4px;
+                text-align: right;
             }
+        }
 
-            .center {
-                height: 290px;
-                overflow: scroll;
-                padding: 18px;
+        &.other .messageBubble {
+            background-color: #fff;
+            border: 1px solid #e0e0e0;
+        }
+    }
+}
+
+// ----- Input Section -----
+.chatInput {
+    display: flex;
+    align-items: center;
+    padding: 10px 90px;
+    background-color: #fff;
+    border-top: 1px solid #ddd;
+    position: relative;
+
+    @include small {
+        padding: 10px 0px;
+        gap: 10px;
+    }
+
+    input {
+        flex: 1;
+        padding: 10px 15px;
+        border-radius: 20px;
+        border: 1px solid #ccc;
+        margin-left: 10px;
+        outline: none;
+
+        @include small {
+            margin-left: -10px;
+            flex: 0;
+        }
+
+    }
+
+    button {
+        margin-left: 10px;
+        background-color: #0b93f6;
+        color: white;
+        border: none;
+        border-radius: 20px;
+        padding: 8px 16px;
+        cursor: pointer;
+
+        @include small {
+            margin-left: 5px;
+        }
+    }
+
+    .emojiToggle {
+        background: none;
+        font-size: 22px;
+        cursor: pointer;
+        border: none;
+
+        @include small {
+            margin-left: 0px;
+        }
+    }
+
+    .emojiPickerWrapper {
+        position: absolute;
+        bottom: 60px;
+        left: 10px;
+        z-index: 1000;
+    }
+}
+
+// ----- Empty View -----
+.noChat {
+    margin: auto;
+    font-size: 18px;
+    color: gray;
+}
+
+
+
+// ..................................
+@include small {
+    .chatContainerWithNavbar {
+        flex-direction: column;
+        position: relative;
+
+        .sidebar,
+        .chatBoxWrapper {
+            width: 100%;
+            height: 100%;
+        }
+
+        .sidebar {
+            display: none;
+        }
+
+        .chatBoxWrapper {
+            display: none;
+        }
+
+        &.show-sidebar {
+            .sidebar {
                 display: flex;
                 flex-direction: column;
-                gap: 15px;
-
-                .chatMessage {
-                    width: 65%;
-
-                    &.own {
-                        align-self: flex-end;
-                        text-align: right;
-                    }
-
-                    p {
-                        font-size: 15px;
-                    }
-
-                    span {
-                        font-size: 12px;
-                        background-color: #f7c14b39;
-                        padding: 2px;
-                        border-radius: 5px;
-                        font-weight: 300;
-                    }
-                }
             }
+        }
 
-            .bottom {
-                border-top: 2px solid #f7c14b85;
-                height: 50px;
+        &.show-chat {
+            .chatBoxWrapper {
                 display: flex;
-                align-items: center;
-                justify-content: space-between;
+                flex-direction: column;
+            }
+        }
 
-                textarea {
-                    flex: 3;
-                    height: 100%;
-                    border: none;
-                    padding: 20px;
-                }
+        .chatHeader {
+            padding: 12px;
+            font-size: 14px;
 
-                button {
-                    flex: 1;
-                    background-color: #f7c14b85;
-                    height: 100%;
-                    border: none;
-                    cursor: pointer;
-                }
+            .closeBtn {
+                display: block;
+                font-size: 18px;
+                margin-left: auto;
             }
         }
     }

@@ -16,6 +16,7 @@ import Login from './routes/login/Login';
 import UpdateProfile from './routes/updateProfile/UpdateProfile';
 import AddPost from './routes/addPost/AddPost';
 import { listPageLoader, profileLoader, propertyLoader } from './lib/loader';
+import Chatting from './routes/chatting.js/Chatting';
 
 
 const router = createBrowserRouter([
@@ -72,6 +73,11 @@ const router = createBrowserRouter([
       {
         path: "/addPost",
         element: <AddPost />
+      },
+      {
+        path: "/chats",
+        element: <Chatting />,
+        loader: profileLoader,
       },
     ]
   }

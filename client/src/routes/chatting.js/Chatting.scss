@@ -1,0 +1,13 @@
+// src/pages/chat/Chatting.scss
+
+.chatPageWrapper {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.chatPageInner {
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+}
