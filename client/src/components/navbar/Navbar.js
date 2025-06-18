@@ -23,18 +23,23 @@ const Navbar = () => {
 
     const renderUserProfile = () => (
         <div className='navbar-profile'>
-            <span>
-                <img
-                    loading="lazy"
-                    src={currentUser.avatar || "https://i.postimg.cc/J7dgwngh/profile-picture.png"}
-                    alt="profile"
-                />
-                {currentUser.username.toUpperCase()}
-            </span>
+
             <Link className='profile-btn' to="/profile" onClick={handleLinkClick}>
-                {number > 0 && <div className="notification">{number}</div>}
-                <span>PROFILE</span>
+                <span color='#09aa57'>
+                    <img
+                        loading="lazy"
+                        src={currentUser?.avatar || "https://i.postimg.cc/J7dgwngh/profile-picture.png"}
+                        alt="profile-picture"
+                    />
+                    {currentUser?.username.toUpperCase()}
+                </span>
             </Link>
+
+            <Link className='message-btn' to="/chats" onClick={handleLinkClick}>
+                {number > 0 && <div className="notification">{number}</div>}
+                <span>MESSAGE</span>
+            </Link>
+
         </div>
     );
 
@@ -55,7 +60,7 @@ const Navbar = () => {
                 <Link to="/about" onClick={handleLinkClick}>AGENT</Link>
                 <Link to="/about" onClick={handleLinkClick}>ABOUT</Link>
                 <Link to="/contact" onClick={handleLinkClick}>CONTACT</Link>
-                <Link to="/chats" onClick={handleLinkClick}>Messages</Link>
+                {/* <Link to="/chats" onClick={handleLinkClick}>MESSAGE</Link> */}
             </div>
 
 
@@ -90,7 +95,6 @@ const Navbar = () => {
                     <Link to="/about" onClick={handleLinkClick}>AGENT</Link>
                     <Link to="/about" onClick={handleLinkClick}>ABOUT</Link>
                     <Link to="/contact" onClick={handleLinkClick}>CONTACT</Link>
-                    <Link to="/chats" onClick={handleLinkClick}>Messages</Link>
 
 
 

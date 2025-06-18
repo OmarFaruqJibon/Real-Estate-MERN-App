@@ -60,7 +60,7 @@ const Property = ({ id }) => {
             const response = await apiCall.post("/chats", { receiverId: userId });
 
             // Redirect to the profile page with the chatId in the state
-            navigate("/profile", { state: { chatId: response.data.id } });
+            navigate("/chats", { state: { chatId: response.data.id } });
 
         } catch (err) {
             console.log("Error found in sending message btn", err);
@@ -334,19 +334,6 @@ const Property = ({ id }) => {
                                     </a>
                                 </div>
 
-
-
-                                {/* <div className="chat">
-                                    <Link to={"/profile"}>
-                                        <button
-                                            onClick={() => handleSendMessage(post.userId)}
-                                        >
-                                            Chat Online
-                                        </button>
-                                    </Link>
-                                </div> */}
-
-
                                 <div className="chat">
                                     <Link
                                         to="/chats"
@@ -357,16 +344,6 @@ const Property = ({ id }) => {
                                         </button>
                                     </Link>
                                 </div>
-
-
-
-
-
-
-
-
-
-
                             </div>
 
                         </div>

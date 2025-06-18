@@ -118,7 +118,7 @@ function Chat({ chats: initialChats, openChatId }) {
                                 alt="avatar"
                             />
                             <div className="chatInfo">
-                                <span>{c?.receiver.username}</span>
+                                <span>{c?.receiver.username.toUpperCase()}</span>
                                 <p>{c?.lastMessage?.slice(0, 25)}...</p>
                             </div>
                         </div>
