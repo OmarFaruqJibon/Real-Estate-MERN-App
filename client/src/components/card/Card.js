@@ -13,14 +13,14 @@ const Card = ({ item }) => {
     return (
         <div className="single-card">
             <div className="img-container">
-                <Link to={`/${item.id}`}>
+                <Link to={`/list/${item.id}`}>
                     <img src={item?.images[0]} alt="Property" />
                 </Link>
             </div>
 
             <div className="text-container">
 
-                <Link to={`/${item.id}`}>
+                <Link to={`/list/${item.id}`}>
                     <h3 className='item-title'>
                         {item.title}
                     </h3>

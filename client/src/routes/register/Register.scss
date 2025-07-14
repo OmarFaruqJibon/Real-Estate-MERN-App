@@ -1,10 +1,8 @@
 .registerPage {
-    // height: 100%;
     display: flex;
 
     .formContainer {
         flex: 3;
-        // height: 100%;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -14,18 +12,41 @@
             flex-direction: column;
             gap: 16px;
 
+            .radio-group {
+
+                p {
+                    color: #2b2b2b;
+                    font-size: 15px;
+                }
+
+                label {
+                    margin-right: 35px;
+                    color: #2b2b2b;
+                    font-size: 15px;
+
+                    input {
+                        margin-right: 6px;
+                    }
+                }
+
+
+            }
+
             input {
-                padding: 15px;
-                border: 1px solid rgb(197, 197, 197);
+                flex: 3 1;
+                padding: 10px;
                 border-radius: 5px;
+                border: 1px solid #09aa57;
+                outline: none;
+                color: #141414;
             }
 
             button {
                 padding: 15px 20px;
                 border-radius: 5px;
                 border: none;
-                background-color: yellowgreen;
-                color: black;
+                background-color: #09aa57;
+                color: rgb(255, 255, 255);
                 font-weight: bold;
                 cursor: pointer;
 
@@ -46,8 +67,9 @@
 
             a {
                 font-size: 14px;
-                color: #0d00bb;
+                color: #09aa57;
                 width: max-content;
+                font-weight: 600;
             }
         }
     }

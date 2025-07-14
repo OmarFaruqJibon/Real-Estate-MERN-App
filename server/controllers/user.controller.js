@@ -6,7 +6,7 @@ export const getUsers = async (req, res) => {
     try {
         const users = await prisma.user.findMany();
         res.status(200).json(users);
-        console.log(users);
+        // console.log(users);
     } catch (err) {
         console.log(err);
         res.status(500).json({ message: "Failed to get users!" });
@@ -29,7 +29,8 @@ export const getUser = async (req, res) => {
 export const updateUser = async (req, res) => {
     const id = req.params.id;
     const tokenUserId = req.userId;
-    const { password, avatar, ...inputs } = req.body;
+    const { password, avatar, phone, ...inputs } = req.body;
+
 
     if (id !== tokenUserId) {
         return res.status(403).json({ message: "Not Authorized!" });
@@ -47,6 +48,7 @@ export const updateUser = async (req, res) => {
                 ...inputs,
                 ...(updatedPassword && { password: updatedPassword }),
                 ...(avatar && { avatar }),
+                ...(phone && { phone }),
             },
         });
 
@@ -58,16 +60,44 @@ export const updateUser = async (req, res) => {
 
     } catch (err) {
         console.log(err);
+        if (err.code === 'P2002' && err.meta?.target?.includes('phone')) {
+            return res.status(400).json({ message: "Phone number already in use!" });
+        }
         res.status(500).json({ message: "Failed to update users!" });
     }
 };
 
+export const updateUserRole = async (req, res) => {
+    const { id } = req.params;
+    const { role } = req.body;
+
+    if (!["NORMAL", "DEVELOPER", "ADMIN"].includes(role)) {
+        return res.status(400).json({ message: "Invalid role specified" });
+    }
+
+    try {
+        const updatedUser = await prisma.user.update({
+            where: { id },
+            data: { role },
+        });
+
+        const { password, ...safeUser } = updatedUser;
+        res.status(200).json(safeUser);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: "Failed to update user role" });
+    }
+};
+
+
 export const deleteUser = async (req, res) => {
     const id = req.params.id;
     const tokenUserId = req.userId;
+    const tokenUserRole = req.userRole;
 
-    if (id !== tokenUserId) {
-        return res.status(403).json({ message: "Not Authorized!" });
+    // Only allow self-deletion or admin deletion
+    if (id !== tokenUserId && tokenUserRole !== "ADMIN") {
+        return res.status(403).json({ message: "Not authorized to delete this user." });
     }
 
     try {
@@ -77,7 +107,7 @@ export const deleteUser = async (req, res) => {
         res.status(200).json({ message: "User deleted" });
     } catch (err) {
         console.log(err);
-        res.status(500).json({ message: "Failed to delete users!" });
+        res.status(500).json({ message: "Failed to delete user!" });
     }
 };
 

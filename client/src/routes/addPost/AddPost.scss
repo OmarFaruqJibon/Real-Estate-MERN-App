@@ -96,6 +96,31 @@
                             outline: none;
                             padding: 4px 14px;
                         }
+
+                        .imgWrapper {
+                            position: relative;
+                            display: inline-block;
+                            margin: 5px;
+
+                            img {
+                                width: 100px;
+                                height: 100px;
+                                object-fit: cover;
+                                border-radius: 6px;
+                            }
+
+                            .removeBtn {
+                                position: absolute;
+                                top: -11px;
+                                right: -5px;
+                                width: 22px;
+                                height: 22px;
+                                font-size: 14px;
+                                cursor: pointer;
+                                line-height: 0;
+                            }
+                        }
+
                     }
 
                 }
@@ -119,6 +144,27 @@
                     color: #09aa57;
                     transform: translateY(-3px) scale(1.02);
                 }
+
+                .cancelButton {
+                    padding: 12px 42px;
+                    border: none;
+                    outline: none;
+                    background-color: #ff3d00;
+                    color: white;
+                    cursor: pointer;
+                    margin-top: 30px;
+                    font-size: 16px;
+                    font-weight: 600;
+                    transition: transform 0.3s ease;
+                }
+
+                .cancelButton:hover {
+                    border: 2px solid #ff3d00;
+                    background-color: white;
+                    color: #ff3d00;
+                    transform: translateY(-3px) scale(1.02);
+                }
+
             }
         }
 

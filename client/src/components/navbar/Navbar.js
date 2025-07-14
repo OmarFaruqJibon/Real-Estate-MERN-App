@@ -24,7 +24,7 @@ const Navbar = () => {
     const renderUserProfile = () => (
         <div className='navbar-profile'>
 
-            <Link className='profile-btn' to="/profile" onClick={handleLinkClick}>
+            <Link className='profile-btn' to="/dashboard" onClick={handleLinkClick}>
                 <span color='#09aa57'>
                     <img
                         loading="lazy"
@@ -60,7 +60,21 @@ const Navbar = () => {
                 <Link to="/about" onClick={handleLinkClick}>AGENT</Link>
                 <Link to="/about" onClick={handleLinkClick}>ABOUT</Link>
                 <Link to="/contact" onClick={handleLinkClick}>CONTACT</Link>
-                {/* <Link to="/chats" onClick={handleLinkClick}>MESSAGE</Link> */}
+
+                {currentUser?.role === "ADMIN" && (
+                    <Link style={{ color: "#09aa57" }} to="/admin">Admin Dashboard</Link>
+                )}
+
+                {currentUser?.role === "DEVELOPER" && (
+                    <Link style={{ color: "#09aa57" }} to="/dashboard">DASHBOARD</Link>
+                )}
+
+                {currentUser?.role === "NORMAL" && (
+                    <Link style={{ color: "#09aa57" }} to="/dashboard">DASHBOARD</Link>
+                )}
+
+
+
             </div>
 
 

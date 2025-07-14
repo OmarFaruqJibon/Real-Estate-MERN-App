@@ -3,7 +3,8 @@ import prisma from '../lib/prisma.js';
 import jwt from 'jsonwebtoken';
 
 export const register = async (req, res) => {
-    const { username, email, password } = req.body;
+    const { username, email, password, role, phone } = req.body;
+
 
     try {
         // hash password
@@ -15,7 +16,9 @@ export const register = async (req, res) => {
             data: {
                 username,
                 email,
+                phone,
                 password: hashedPassword,
+                role: role || "NORMAL",  // sets role, defaults to NORMAL
             },
         });
         console.log(newUser);
@@ -23,19 +26,23 @@ export const register = async (req, res) => {
         res.status(201).json({ message: "User created successfully" });
     } catch (err) {
         console.log(err);
+        if (err.code === 'P2002' && err.meta?.target?.includes('phone')) {
+            return res.status(400).json({ message: "Phone number already in use!" });
+        }
         res.status(500).json({ message: "Failed to create user!" });
+
     }
 };
 
 
 export const login = async (req, res) => {
 
-    const { username, password } = req.body; //get user info from input form
+    const { phone, password } = req.body; //get user info from input form
 
     try {
         // CHECK IF THE USER EXISTS
         const user = await prisma.user.findUnique({
-            where: { username }
+            where: { phone }
         });
         if (!user) return res.status(400).json({ message: "Invalid User!" });
 
@@ -48,9 +55,11 @@ export const login = async (req, res) => {
         // GENERATE COOKIE TOKEN AND SEND TO THE USER
         const age = 1000 * 60 * 60 * 24 * 7;
 
-        const token = jwt.sign({ //generate jwt token
+        console.log("User role at login:", user.role);
+
+        const token = jwt.sign({  // GENERATE JWT TOKEN
             id: user.id,
-            isAdmin: true
+            role: user.role  //  include user role
         }, process.env.JWT_SECRET_KEY, { expiresIn: age });
 
         const { password: userPassword, ...userInformation } = user;

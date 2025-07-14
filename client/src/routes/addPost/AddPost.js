@@ -74,9 +74,11 @@ function AddPost() {
             navigate("/" + res.data.id)
 
             console.log(res.data);
+            alert("Your property has been submitted for review. Please wait for admin approval.");
         } catch (err) {
             console.log(err);
             setError(error);
+            alert("Failed to list property");
         }
     };
 

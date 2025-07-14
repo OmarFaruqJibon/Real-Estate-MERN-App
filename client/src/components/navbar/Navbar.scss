@@ -13,7 +13,7 @@ nav {
 
   a {
     transition: all 0.4s ease;
-    padding: 9px 15px;
+    padding: 8px 11px;
 
     @include small {
       display: none;
@@ -63,6 +63,7 @@ nav {
     justify-content: flex-end;
     font-size: 14px;
     font-weight: 700;
+    align-items: center;
 
     .navbar-profile {
       display: flex;

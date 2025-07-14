@@ -1,96 +1,106 @@
-import React, { Suspense, useContext, useEffect, useState } from 'react';
-import './profile.scss';
-import Chat from '../../components/chat/Chat';
-import apiCall from './../../lib/apiCall';
-import { Link, useNavigate, useLoaderData, Await, useLocation } from 'react-router-dom';
-import { AuthContext } from './../../context/AuthContex';
-// import List from './../../components/list/List';
+import React, { useContext } from "react";
+import "./profile.scss";
+import apiCall from "./../../lib/apiCall";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "./../../context/AuthContex";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableRow,
+  IconButton,
+  Button,
+} from "@mui/material";
+import EditNoteIcon from "@mui/icons-material/EditNote";
+import LogoutIcon from "@mui/icons-material/Logout";
 
 const Profile = () => {
-    const data = useLoaderData();
+  const { currentUser, updateUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+  console.log(currentUser);
+  const handleLogout = async () => {
+    try {
+      await apiCall.post("/auth/logout");
+      updateUser(null);
 
-    const location = useLocation();
-    const { userId } = location.state || {}; // Extract userId from state
-    // console.log(userId);
-    const { currentUser, updateUser } = useContext(AuthContext);
-    const navigate = useNavigate();
-
-    const [chatId, setChatId] = useState(null);
-    // Extract chatId from the navigation state
-    useEffect(() => {
-        if (location.state?.chatId) {
-            setChatId(location.state.chatId);
-        }
-    }, [location.state]);
-
-
-
-    const handleLogout = async () => {
-        try {
-            await apiCall.post("/auth/logout");
-            updateUser(null)
-
-            navigate("/");
-        } catch (error) {
-            console.log(error);
-        }
+      navigate("/");
+    } catch (error) {
+      console.log(error);
     }
+  };
 
-    return (
-        <div className="profilePage">
-            <div className="details">
-                <div className="wrapper">
+  return (
+    <div className="profilePage">
+      <div className="title">
+        <h3>Profile Info</h3>
 
-                    <div className="title">
-                        <h3>User Information</h3>
-                        <Link to="/profile/update">
-                            <button>Update Profile</button>
-                        </Link>
-                    </div>
+        <IconButton
+          component={Link}
+          to="/profile/update"
+          color="success"
+          sx={{ fontSize: "17px" }}
+        >
+          <EditNoteIcon />
+          Edit
+        </IconButton>
+      </div>
 
-                    <div className="info">
-                        <img src={currentUser.avatar || "https://i.postimg.cc/J7dgwngh/profile-picture.png"} alt="profile-image" />
+      <div className="info-container">
+        <div className="image">
+          <img
+            src={
+              currentUser.avatar ||
+              "https://i.postimg.cc/J7dgwngh/profile-picture.png"
+            }
+            alt="profile-image"
+          />
 
-                        <span>
-                            <b>Username:</b>  {currentUser.username.toUpperCase()}
-                        </span>
-                        <span>
-                            <b>E-mail:</b>  {currentUser.email}
-                        </span>
-                        <button onClick={handleLogout} className='logout-btn'>Logout</button>
-                    </div>
-
-
-
-                </div>
-            </div>
-
-
-
-
-
-            {/* CHAT SECTION */}
-            {/* <div className="chatContainer">
-                <div className="wrapper">
-
-                    <Suspense fallback={<p>Loading...</p>}>
-                        <Await
-                            resolve={data?.chatResponse}
-                            errorElement={<p>Error loading chats!</p>}
-                        >
-                            {(chatResponse) =>
-                                <Chat chats={chatResponse.data} openChatId={chatId} />
-                            }
-                        </Await>
-                    </Suspense>
-
-
-
-                </div>
-            </div> */}
-
+          <Button
+            color="success"
+            sx={{ fontSize: "12px" }}
+            variant="outlined"
+            size="small"
+          >
+            Upload Image
+          </Button>
         </div>
-    );
+
+        <TableContainer className="table-data">
+          <Table aria-label="property table">
+            <TableBody>
+              <TableRow>
+                <TableCell sx={{ fontWeight: "600" }}>Name</TableCell>
+                <TableCell>{currentUser?.username.toUpperCase()}</TableCell>
+              </TableRow>
+
+              <TableRow>
+                <TableCell sx={{ fontWeight: "600" }}>Email</TableCell>
+                <TableCell>{currentUser?.email}</TableCell>
+              </TableRow>
+
+              <TableRow>
+                <TableCell sx={{ fontWeight: "600" }}>Phone</TableCell>
+                <TableCell>{currentUser?.phone}</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </div>
+
+      <div className="logout">
+        <Button
+          color="error"
+          onClick={handleLogout}
+          variant="contained"
+          size="small"
+          endIcon={<LogoutIcon />}
+        >
+          Logout
+        </Button>
+      </div>
+    </div>
+  );
 };
 
 export default Profile;

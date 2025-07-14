@@ -10,8 +10,7 @@ import Footer from '../../components/footer/Footer';
 
 const Property = ({ id }) => {
 
-    const post = useLoaderData()
-    console.log(post);
+    const post = useLoaderData();
     const { currentUser } = useContext(AuthContext);
     const navigate = useNavigate();
     const [selectedImage, setSelectedImage] = useState(null);
@@ -31,23 +30,6 @@ const Property = ({ id }) => {
     //     }
     // };
 
-    // const handleSendMessage = async (e) => {
-    //     if (!currentUser) {
-    //         navigate("/login");
-    //     }
-    //     try {
-    //         await apiCall.post("/chats", { receiverId: e, });
-    //         // Redirect to the profile page
-    //         navigate(`/profile`);
-
-    //         // Force a refresh of the profile page to fetch the latest data
-    //         window.location.reload();
-
-    //     } catch (err) {
-    //         console.log("error found in sending message btn");
-    //         console.log(err);
-    //     }
-    // };
 
     const handleSendMessage = async (userId) => {
         if (!currentUser) {
@@ -101,8 +83,6 @@ const Property = ({ id }) => {
         unfurnished: "Unfurnished",
         "semiFurnished": "Semi-Furnished",
     };
-
-
 
     return (
         <>
@@ -311,11 +291,16 @@ const Property = ({ id }) => {
                             <h3 className="title">Property Owner Details</h3>
 
                             <div className="contact-info">
-                                <img src={currentUser.avatar || "https://i.postimg.cc/J7dgwngh/profile-picture.png"} alt="profile-image" />
+                                <Link to={`/profile/${post.userId}`}>
+                                    <img src={post.user.avatar || "https://i.postimg.cc/J7dgwngh/profile-picture.png"} alt="profile-image" />
 
-                                <span>
-                                    {currentUser.username.toUpperCase()}
-                                </span>
+                                </Link>
+
+                                <Link to={`/profile/${post.userId}`}>
+                                    <span>
+                                        {post.user.username.toUpperCase()}
+                                    </span>
+                                </Link>
                                 <span style={{ color: "#09aa57", fontSize: "14px" }}>
                                     Property ID: {post?.postDetail?.propertyId}
                                 </span>
@@ -369,7 +354,7 @@ const Property = ({ id }) => {
                             {saved ? "Place Saved" : "Save the Place"}
                         </button>
 
-                    </div> */}
+                        </div> */}
 
                     </div>
                 </div>

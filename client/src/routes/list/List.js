@@ -9,7 +9,7 @@ import { MapPin } from 'lucide-react';
 const List = () => {
 
     const data = useLoaderData();
-    console.log(data);
+    // console.log(data);
 
     return (
         <div className='listPage'>
