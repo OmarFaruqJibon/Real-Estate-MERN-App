@@ -1,27 +1,20 @@
 import React from "react";
+import "./UserLayoutStyle.scss";
 import {
   Box,
   CssBaseline,
   Drawer,
-  Toolbar,
   List,
   ListItem,
   ListItemIcon,
   ListItemText,
 } from "@mui/material";
 import { Home, Person } from "@mui/icons-material";
-import { Outlet, Link, useNavigate } from "react-router-dom";
+import { Outlet, Link } from "react-router-dom";
 
-const drawerWidth = 240;
+const drawerWidth = 270;
 
 const UserLayout = () => {
-  const navigate = useNavigate();
-
-  const handleLogout = () => {
-    document.cookie = "token=; max-age=0";
-    navigate("/login");
-  };
-
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
@@ -38,18 +31,19 @@ const UserLayout = () => {
           },
         }}
       >
-        <Toolbar />
-        <List>
+        {/* <Toolbar /> */}
+
+        <List sx={{ color: "white", marginTop: "17px" }}>
           <ListItem button component={Link} to="/dashboard/profile">
             <ListItemIcon>
-              <Person />
+              <Person sx={{ color: "white" }} />
             </ListItemIcon>
             <ListItemText primary="My Profile" />
           </ListItem>
 
           <ListItem button component={Link} to="/dashboard/posts">
             <ListItemIcon>
-              <Home />
+              <Home sx={{ color: "white" }} />
             </ListItemIcon>
             <ListItemText primary="My Listings" />
           </ListItem>
@@ -58,7 +52,7 @@ const UserLayout = () => {
 
       {/* Main content */}
       <Box component="main" sx={{ flexGrow: 1, p: 3, ml: "0px", mt: "10px" }}>
-        <Toolbar />
+        {/* <Toolbar /> */}
         <Outlet />
       </Box>
     </Box>

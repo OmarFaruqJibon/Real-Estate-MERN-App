@@ -112,7 +112,7 @@ const router = createBrowserRouter([
         element: <PublicUserProfile />,
       },
 
-      // ADMIN ROUTE
+      // ADMIN DASHBOARD ROUTE
       {
         path: "/admin",
         element: (
@@ -120,7 +120,6 @@ const router = createBrowserRouter([
             <AdminLayout />
           </PrivateRoute>
         ),
-        // CODE FOR ADMIN DASHBOARD
         children: [
           {
             path: "overview",
@@ -143,8 +142,8 @@ const router = createBrowserRouter([
             element: <RejectedProperties />,
           },
         ],
-        // CODE FOR ADMIN DASHBOARD jdhfu
       },
+
       // USER DASHBOARD ROUTE
       {
         path: "/dashboard",

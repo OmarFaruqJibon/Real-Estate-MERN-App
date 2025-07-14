@@ -12,7 +12,7 @@ import { Dashboard, People, BarChart } from "@mui/icons-material";
 import { Link, Outlet } from "react-router-dom";
 import PendingIcon from "@mui/icons-material/Pending";
 
-const drawerWidth = 240;
+const drawerWidth = 270;
 
 const AdminLayout = () => {
   return (
@@ -31,37 +31,37 @@ const AdminLayout = () => {
           },
         }}
       >
-        <List>
+        <List sx={{ color: "white", marginTop: "17px" }}>
           <ListItem button component={Link} to="/admin/overview">
             <ListItemIcon>
-              <Dashboard />
+              <Dashboard sx={{ color: "white" }} />
             </ListItemIcon>
             <ListItemText primary="Overview" />
           </ListItem>
           <ListItem button component={Link} to="/admin/users">
             <ListItemIcon>
-              <People />
+              <People sx={{ color: "white" }} />
             </ListItemIcon>
             <ListItemText primary="Manage Users" />
           </ListItem>
 
           <ListItem button component={Link} to="/admin/properties">
             <ListItemIcon>
-              <BarChart />
+              <BarChart sx={{ color: "white" }} />
             </ListItemIcon>
             <ListItemText primary="Manage Properties" />
           </ListItem>
 
           <ListItem button component={Link} to="/admin/pending">
             <ListItemIcon>
-              <PendingIcon />
+              <PendingIcon sx={{ color: "white" }} />
             </ListItemIcon>
             <ListItemText primary="Pending Properties" />
           </ListItem>
 
           <ListItem button component={Link} to="/admin/rejected">
             <ListItemIcon>
-              <PendingIcon />
+              <PendingIcon sx={{ color: "white" }} />
             </ListItemIcon>
             <ListItemText primary="Rejected Properties" />
           </ListItem>
