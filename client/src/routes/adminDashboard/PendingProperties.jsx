@@ -71,9 +71,9 @@ const PendingProperties = () => {
 
   return (
     <Box>
-      <Typography variant="h5" gutterBottom>
-        Pending Property Approvals
-      </Typography>
+      <div className="title">
+        <h3>Pending Property Approvals</h3>
+      </div>
       <TableContainer component={Paper}>
         <Table>
           <TableHead>

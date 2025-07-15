@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import "../userDashboard/UserLayoutStyle.scss";
 import {
   Table,
   TableBody,
@@ -21,7 +22,20 @@ const AdminProperties = () => {
   const [properties, setProperties] = useState([]);
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [alert, setAlert] = useState({ type: "", message: "" });
 
+  // Alert Timeout
+  useEffect(() => {
+    if (alert.message) {
+      const timer = setTimeout(() => {
+        setAlert({ type: "", message: "" });
+      }, 5000); // 20 seconds
+
+      return () => clearTimeout(timer);
+    }
+  }, [alert]);
+
+  // Alert Data
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -29,7 +43,7 @@ const AdminProperties = () => {
           apiCall.get("/users"),
           apiCall.get("/posts"),
         ]);
-        console.log(properties);
+
         setUsers(usersRes.data);
         setProperties(postsRes.data);
       } catch (err) {
@@ -51,8 +65,12 @@ const AdminProperties = () => {
       setProperties((prev) =>
         prev.map((p) => (p.id === postId ? { ...p, status: newStatus } : p))
       );
+      setAlert({ type: "success", message: "Post updated successfully." });
     } catch (err) {
-      alert(err.response?.data?.message || "Failed to update post status");
+      // alert(err.response?.data?.message || "Failed to update post status");
+
+      console.error(err.response?.data?.message);
+      setAlert({ type: "error", message: "Failed to update post status." });
     }
   };
 
@@ -62,7 +80,6 @@ const AdminProperties = () => {
     const user = users.find((u) => u.id === userId);
     return user ? `${user.username} (${user.email})` : "Unknown";
   };
-  console.log(properties.id);
 
   const handleDelete = async (propertyId) => {
     if (!window.confirm("Are you sure you want to delete this property?"))
@@ -73,8 +90,12 @@ const AdminProperties = () => {
       setProperties((prev) =>
         prev.filter((property) => property.id !== propertyId)
       );
+      setAlert({ type: "success", message: "Property Delete Successfully." });
     } catch (err) {
-      alert(err.response?.data?.message || "Failed to delete user");
+      // alert(err.response?.data?.message || "Failed to delete Property!");
+
+      console.error(err);
+      setAlert({ type: "error", message: "Failed to delete Property!" });
     }
   };
 
@@ -90,9 +111,9 @@ const AdminProperties = () => {
 
   return (
     <Box>
-      <Typography variant="h5" gutterBottom>
-        Property Management
-      </Typography>
+      <div className="title">
+        <h3>Property Management</h3>
+      </div>
 
       <TableContainer component={Paper}>
         <Table aria-label="property table">
@@ -146,27 +167,37 @@ const AdminProperties = () => {
                     {post.status === "approved" ? "Unapprove" : "Approve"}
                   </Button>
 
-                  <Button
+                  {/* <Button
                     variant="contained"
                     size="small"
                     color="error"
                     onClick={() => handleDelete(post.id)}
                   >
                     Delete
-                  </Button>
-                  {/* 
+                  </Button> */}
+
                   <IconButton
                     onClick={() => handleDelete(post.id)}
                     color="error"
                   >
                     <DeleteIcon />
-                  </IconButton> */}
+                  </IconButton>
                 </TableCell>
               </TableRow>
             ))}
           </TableBody>
         </Table>
       </TableContainer>
+
+      {alert.message && (
+        <Alert
+          severity={alert.type}
+          onClose={() => setAlert({ type: "", message: "" })}
+          sx={{ mb: 2 }}
+        >
+          {alert.message}
+        </Alert>
+      )}
     </Box>
   );
 };

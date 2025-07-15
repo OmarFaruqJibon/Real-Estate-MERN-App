@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import "./UserLayoutStyle.scss";
 import {
   Table,
   TableBody,
@@ -82,13 +83,17 @@ const UserPosts = () => {
 
   return (
     <Box>
-      <Typography
+      {/* <Typography
         sx={{ fontSize: "1.17em", fontWeight: "600" }}
         variant="h3"
         gutterBottom
       >
         Property Management
-      </Typography>
+      </Typography> */}
+
+      <div className="title">
+        <h3>Property Management</h3>
+      </div>
 
       <TableContainer component={Paper}>
         <Table aria-label="property table">

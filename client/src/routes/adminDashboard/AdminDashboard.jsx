@@ -55,40 +55,46 @@ const AdminDashboard = () => {
   if (loading) return <CircularProgress />;
 
   return (
-    <Grid container spacing={3}>
-      <Grid item xs={12} sm={6} md={4}>
-        <Card sx={{ bgcolor: "#e3f2fd", width: "300px" }}>
-          <CardContent>
-            <Typography variant="h6" gutterBottom>
-              <PeopleIcon /> Total Users
-            </Typography>
-            <Typography variant="h4">{stats.users}</Typography>
-          </CardContent>
-        </Card>
-      </Grid>
+    <>
+      <div className="title">
+        <h3>Overview</h3>
+      </div>
 
-      <Grid item xs={12} sm={6} md={4}>
-        <Card sx={{ bgcolor: "#fce4ec", width: "300px" }}>
-          <CardContent>
-            <Typography variant="h6" gutterBottom>
-              <HomeIcon /> Properties
-            </Typography>
-            <Typography variant="h4">{stats.properties}</Typography>
-          </CardContent>
-        </Card>
-      </Grid>
+      <Grid container spacing={3}>
+        <Grid item xs={12} sm={6} md={4}>
+          <Card sx={{ bgcolor: "#e3f2fd", width: "300px" }}>
+            <CardContent>
+              <Typography variant="h6" gutterBottom>
+                <PeopleIcon /> Total Users
+              </Typography>
+              <Typography variant="h4">{stats.users}</Typography>
+            </CardContent>
+          </Card>
+        </Grid>
 
-      <Grid item xs={12} sm={6} md={4}>
-        <Card sx={{ bgcolor: "#e8f5e9", width: "300px" }}>
-          <CardContent>
-            <Typography variant="h6" gutterBottom>
-              <AdminPanelSettingsIcon /> Developers
-            </Typography>
-            <Typography variant="h4">{stats.developers}</Typography>
-          </CardContent>
-        </Card>
+        <Grid item xs={12} sm={6} md={4}>
+          <Card sx={{ bgcolor: "#fce4ec", width: "300px" }}>
+            <CardContent>
+              <Typography variant="h6" gutterBottom>
+                <HomeIcon /> Properties
+              </Typography>
+              <Typography variant="h4">{stats.properties}</Typography>
+            </CardContent>
+          </Card>
+        </Grid>
+
+        <Grid item xs={12} sm={6} md={4}>
+          <Card sx={{ bgcolor: "#e8f5e9", width: "300px" }}>
+            <CardContent>
+              <Typography variant="h6" gutterBottom>
+                <AdminPanelSettingsIcon /> Developers
+              </Typography>
+              <Typography variant="h4">{stats.developers}</Typography>
+            </CardContent>
+          </Card>
+        </Grid>
       </Grid>
-    </Grid>
+    </>
   );
 };
 

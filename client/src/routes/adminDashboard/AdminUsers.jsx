@@ -68,6 +68,9 @@ const AdminUsers = () => {
 
   return (
     <Box>
+      <div className="title">
+        <h3>User Management</h3>
+      </div>
       <TableContainer component={Paper}>
         <Table aria-label="user table">
           <TableHead>

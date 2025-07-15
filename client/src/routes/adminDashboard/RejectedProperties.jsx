@@ -69,9 +69,9 @@ const RejectedProperties = () => {
 
   return (
     <Box>
-      <Typography variant="h5" gutterBottom>
-        Pending Property Approvals
-      </Typography>
+      <div className="title">
+        <h3>Rejected Properties</h3>
+      </div>
       <TableContainer component={Paper}>
         <Table>
           <TableHead>
