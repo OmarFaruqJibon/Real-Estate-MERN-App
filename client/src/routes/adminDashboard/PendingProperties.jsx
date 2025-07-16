@@ -8,7 +8,6 @@ import {
   TableRow,
   Paper,
   Button,
-  Typography,
   CircularProgress,
   Box,
 } from "@mui/material";
@@ -23,7 +22,7 @@ const PendingProperties = () => {
       try {
         const res = await apiCall.get("/posts?status=pending");
         setPendingPosts(res.data);
-        console.log(pendingPosts);
+        // console.log(pendingPosts);
       } catch (err) {
         console.error("Failed to fetch pending posts", err);
       } finally {
@@ -34,7 +33,7 @@ const PendingProperties = () => {
     fetchPendingPosts();
   }, []);
 
-  console.log(pendingPosts);
+  // console.log(pendingPosts);
   const handleApproval = async (postId) => {
     try {
       await apiCall.put(`/posts/status/${postId}`, { status: "approved" });

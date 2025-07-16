@@ -23,6 +23,11 @@ const Navbar = () => {
 
   const renderUserProfile = () => (
     <div className="navbar-profile">
+      <Link className="message-btn" to="/chats" onClick={handleLinkClick}>
+        {number > 0 && <div className="notification">{number}</div>}
+        <span>MESSAGE</span>
+      </Link>
+
       {currentUser?.role === "ADMIN" && (
         <Link
           className="profile-btn"
@@ -30,6 +35,7 @@ const Navbar = () => {
           onClick={handleLinkClick}
         >
           <span color="#09aa57">
+            {currentUser?.username.toUpperCase()}
             <img
               loading="lazy"
               src={
@@ -38,7 +44,6 @@ const Navbar = () => {
               }
               alt="profile-picture"
             />
-            {currentUser?.username.toUpperCase()}
           </span>
         </Link>
       )}
@@ -50,6 +55,7 @@ const Navbar = () => {
           onClick={handleLinkClick}
         >
           <span color="#09aa57">
+            {currentUser?.username?.toUpperCase()}
             <img
               loading="lazy"
               src={
@@ -58,15 +64,9 @@ const Navbar = () => {
               }
               alt="profile-picture"
             />
-            {currentUser?.username?.toUpperCase()}
           </span>
         </Link>
       )}
-
-      <Link className="message-btn" to="/chats" onClick={handleLinkClick}>
-        {number > 0 && <div className="notification">{number}</div>}
-        <span>MESSAGE</span>
-      </Link>
     </div>
   );
 
@@ -122,9 +122,15 @@ const Navbar = () => {
           </Link>
         )}
 
-        <Link className="register" to="/addPost" onClick={handleLinkClick}>
+        {/* <Link className="register" to="/addPost" onClick={handleLinkClick}>
           LIST YOUR PROPERTY
-        </Link>
+        </Link> */}
+
+        {currentUser?.role !== "ADMIN" && (
+          <Link className="register" to="/addPost" onClick={handleLinkClick}>
+            LIST YOUR PROPERTY
+          </Link>
+        )}
 
         {/* {currentUser ? renderUserProfile() : (
                     <div>
@@ -169,9 +175,16 @@ const Navbar = () => {
               SIGN IN
             </Link>
           )}
-          <Link className="register" to="/addPost" onClick={handleLinkClick}>
+
+          {/* <Link className="register" to="/addPost" onClick={handleLinkClick}>
             LIST YOUR PROPERTY
-          </Link>
+          </Link> */}
+
+          {currentUser?.role !== "ADMIN" && (
+            <Link className="register" to="/addPost" onClick={handleLinkClick}>
+              LIST YOUR PROPERTY
+            </Link>
+          )}
         </div>
       </div>
     </nav>

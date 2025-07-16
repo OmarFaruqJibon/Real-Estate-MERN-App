@@ -1,0 +1,153 @@
+.public-profile-container {
+  padding: 2rem;
+  margin: 0 auto;
+}
+
+.profile-header {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.profile-avatar {
+  width: 200px !important;
+  height: 200px !important;
+  border: 3px solid #09aa57;
+}
+
+.username {
+  font-size: 50px !important;
+  font-weight: 600 !important;
+}
+
+.email {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: rgb(22, 21, 21);
+  font-size: 0.9rem;
+  margin-top: 5px !important;
+}
+
+.contact-bts {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-bottom: 20px !important;
+}
+
+.section-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #e7edee;
+  padding: 14px 10px;
+  margin-top: 40px;
+  margin-bottom: 20px;
+
+  h3 {
+    font-weight: 600;
+  }
+}
+
+.listing-section {
+  display: flex;
+  .property-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 350px !important;
+    height: 100%;
+    min-height: 420px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+
+    img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    h3 {
+      text-align: left;
+      font-size: 1rem;
+      font-weight: 600;
+      margin: 10px 0;
+      height: 48px;
+      overflow: hidden;
+    }
+
+    .card-body {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex-grow: 1;
+    }
+
+    .mid,
+    .last {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      font-size: 14px;
+
+      p {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+    }
+
+    .price {
+      color: #0fb45f;
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    &:hover {
+      transform: translateY(-5px) scale(1.02);
+      border-bottom: 3px solid #09aa57;
+
+      h3 {
+        color: #09aa57;
+      }
+    }
+  }
+}
+
+/* Responsive Breakpoints */
+@media screen and (max-width: 960px) {
+  .profile-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .public-profile-container {
+    padding: 1rem;
+  }
+
+  .property-card .details-btn {
+    font-size: 0.8rem;
+  }
+
+  .profile-header {
+    align-items: center;
+  }
+  .profile-avatar {
+    width: 100px !important;
+    height: 100px !important;
+    border: 2px solid #09aa57;
+  }
+
+  .username {
+    font-size: 30px !important;
+  }
+}
