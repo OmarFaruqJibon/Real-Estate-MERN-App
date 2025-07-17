@@ -79,7 +79,7 @@ const Profile = () => {
             variant="outlined"
             size="small"
           >
-            Upload Image
+            Update Image
           </Button>
         </div>
 
@@ -109,9 +109,9 @@ const Profile = () => {
         <Button
           color="error"
           onClick={handleLogout}
-          variant="contained"
+          variant="outlined"
           size="small"
-          endIcon={<LogoutIcon />}
+          startIcon={<LogoutIcon />}
         >
           Logout
         </Button>
@@ -119,7 +119,7 @@ const Profile = () => {
         <Button
           onClick={handleDeleteAccount}
           color="error"
-          variant="contained"
+          variant="outlined"
           size="small"
         >
           Delete Account
