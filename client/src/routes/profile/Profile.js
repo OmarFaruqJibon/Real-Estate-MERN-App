@@ -18,7 +18,7 @@ import LogoutIcon from "@mui/icons-material/Logout";
 const Profile = () => {
   const { currentUser, updateUser } = useContext(AuthContext);
   const navigate = useNavigate();
-  console.log(currentUser);
+
   const handleLogout = async () => {
     try {
       await apiCall.post("/auth/logout");
@@ -27,6 +27,23 @@ const Profile = () => {
       navigate("/");
     } catch (error) {
       console.log(error);
+    }
+  };
+
+  const handleDeleteAccount = async () => {
+    if (
+      !window.confirm(
+        "Are you sure you want to delete your account? This action cannot be undone."
+      )
+    )
+      return;
+    try {
+      await apiCall.delete(`/users/${currentUser.id}`);
+      updateUser(null);
+      navigate("/");
+    } catch (error) {
+      console.error("Failed to delete account:", error);
+      alert("Something went wrong while deleting your account.");
     }
   };
 
@@ -97,6 +114,15 @@ const Profile = () => {
           endIcon={<LogoutIcon />}
         >
           Logout
+        </Button>
+
+        <Button
+          onClick={handleDeleteAccount}
+          color="error"
+          variant="contained"
+          size="small"
+        >
+          Delete Account
         </Button>
       </div>
     </div>

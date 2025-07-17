@@ -1,199 +1,191 @@
 import prisma from "../lib/prisma.js";
 import bcrypt from "bcrypt";
 
-
 export const getUsers = async (req, res) => {
-    try {
-        const users = await prisma.user.findMany();
-        res.status(200).json(users);
-        // console.log(users);
-    } catch (err) {
-        console.log(err);
-        res.status(500).json({ message: "Failed to get users!" });
-    }
+  try {
+    const users = await prisma.user.findMany();
+    res.status(200).json(users);
+    // console.log(users);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: "Failed to get users!" });
+  }
 };
 
 export const getUser = async (req, res) => {
-    const id = req.params.id;
-    try {
-        const user = await prisma.user.findUnique({
-            where: { id },
-        });
-        res.status(200).json(user);
-    } catch (err) {
-        console.log(err);
-        res.status(500).json({ message: "Failed to get user!" });
-    }
+  const id = req.params.id;
+  try {
+    const user = await prisma.user.findUnique({
+      where: { id },
+    });
+    res.status(200).json(user);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: "Failed to get user!" });
+  }
 };
 
 export const updateUser = async (req, res) => {
-    const id = req.params.id;
-    const tokenUserId = req.userId;
-    const { password, avatar, phone, ...inputs } = req.body;
+  const id = req.params.id;
+  const tokenUserId = req.userId;
+  const { password, avatar, phone, ...inputs } = req.body;
 
+  if (id !== tokenUserId) {
+    return res.status(403).json({ message: "Not Authorized!" });
+  }
 
-    if (id !== tokenUserId) {
-        return res.status(403).json({ message: "Not Authorized!" });
+  let updatedPassword = null;
+  try {
+    if (password) {
+      updatedPassword = await bcrypt.hash(password, 10);
     }
 
-    let updatedPassword = null;
-    try {
-        if (password) {
-            updatedPassword = await bcrypt.hash(password, 10);
-        }
+    const updatedUser = await prisma.user.update({
+      where: { id },
+      data: {
+        ...inputs,
+        ...(updatedPassword && { password: updatedPassword }),
+        ...(avatar && { avatar }),
+        ...(phone && { phone }),
+      },
+    });
 
-        const updatedUser = await prisma.user.update({
-            where: { id },
-            data: {
-                ...inputs,
-                ...(updatedPassword && { password: updatedPassword }),
-                ...(avatar && { avatar }),
-                ...(phone && { phone }),
-            },
-        });
+    const { password: userPassword, ...rest } = updatedUser;
 
-        const { password: userPassword, ...rest } = updatedUser;
-
-        res.status(200).json(rest);
-        console.log(rest);
-
-
-    } catch (err) {
-        console.log(err);
-        if (err.code === 'P2002' && err.meta?.target?.includes('phone')) {
-            return res.status(400).json({ message: "Phone number already in use!" });
-        }
-        res.status(500).json({ message: "Failed to update users!" });
+    res.status(200).json(rest);
+    console.log(rest);
+  } catch (err) {
+    console.log(err);
+    if (err.code === "P2002" && err.meta?.target?.includes("phone")) {
+      return res.status(400).json({ message: "Phone number already in use!" });
     }
+    res.status(500).json({ message: "Failed to update users!" });
+  }
 };
 
 export const updateUserRole = async (req, res) => {
-    const { id } = req.params;
-    const { role } = req.body;
+  const { id } = req.params;
+  const { role } = req.body;
 
-    if (!["NORMAL", "DEVELOPER", "ADMIN"].includes(role)) {
-        return res.status(400).json({ message: "Invalid role specified" });
-    }
+  if (!["NORMAL", "DEVELOPER", "ADMIN"].includes(role)) {
+    return res.status(400).json({ message: "Invalid role specified" });
+  }
 
-    try {
-        const updatedUser = await prisma.user.update({
-            where: { id },
-            data: { role },
-        });
+  try {
+    const updatedUser = await prisma.user.update({
+      where: { id },
+      data: { role },
+    });
 
-        const { password, ...safeUser } = updatedUser;
-        res.status(200).json(safeUser);
-    } catch (err) {
-        console.error(err);
-        res.status(500).json({ message: "Failed to update user role" });
-    }
+    const { password, ...safeUser } = updatedUser;
+    res.status(200).json(safeUser);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Failed to update user role" });
+  }
 };
-
 
 export const deleteUser = async (req, res) => {
-    const id = req.params.id;
-    const tokenUserId = req.userId;
-    const tokenUserRole = req.userRole;
+  const id = req.params.id;
+  const tokenUserId = req.userId;
+  const tokenUserRole = req.userRole;
 
-    // Only allow self-deletion or admin deletion
-    if (id !== tokenUserId && tokenUserRole !== "ADMIN") {
-        return res.status(403).json({ message: "Not authorized to delete this user." });
-    }
+  // Only allow self-deletion or admin deletion
+  if (id !== tokenUserId && tokenUserRole !== "ADMIN") {
+    return res
+      .status(403)
+      .json({ message: "Not authorized to delete this user." });
+  }
 
-    try {
-        await prisma.user.delete({
-            where: { id },
-        });
-        res.status(200).json({ message: "User deleted" });
-    } catch (err) {
-        console.log(err);
-        res.status(500).json({ message: "Failed to delete user!" });
-    }
+  try {
+    await prisma.user.delete({
+      where: { id },
+    });
+    res.status(200).json({ message: "User deleted" });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: "Failed to delete user!" });
+  }
 };
 
+// export const savePost = async (req, res) => {
+//     const postId = req.body?.postId;
+//     const tokenUserId = req.userId;
 
-export const savePost = async (req, res) => {
-    const postId = req.body?.postId;
-    const tokenUserId = req.userId;
+//     try {
+//         const savedPost = await prisma.savedPost.findUnique({
+//             where: {
+//                 userId_postId: {
+//                     userId: tokenUserId,
+//                     postId,
+//                 },
+//             },
+//         });
 
-    try {
-        const savedPost = await prisma.savedPost.findUnique({
-            where: {
-                userId_postId: {
-                    userId: tokenUserId,
-                    postId,
-                },
-            },
-        });
-
-        if (savedPost) {
-            await prisma.savedPost.delete({
-                where: {
-                    id: savedPost?.id,
-                },
-            });
-            res.status(200).json({ message: "Post removed from saved list" });
-        } else {
-            await prisma.savedPost.create({
-                data: {
-                    userId: tokenUserId,
-                    postId,
-                },
-            });
-            res.status(200).json({ message: "Post saved" });
-        }
-    } catch (err) {
-        console.log(err);
-        res.status(500).json({ message: "Failed to delete users!" });
-    }
-};
-
+//         if (savedPost) {
+//             await prisma.savedPost.delete({
+//                 where: {
+//                     id: savedPost?.id,
+//                 },
+//             });
+//             res.status(200).json({ message: "Post removed from saved list" });
+//         } else {
+//             await prisma.savedPost.create({
+//                 data: {
+//                     userId: tokenUserId,
+//                     postId,
+//                 },
+//             });
+//             res.status(200).json({ message: "Post saved" });
+//         }
+//     } catch (err) {
+//         console.log(err);
+//         res.status(500).json({ message: "Failed to delete users!" });
+//     }
+// };
 
 export const profilePosts = async (req, res) => {
-    const tokenUserId = req.params.userId;
+  const tokenUserId = req.params.userId;
 
-    try {
-        const userPosts = await prisma.post.findMany({
-            where: { userId: tokenUserId },
-        });
-        const saved = await prisma.savedPost.findMany({
-            where: { userId: tokenUserId },
-            include: {
-                post: true,
-            },
-        });
+  try {
+    const userPosts = await prisma.post.findMany({
+      where: { userId: tokenUserId },
+    });
+    // const saved = await prisma.savedPost.findMany({
+    //   where: { userId: tokenUserId },
+    //   include: {
+    //     post: true,
+    //   },
+    // });
 
-        const savedPosts = saved.map((item) => item.post);
-        res.status(200).json({ userPosts, savedPosts });
+    // const savedPosts = saved.map((item) => item.post);
+    res.status(200).json({ userPosts });
 
-
-        // console.log(userPosts);
-
-    } catch (err) {
-        console.log(err);
-        res.status(500).json({ message: "Failed to get profile posts!" });
-    }
+    // console.log(userPosts);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: "Failed to get profile posts!" });
+  }
 };
 
-
 export const getNotificationNumber = async (req, res) => {
-    const tokenUserId = req.userId;
-    try {
-        const number = await prisma.chat.count({
-            where: {
-                userIDs: {
-                    hasSome: [tokenUserId],
-                },
-                NOT: {
-                    seenBy: {
-                        hasSome: [tokenUserId],
-                    },
-                },
-            },
-        });
-        res.status(200).json(number);
-    } catch (err) {
-        console.log(err);
-        res.status(500).json({ message: "Failed to get profile posts!" });
-    }
+  const tokenUserId = req.userId;
+  try {
+    const number = await prisma.chat.count({
+      where: {
+        userIDs: {
+          hasSome: [tokenUserId],
+        },
+        NOT: {
+          seenBy: {
+            hasSome: [tokenUserId],
+          },
+        },
+      },
+    });
+    res.status(200).json(number);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: "Failed to get profile posts!" });
+  }
 };

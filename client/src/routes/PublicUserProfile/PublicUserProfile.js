@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { MapPin, Bath, BedDouble, Landmark } from "lucide-react";
-import { Avatar, Box, Typography, Grid, Divider, Button } from "@mui/material";
+import { Avatar, Box, Typography, Grid, Button } from "@mui/material";
 import EmailIcon from "@mui/icons-material/Email";
 import PhoneIcon from "@mui/icons-material/Phone";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
@@ -60,6 +60,7 @@ const PublicUserProfile = () => {
         >
           View Properties
         </Button>
+
         <Button variant="outlined" startIcon={<ChatIcon />} color="secondary">
           Chat Online
         </Button>
