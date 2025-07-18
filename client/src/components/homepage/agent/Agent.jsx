@@ -22,8 +22,6 @@ const Agent = () => {
     fetchData();
   }, []);
 
-  console.log(agents);
-
   return (
     <div className="agent-container">
       <div className="top">

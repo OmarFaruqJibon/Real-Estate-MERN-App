@@ -2,25 +2,44 @@ import jwt from "jsonwebtoken";
 import prisma from "../lib/prisma.js";
 
 export const getPosts = async (req, res) => {
-  const query = req.query;
+  const { city, type, property, bedroom, status, minPrice, maxPrice } =
+    req.query;
 
   try {
+    const filters = {
+      status: status || "approved",
+    };
+
+    if (city) filters.city = city;
+    if (property) filters.property = property;
+    if (bedroom) filters.bedroom = parseInt(bedroom);
+
+    // Convert UI-friendly type to enum
+    if (type) {
+      if (type.toLowerCase() === "buy") filters.type = "sell";
+      else if (type.toLowerCase() === "rent") filters.type = "rent";
+    }
+
+    // Price logic
+    const min = parseInt(minPrice);
+    const max = parseInt(maxPrice);
+
+    if (!isNaN(min) || !isNaN(max)) {
+      filters.price = {
+        gte: !isNaN(min) ? min : 0,
+        lte: !isNaN(max) && max > 0 ? max : 100000000000,
+      };
+    }
+
+    // console.log("💡 Prisma query filters:", filters);
+
     const posts = await prisma.post.findMany({
-      where: {
-        city: query.city || undefined,
-        type: query.type || undefined,
-        property: query.property || undefined,
-        bedroom: query.bedroom ? parseInt(query.bedroom) : undefined,
-        status: query.status || "approved",
-        price: {
-          gte: query.minPrice ? parseInt(query.minPrice) : 0,
-          lte: query.maxPrice ? parseInt(query.maxPrice) : 10000000,
-        },
-      },
+      where: filters,
     });
+
     res.status(200).json(posts);
   } catch (err) {
-    console.log(err);
+    console.error("Error in getPosts:", err);
     res.status(500).json({ message: "Failed to get posts" });
   }
 };

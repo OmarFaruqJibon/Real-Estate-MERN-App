@@ -2,21 +2,26 @@ import React, { Suspense } from "react";
 import "./list.scss";
 import Filter from "../../components/filter/Filter";
 import Card from "../../components/card/Card";
-import { Await, useLoaderData } from "react-router-dom";
+import { Await, useLoaderData, useSearchParams } from "react-router-dom";
 import { MapPin } from "lucide-react";
 
 const List = () => {
   const data = useLoaderData();
+  const [searchParams] = useSearchParams();
+  const city = searchParams.get("city") || "";
 
   return (
     <div className="listPage">
       <div className="upperPart">
+        {/* City Location */}
         <div className="cityLocation">
           <span>
             <MapPin color="#09aa57" size={19} style={{ marginTop: "3px" }} />
           </span>
-          <span>Dhaka</span>
+
+          <span>{city || "Search Location"}</span>
         </div>
+        {/* Sort */}
         <div className="sort">
           <select title="Sort by" name="sort_by" id="sort_by">
             <option value="">Sort by</option>
@@ -39,10 +44,6 @@ const List = () => {
 
         <div className="listContainer">
           <div className="wrapper">
-            {/* <Filter /> */}
-
-            {/* <FilterPopup /> */}
-
             <Suspense fallback={<p>Loading...</p>}>
               <Await
                 resolve={data?.postResponse}
@@ -55,12 +56,6 @@ const List = () => {
                 }
               </Await>
             </Suspense>
-
-            {/* <div className="card-wrapper">
-                        {data?.map(item => (
-                            <Card key={item.id} item={item} />
-                        ))}
-                    </div> */}
           </div>
         </div>
       </div>

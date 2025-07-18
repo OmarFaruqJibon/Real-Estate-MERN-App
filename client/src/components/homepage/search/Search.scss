@@ -1,95 +1,91 @@
 @import "../../../responsive.scss";
 
 .searchBar {
+  button {
+    padding: 12px 25px;
+    border: none;
+    cursor: pointer;
+  }
+  .type {
     button {
-        padding: 12px 25px;
-        border: none;
+      text-transform: uppercase;
+      padding: 17px 30px;
+      font-size: 15px;
+      font-weight: 600;
+      color: #2c2c2c;
+      background-color: white;
+      border-radius: 0px;
+
+      @include small {
+        padding: 17px 20px;
+      }
+
+      &.active {
+        background-color: #09aa57;
+        color: white;
+      }
+    }
+  }
+
+  .form {
+    display: flex;
+    background-color: #ffffff;
+    padding-left: 15px;
+
+    @include small {
+      flex-direction: column;
+      padding-left: 20px;
+      padding-right: 20px;
+      margin: 0px 7px;
+    }
+
+    .input-item {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding-top: 15px;
+      padding-bottom: 3px;
+      outline: none;
+
+      label {
+        color: rgb(17, 17, 17);
+        font-weight: 500;
+        font-size: 14px;
+        text-transform: uppercase;
+      }
+    }
+
+    input {
+      border: none;
+      border: none;
+      padding: 9px 0px;
+      width: 300px;
+      outline: none;
+
+      @include medium {
+        width: 210px;
+      }
+    }
+
+    .input-item-btn {
+      .button {
+        background-color: #09aa57;
+        color: white;
+        font-weight: 600;
+        align-items: center;
+        padding: 28px 0px;
+        font-size: 15px;
+        width: 120px;
         cursor: pointer;
-    }
-
-
-    .type {
-
-        button {
-            text-transform: uppercase;
-            padding: 17px 30px;
-            font-size: 15px;
-            font-weight: 600;
-            color: #2c2c2c;
-            background-color: white;
-            // margin-right: 5px;
-            border-radius: 0px;
-
-            @include small {
-                padding: 17px 20px;
-            }
-
-            &.active {
-                background-color: #09aa57;
-                color: white;
-            }
-        }
-    }
-
-    .form {
-        display: flex;
-        background-color: #ffffff;
-        padding-left: 15px;
+        text-transform: uppercase;
 
         @include small {
-            flex-direction: column;
-            padding-left: 20px;
-            padding-right: 20px;
-            margin: 0px 7px;
+          padding: 13px 0px;
+          margin-bottom: 20px;
+          margin-top: 10px;
+          width: 100%;
         }
-
-
-        .input-item {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            padding-top: 15px;
-            padding-bottom: 3px;
-
-            label {
-                color: rgb(17, 17, 17);
-                font-weight: 500;
-                font-size: 14px;
-                text-transform: uppercase;
-            }
-        }
-
-        input {
-            border: none;
-            border: none;
-            padding: 9px 0px;
-            width: 300px;
-
-            @include medium {
-                width: 210px;
-            }
-        }
-
-        .input-item-btn {
-            .button {
-                background-color: #09aa57;
-                color: white;
-                font-weight: 600;
-                align-items: center;
-                padding: 28px 0px;
-                font-size: 15px;
-                width: 120px;
-                cursor: pointer;
-                text-transform: uppercase;
-
-                @include small {
-                    padding: 13px 0px;
-                    margin-bottom: 20px;
-                    margin-top: 10px;
-                    width: 100%;
-                }
-            }
-
-        }
+      }
     }
+  }
 }
