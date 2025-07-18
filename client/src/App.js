@@ -22,10 +22,10 @@ import AdminProperties from "./routes/adminDashboard/AdminProperties";
 import PendingProperties from "./routes/adminDashboard/PendingProperties";
 import RejectedProperties from "./routes/adminDashboard/RejectedProperties";
 import UserLayout from "./routes/userDashboard/UserLayout";
-import UserProfile from "./routes/userDashboard/UserProfile";
 import UserPosts from "./routes/userDashboard/UserPosts";
 import EditPost from "./routes/userDashboard/EditPost";
 import PublicUserProfile from "./routes/PublicUserProfile/PublicUserProfile";
+import Agent from "./components/homepage/agent/Agent";
 
 const router = createBrowserRouter([
   {
@@ -53,6 +53,10 @@ const router = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact />,
+      },
+      {
+        path: "/agent",
+        element: <Agent />,
       },
       {
         path: "/register",

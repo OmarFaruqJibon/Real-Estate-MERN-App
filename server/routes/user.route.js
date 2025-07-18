@@ -13,7 +13,8 @@ import authorizeRole from "../middleware/authorizeRole.js";
 
 const router = express.Router();
 
-router.get("/", verifyToken, authorizeRole(["ADMIN"]), getUsers);
+// router.get("/", verifyToken, authorizeRole(["ADMIN"]), getUsers);
+router.get("/", verifyToken, getUsers);
 router.put("/:id", verifyToken, updateUser);
 router.delete("/:id", verifyToken, deleteUser);
 router.get("/profilePosts", verifyToken, profilePosts);

@@ -84,7 +84,7 @@ const Navbar = () => {
         <Link to="/list" onClick={handleLinkClick}>
           PROPERTY
         </Link>
-        <Link to="/about" onClick={handleLinkClick}>
+        <Link to="/agent" onClick={handleLinkClick}>
           AGENT
         </Link>
         <Link to="/about" onClick={handleLinkClick}>
