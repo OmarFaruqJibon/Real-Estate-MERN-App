@@ -92,39 +92,38 @@ const PublicUserProfile = () => {
                 minWidth: 0,
               }}
             >
-              <div className="property-card">
-                <Link to="/list">
-                  <img src={post.images[0]} alt="Property" />
-                </Link>
-                <div className="card-body">
-                  <Link to="/list">
+              <Link to={`/list/${post.id}`}>
+                <div className="property-card">
+                  <img src={post?.images[0]} alt="Property" />
+
+                  <div className="card-body">
                     <h3>{post.title}</h3>
-                  </Link>
 
-                  <div className="mid">
-                    <p>
-                      <MapPin color="#000000c7" size={18} />
-                      <span>{post.city}</span>
-                    </p>
-                    <p className="price">BDT {post?.price}</p>
-                  </div>
+                    <div className="mid">
+                      <p>
+                        <MapPin color="#000000c7" size={18} />
+                        <span>{post?.city}</span>
+                      </p>
+                      <p className="price">BDT {post?.price}</p>
+                    </div>
 
-                  <div className="last">
-                    <p>
-                      <Landmark color="#000000c7" size={18} />
-                      <span>{post?.size} sqft</span>
-                    </p>
-                    <p>
-                      <BedDouble color="#000000c7" size={18} />
-                      <span>{post?.bedroom} Bed</span>
-                    </p>
-                    <p>
-                      <Bath color="#000000c7" size={18} />
-                      <span>{post?.bathroom} Bath</span>
-                    </p>
+                    <div className="last">
+                      <p>
+                        <Landmark color="#000000c7" size={18} />
+                        <span>{post?.size} sqft</span>
+                      </p>
+                      <p>
+                        <BedDouble color="#000000c7" size={18} />
+                        <span>{post?.bedroom} Bed</span>
+                      </p>
+                      <p>
+                        <Bath color="#000000c7" size={18} />
+                        <span>{post?.bathroom} Bath</span>
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             </Grid>
           ))}
         </Grid>
