@@ -9,7 +9,7 @@ const WhyUs = () => {
         <span className="lined-title">WHY US</span>
         <h1>Why Choose Us?</h1>
         <p>
-          We have over 8 years of experience and knowledge on how to sell more.
+          We have over 8 years of experience and knowledge on how to sell more
         </p>
       </div>
 
@@ -21,9 +21,8 @@ const WhyUs = () => {
           <div className="card-text">
             <h3>Find Your Home</h3>
             <p>
-              Quis ipsum suspendisse ultrices, <br /> risus commodo viverra
-              maecenas <br />
-              accumsan lacus vel facilisis.
+              Easily search and filter listings <br /> to discover your ideal{" "}
+              <br /> home in just a few clicks
             </p>
           </div>
         </div>
@@ -35,9 +34,8 @@ const WhyUs = () => {
           <div className="card-text">
             <h3>Transportation support</h3>
             <p>
-              Quis ipsum suspendisse ultrices, <br /> risus commodo viverra
-              maecenas <br />
-              accumsan lacus vel facilisis.
+              We help arrange property visits
+              <br /> with transport options for a <br /> hassle-free experience
             </p>
           </div>
         </div>
@@ -48,9 +46,8 @@ const WhyUs = () => {
           <div className="card-text">
             <h3>Save Your Money</h3>
             <p>
-              Quis ipsum suspendisse ultrices, <br /> risus commodo viverra
-              maecenas <br />
-              accumsan lacus vel facilisis.
+              Get competitive prices, <br /> expert advice, and no hidden <br />
+              fees on every property deal
             </p>
           </div>
         </div>

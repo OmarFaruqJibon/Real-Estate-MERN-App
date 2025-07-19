@@ -25,7 +25,7 @@ import UserLayout from "./routes/userDashboard/UserLayout";
 import UserPosts from "./routes/userDashboard/UserPosts";
 import EditPost from "./routes/userDashboard/EditPost";
 import PublicUserProfile from "./routes/PublicUserProfile/PublicUserProfile";
-import Agent from "./components/homepage/agent/Agent";
+import Agents from "./routes/agents/Agents";
 
 const router = createBrowserRouter([
   {
@@ -56,7 +56,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/agent",
-        element: <Agent />,
+        element: <Agents />,
       },
       {
         path: "/register",

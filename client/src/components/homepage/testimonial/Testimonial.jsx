@@ -8,34 +8,39 @@ import { Star } from "lucide-react";
 
 const testimonials = [
   {
-    name: "John Doe",
-    review: "It helped me land my dream job! Mock interviews were spot on.",
+    name: "Ayesha Rahman",
+    review:
+      "I posted my property easily and got quick responses. Simple and effective platform!",
     rating: 5,
-    image: "https://randomuser.me/api/portraits/men/32.jpg",
+    image: "https://randomuser.me/api/portraits/women/68.jpg",
   },
   {
-    name: "Jane Smith",
-    review: "The resume builder is amazing! It saved me so much time.",
+    name: "Tanvir Hossain",
+    review:
+      "Love the clean dashboard. Tracking my listings and approval status is super smooth.",
     rating: 4,
-    image: "https://randomuser.me/api/portraits/women/44.jpg",
+    image: "https://randomuser.me/api/portraits/men/45.jpg",
   },
   {
-    name: "Michael Johnson",
-    review: "The AI-generated cover letters are really helpful to me.",
-    rating: 3,
-    image: "https://randomuser.me/api/portraits/men/50.jpg",
-  },
-  {
-    name: "Emily Davis",
-    review: "This platform boosted my confidence for interviews truly!",
-    rating: 4,
-    image: "https://randomuser.me/api/portraits/women/55.jpg",
-  },
-  {
-    name: "David Lee",
-    review: "Super easy to use and very effective. Highly recommended!",
+    name: "Nadia Karim",
+    review:
+      "Great experience! The approval process was fast and I could manage my posts in one place.",
     rating: 5,
-    image: "https://randomuser.me/api/portraits/men/61.jpg",
+    image: "https://randomuser.me/api/portraits/women/52.jpg",
+  },
+  {
+    name: "Fahim Ahmed",
+    review:
+      "As a developer, managing posts and user roles from the admin panel was very convenient.",
+    rating: 4,
+    image: "https://randomuser.me/api/portraits/men/30.jpg",
+  },
+  {
+    name: "Mehzabin Alam",
+    review:
+      "User-friendly interface. I found a perfect flat to rent within a few days. Highly recommended!",
+    rating: 5,
+    image: "https://randomuser.me/api/portraits/women/49.jpg",
   },
 ];
 

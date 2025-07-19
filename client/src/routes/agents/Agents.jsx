@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import "./Agent.scss";
+import "./Agents.scss";
 import { Card, CardContent, Typography, Box, CardMedia } from "@mui/material";
 import StarIcon from "@mui/icons-material/Star";
 import VerifiedIcon from "@mui/icons-material/Verified";
-import apiCall from "../../../lib/apiCall";
 import { Link } from "react-router-dom";
+import apiCall from "../../lib/apiCall";
 
-const Agent = () => {
+const Agents = () => {
   const [agents, setAgents] = useState([]);
 
   useEffect(() => {
@@ -29,7 +29,7 @@ const Agent = () => {
       </div>
 
       <div className="agent-card">
-        {agents?.slice(0, 4).map((agent) => (
+        {agents?.map((agent) => (
           <Link to={`/profile/${agent.id}`}>
             <Card sx={{ display: "flex" }} className="agent-single-card">
               <CardMedia
@@ -128,12 +128,8 @@ const Agent = () => {
           </Link>
         ))}
       </div>
-
-      <Link to={"/agent"}>
-        <button>See More</button>
-      </Link>
     </div>
   );
 };
 
-export default Agent;
+export default Agents;

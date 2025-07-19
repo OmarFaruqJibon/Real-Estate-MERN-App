@@ -19,7 +19,8 @@ const HowWorks = () => {
           <div className="card-text">
             <h3>Choose A Category</h3>
             <p>
-              Quis ipsum suspendisse ultrices, risus commodo viverra maecenas
+              Browse listings by location, price, or property type in just
+              seconds
             </p>
           </div>
         </div>
@@ -31,7 +32,7 @@ const HowWorks = () => {
           <div className="card-text">
             <h3>Find Real Esate</h3>
             <p>
-              Quis ipsum suspendisse ultrices, risus commodo viverra maecenas
+              Explore property details and photos to pick your perfect match
             </p>
           </div>
         </div>
@@ -43,7 +44,8 @@ const HowWorks = () => {
           <div className="card-text">
             <h3>Take The Key</h3>
             <p>
-              Quis ipsum suspendisse ultrices, risus commodo viverra maecenas
+              Schedule a visit and finish the paperwork very fast abd without
+              hassle
             </p>
           </div>
         </div>
@@ -55,7 +57,8 @@ const HowWorks = () => {
           <div className="card-text">
             <h3>Live Happy</h3>
             <p>
-              Quis ipsum suspendisse ultrices, risus commodo viverra maecenas
+              Move in and enjoy your new space with full peace of mind at your
+              dream house
             </p>
           </div>
         </div>

@@ -16,7 +16,7 @@ const Home = () => {
       <section className="hero">
         <div className="hero-overlay">
           <h1>Find Your Dream Home</h1>
-          <p>Search real estate properties in your area.</p>
+          <p>Search real estate properties in your area</p>
           <div className="search-bar">
             <Search />
           </div>

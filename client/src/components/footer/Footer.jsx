@@ -20,8 +20,9 @@ const Footer = () => {
         <div className="single-content">
           <h1>Haven House</h1>
           <p>
-            Lorem ipsum dolo sit azmet <br /> consecter dipise consult elit.
-            <br /> Maecenas mamus antesme non.
+            A modern real estate platform
+            <br /> to buy, sell, and manage properties
+            <br /> easily with smart features
           </p>
           <div className="social">
             <Twitter size={20} color="#09aa57" />

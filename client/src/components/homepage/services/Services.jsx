@@ -24,7 +24,8 @@ const Services = () => {
           <div className="card-text">
             <h3>Find Places Anywhere</h3>
             <p>
-              Quis ipsum suspendisse ultrices, risus commodo viverra maecenas
+              Browse listings in your city or beyond, and find homes that match
+              your needs quickly and easily
             </p>
           </div>
         </div>
@@ -36,7 +37,8 @@ const Services = () => {
           <div className="card-text">
             <h3>We Have Agents</h3>
             <p>
-              Quis ipsum suspendisse ultrices, risus commodo viverra maecenas
+              Our expert agents are always ready to help you buy, sell, or rent
+              with confidence and care
             </p>
           </div>
         </div>
@@ -48,7 +50,8 @@ const Services = () => {
           <div className="card-text">
             <h3>Chat With Agent</h3>
             <p>
-              Quis ipsum suspendisse ultrices, risus commodo viverra maecenas
+              Message agents directly to ask questions, get details, or book
+              property viewings fast anytime
             </p>
           </div>
         </div>
@@ -60,7 +63,8 @@ const Services = () => {
           <div className="card-text">
             <h3>Buy & Rent Properties</h3>
             <p>
-              Quis ipsum suspendisse ultrices, risus commodo viverra maecenas
+              Explore homes for sale or rent, compare options, and make the
+              right move for you and your dream
             </p>
           </div>
         </div>
