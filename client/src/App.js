@@ -1,9 +1,11 @@
 import "./App.css";
 import "./routes/layout/layout.scss";
+
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
+import { Layout, AuthenticatedLayout } from "./routes/layout/Layout";
 import Home from "./routes/home/Home";
 import List from "./routes/list/List";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { Layout, AuthenticatedLayout } from "./routes/layout/Layout";
 import Property from "./routes/property/Property";
 import Profile from "./routes/profile/Profile";
 import About from "./routes/about/About";
@@ -12,7 +14,6 @@ import Register from "./routes/register/Register";
 import Login from "./routes/login/Login";
 import UpdateProfile from "./routes/updateProfile/UpdateProfile";
 import AddPost from "./routes/addPost/AddPost";
-import { listPageLoader, profileLoader, propertyLoader } from "./lib/loader";
 import Chatting from "./routes/chatting.js/Chatting";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import AdminDashboard from "./routes/adminDashboard/AdminDashboard";
@@ -27,45 +28,21 @@ import EditPost from "./routes/userDashboard/EditPost";
 import PublicUserProfile from "./routes/PublicUserProfile/PublicUserProfile";
 import Agents from "./routes/agents/Agents";
 
+import { listPageLoader, profileLoader, propertyLoader } from "./lib/loader";
+
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout />,
     children: [
-      {
-        path: "/",
-        element: <Home />,
-      },
-      {
-        path: "/list",
-        element: <List />,
-        loader: listPageLoader,
-      },
-      {
-        path: "/list/:id",
-        element: <Property />,
-        loader: propertyLoader,
-      },
-      {
-        path: "/about",
-        element: <About />,
-      },
-      {
-        path: "/contact",
-        element: <Contact />,
-      },
-      {
-        path: "/agent",
-        element: <Agents />,
-      },
-      {
-        path: "/register",
-        element: <Register />,
-      },
-      {
-        path: "/login",
-        element: <Login />,
-      },
+      { path: "/", element: <Home /> },
+      { path: "/list", element: <List />, loader: listPageLoader },
+      { path: "/list/:id", element: <Property />, loader: propertyLoader },
+      { path: "/about", element: <About /> },
+      { path: "/contact", element: <Contact /> },
+      { path: "/agent", element: <Agents /> },
+      { path: "/register", element: <Register /> },
+      { path: "/login", element: <Login /> },
       {
         path: "/unauthorized",
         element: (
@@ -81,11 +58,7 @@ const router = createBrowserRouter([
     path: "/",
     element: <AuthenticatedLayout />,
     children: [
-      {
-        path: "/profile",
-        element: <Profile />,
-        loader: profileLoader,
-      },
+      { path: "/profile", element: <Profile />, loader: profileLoader },
       {
         path: "/profile/update",
         element: (
@@ -111,12 +84,9 @@ const router = createBrowserRouter([
         ),
         loader: profileLoader,
       },
-      {
-        path: "/profile/:userId",
-        element: <PublicUserProfile />,
-      },
+      { path: "/profile/:userId", element: <PublicUserProfile /> },
 
-      // ADMIN DASHBOARD ROUTE
+      // ADMIN DASHBOARD
       {
         path: "/admin",
         element: (
@@ -125,30 +95,16 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         children: [
-          {
-            path: "overview",
-            element: <AdminDashboard />,
-          },
-          {
-            path: "users",
-            element: <AdminUsers />,
-          },
-          {
-            path: "properties",
-            element: <AdminProperties />,
-          },
-          {
-            path: "pending",
-            element: <PendingProperties />,
-          },
-          {
-            path: "rejected",
-            element: <RejectedProperties />,
-          },
+          { path: "" },
+          { path: "overview", element: <AdminDashboard /> },
+          { path: "users", element: <AdminUsers /> },
+          { path: "properties", element: <AdminProperties /> },
+          { path: "pending", element: <PendingProperties /> },
+          { path: "rejected", element: <RejectedProperties /> },
         ],
       },
 
-      // USER DASHBOARD ROUTE
+      // USER DASHBOARD
       {
         path: "/dashboard",
         element: (
@@ -159,10 +115,7 @@ const router = createBrowserRouter([
         children: [
           { path: "profile", element: <Profile /> },
           { path: "posts", element: <UserPosts /> },
-          {
-            path: "/dashboard/edit/:postId",
-            element: <EditPost />,
-          },
+          { path: "edit/:postId", element: <EditPost /> },
         ],
       },
     ],

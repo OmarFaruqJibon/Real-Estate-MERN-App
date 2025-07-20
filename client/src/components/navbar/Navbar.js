@@ -71,7 +71,7 @@ const Navbar = () => {
   );
 
   return (
-    <nav>
+    <nav className="navbar-container">
       <div className="left-side">
         <div className="logo">
           <Link to="/" onClick={handleLinkClick}>

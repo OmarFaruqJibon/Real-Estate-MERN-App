@@ -60,7 +60,13 @@ const AdminDashboard = () => {
         <h3>Overview</h3>
       </div>
 
-      <Grid container spacing={3}>
+      <Grid
+        container
+        spacing={3}
+        sx={{
+          justifyContent: "center",
+        }}
+      >
         <Grid item xs={12} sm={6} md={4}>
           <Card sx={{ bgcolor: "#e3f2fd", width: "300px" }}>
             <CardContent>

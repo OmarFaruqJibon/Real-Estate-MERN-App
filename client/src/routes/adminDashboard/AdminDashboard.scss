@@ -1,36 +1,35 @@
 .userTable {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
 
-    th,
-    td {
-        border: 1px solid #ddd;
-        padding: 12px;
-        text-align: left;
+  th,
+  td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+  }
+
+  th {
+    background-color: #f7f7f7;
+  }
+
+  tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+
+  button {
+    margin-left: 10px;
+    padding: 4px 8px;
+    font-size: 12px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4a90e2;
+    color: white;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #357bd8;
     }
-
-    th {
-        background-color: #f7f7f7;
-    }
-
-    tr:nth-child(even) {
-        background-color: #f9f9f9;
-    }
-
-    button {
-        margin-left: 10px;
-        padding: 4px 8px;
-        font-size: 12px;
-        border: none;
-        border-radius: 5px;
-        background-color: #4a90e2;
-        color: white;
-        cursor: pointer;
-
-        &:hover {
-            background-color: #357bd8;
-        }
-    }
-
+  }
 }
