@@ -18,7 +18,7 @@ const Footer = () => {
       <div className="overlay"></div>
       <div className="footer-content">
         <div className="single-content">
-          <h1>Haven House</h1>
+          <h1>Darhub</h1>
           <p>
             A modern real estate platform
             <br /> to buy, sell, and manage properties

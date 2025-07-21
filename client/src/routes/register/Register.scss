@@ -1,88 +1,84 @@
 .registerPage {
+  display: flex;
+
+  .formContainer {
+    flex: 3;
     display: flex;
+    align-items: center;
+    justify-content: center;
 
-    .formContainer {
-        flex: 3;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
 
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-
-            .radio-group {
-
-                p {
-                    color: #2b2b2b;
-                    font-size: 15px;
-                }
-
-                label {
-                    margin-right: 35px;
-                    color: #2b2b2b;
-                    font-size: 15px;
-
-                    input {
-                        margin-right: 6px;
-                    }
-                }
-
-
-            }
-
-            input {
-                flex: 3 1;
-                padding: 10px;
-                border-radius: 5px;
-                border: 1px solid #09aa57;
-                outline: none;
-                color: #141414;
-            }
-
-            button {
-                padding: 15px 20px;
-                border-radius: 5px;
-                border: none;
-                background-color: #09aa57;
-                color: rgb(255, 255, 255);
-                font-weight: bold;
-                cursor: pointer;
-
-                &:disabled {
-                    background-color: #bed9d8;
-                    cursor: not-allowed;
-                }
-            }
-
-            span {
-                color: rgba(194, 0, 0, 0.591);
-            }
-
-            .already {
-                color: rgba(71, 71, 71, 0.591);
-            }
-
-
-            a {
-                font-size: 14px;
-                color: #09aa57;
-                width: max-content;
-                font-weight: 600;
-            }
+      .radio-group {
+        p {
+          color: #2b2b2b;
+          font-size: 15px;
         }
-    }
 
-    .imgContainer {
-        flex: 2;
-        background-color: #fcf5f3;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        label {
+          margin-right: 35px;
+          color: #2b2b2b;
+          font-size: 15px;
 
-        img {
-            width: 100%;
+          input {
+            margin-right: 6px;
+          }
         }
+      }
+
+      input {
+        flex: 3 1;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #09aa57;
+        outline: none;
+        color: #141414;
+      }
+
+      button {
+        padding: 15px 20px;
+        border-radius: 5px;
+        border: none;
+        background-color: #09aa57;
+        color: rgb(255, 255, 255);
+        font-weight: bold;
+        cursor: pointer;
+
+        &:disabled {
+          background-color: #bed9d8;
+          cursor: not-allowed;
+        }
+      }
+
+      span {
+        color: rgba(194, 0, 0, 0.591);
+      }
+
+      .already {
+        color: rgba(71, 71, 71, 0.591);
+      }
+
+      a {
+        font-size: 14px;
+        color: #09aa57;
+        width: max-content;
+        font-weight: 600;
+      }
     }
+  }
+
+  .imgContainer {
+    flex: 2;
+    background-color: #fcf5f3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      width: 100%;
+    }
+  }
 }

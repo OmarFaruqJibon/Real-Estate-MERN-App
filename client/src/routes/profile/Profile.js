@@ -52,12 +52,7 @@ const Profile = () => {
       <div className="title">
         <h3>Profile Info</h3>
 
-        <IconButton
-          component={Link}
-          to="/profile/update"
-          color="success"
-          sx={{ fontSize: "17px" }}
-        >
+        <IconButton component={Link} to="/profile/update" className="edit-btn">
           <EditNoteIcon />
           Edit
         </IconButton>

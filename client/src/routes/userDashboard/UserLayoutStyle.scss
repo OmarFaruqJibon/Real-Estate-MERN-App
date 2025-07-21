@@ -9,8 +9,15 @@
   background: #e7edee;
   padding: 14px 10px;
   margin-bottom: 20px;
+  font-weight: 600;
 
-  h3 {
+  .addnew-btn {
+    color: #3a307f;
+    font-size: 14px;
+    font-style: italic;
     font-weight: 600;
+    border: none;
+    background-color: none;
+    cursor: pointer;
   }
 }

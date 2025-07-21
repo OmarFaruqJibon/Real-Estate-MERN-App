@@ -20,7 +20,6 @@ const FeaturedProperties = () => {
 
     fetchData();
   }, []);
-  console.log(properties);
 
   return (
     <section data-aos="fade-right" className="featured-properties">

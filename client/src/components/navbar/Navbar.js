@@ -3,6 +3,7 @@ import "./Navbar.scss";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContex";
 import { useNotificationStore } from "../../lib/notificationStore";
+// import logo from "../../assets/logo-shape.png";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -34,17 +35,17 @@ const Navbar = () => {
           to="/admin/overview"
           onClick={handleLinkClick}
         >
-          <span color="#09aa57">
-            {currentUser?.username.toUpperCase()}
+          <div className="profile-info">
+            <span>{currentUser?.username.trim().split(/\s+/)[0]}</span>
             <img
               loading="lazy"
               src={
                 currentUser?.avatar ||
                 "https://i.postimg.cc/J7dgwngh/profile-picture.png"
               }
-              alt="profile-picture"
+              alt="profile"
             />
-          </span>
+          </div>
         </Link>
       )}
 
@@ -54,17 +55,17 @@ const Navbar = () => {
           to="/dashboard/profile"
           onClick={handleLinkClick}
         >
-          <span color="#09aa57">
-            {currentUser?.username?.toUpperCase()}
+          <div className="profile-info">
+            <span>{currentUser?.username.trim().split(/\s+/)[0]}</span>
             <img
               loading="lazy"
               src={
                 currentUser?.avatar ||
                 "https://i.postimg.cc/J7dgwngh/profile-picture.png"
               }
-              alt="profile-picture"
+              alt="profile"
             />
-          </span>
+          </div>
         </Link>
       )}
     </div>
@@ -75,12 +76,31 @@ const Navbar = () => {
       <div className="left-side">
         <div className="logo">
           <Link to="/" onClick={handleLinkClick}>
-            <h2>Haven House</h2>
+            {/* <img src={logo} alt="logo" /> */}
+            <h2>DarHub</h2>
           </Link>
         </div>
       </div>
 
       <div className="middle-side menu-items">
+        {currentUser?.role === "ADMIN" && (
+          <Link style={{ color: "#ffffffff" }} to="/admin/overview">
+            Dashboard
+          </Link>
+        )}
+
+        {currentUser?.role === "DEVELOPER" && (
+          <Link style={{ color: "#ffffffff" }} to="/dashboard/profile">
+            DASHBOARD
+          </Link>
+        )}
+
+        {currentUser?.role === "NORMAL" && (
+          <Link style={{ color: "#ffffffff" }} to="/dashboard/profile">
+            DASHBOARD
+          </Link>
+        )}
+
         <Link to="/list" onClick={handleLinkClick}>
           PROPERTY
         </Link>
@@ -90,24 +110,6 @@ const Navbar = () => {
         <Link to="/contact" onClick={handleLinkClick}>
           CONTACT
         </Link>
-
-        {currentUser?.role === "ADMIN" && (
-          <Link style={{ color: "#09aa57" }} to="/admin/overview">
-            Admin Dashboard
-          </Link>
-        )}
-
-        {currentUser?.role === "DEVELOPER" && (
-          <Link style={{ color: "#09aa57" }} to="/dashboard/profile">
-            DASHBOARD
-          </Link>
-        )}
-
-        {currentUser?.role === "NORMAL" && (
-          <Link style={{ color: "#09aa57" }} to="/dashboard/profile">
-            DASHBOARD
-          </Link>
-        )}
       </div>
 
       <div className="right-side">
@@ -119,22 +121,11 @@ const Navbar = () => {
           </Link>
         )}
 
-        {/* <Link className="register" to="/addPost" onClick={handleLinkClick}>
-          LIST YOUR PROPERTY
-        </Link> */}
-
         {currentUser?.role !== "ADMIN" && (
           <Link className="register" to="/addPost" onClick={handleLinkClick}>
             LIST YOUR PROPERTY
           </Link>
         )}
-
-        {/* {currentUser ? renderUserProfile() : (
-                    <div>
-                        <Link to="/login" onClick={handleLinkClick}>Sign In</Link>
-                        <Link className="register" to="/register" onClick={handleLinkClick}>Sign Up</Link>
-                    </div>
-                )} */}
 
         {/* FOR SMALL SCREEN */}
         <span
@@ -160,6 +151,24 @@ const Navbar = () => {
             CONTACT
           </Link>
 
+          {currentUser?.role === "ADMIN" && (
+            <Link style={{ color: "#09aa57" }} to="/admin/overview">
+              Dashboard
+            </Link>
+          )}
+
+          {currentUser?.role === "DEVELOPER" && (
+            <Link style={{ color: "#09aa57" }} to="/dashboard/profile">
+              DASHBOARD
+            </Link>
+          )}
+
+          {currentUser?.role === "NORMAL" && (
+            <Link style={{ color: "#09aa57" }} to="/dashboard/profile">
+              DASHBOARD
+            </Link>
+          )}
+
           <hr className="side-menu-devider" />
 
           {currentUser ? (
@@ -169,10 +178,6 @@ const Navbar = () => {
               SIGN IN
             </Link>
           )}
-
-          {/* <Link className="register" to="/addPost" onClick={handleLinkClick}>
-            LIST YOUR PROPERTY
-          </Link> */}
 
           {currentUser?.role !== "ADMIN" && (
             <Link className="register" to="/addPost" onClick={handleLinkClick}>

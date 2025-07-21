@@ -74,7 +74,7 @@ const Agent = () => {
                   >
                     <Typography
                       sx={{
-                        backgroundColor: "#3a307f",
+                        backgroundColor: "#09aa57",
                         color: "white",
                         fontSize: "12px",
                         padding: "2px 10px",
@@ -115,7 +115,7 @@ const Agent = () => {
                     component="div"
                     sx={{
                       fontWeight: "500",
-                      color: "#3a307f",
+                      color: "#09aa57",
                       marginTop: "40px",
                       fontSize: "15px",
                     }}

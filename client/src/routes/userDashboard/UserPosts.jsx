@@ -42,7 +42,7 @@ const UserPosts = () => {
 
   if (loading) return <CircularProgress sx={{ m: 3 }} />;
 
-  const handleUpdate = async (propertyId) => {};
+  // const handleUpdate = async (propertyId) => {};
 
   const handleDelete = async (propertyId) => {
     if (!window.confirm("Are you sure you want to delete this property?"))
@@ -83,16 +83,11 @@ const UserPosts = () => {
 
   return (
     <Box>
-      {/* <Typography
-        sx={{ fontSize: "1.17em", fontWeight: "600" }}
-        variant="h3"
-        gutterBottom
-      >
-        Property Management
-      </Typography> */}
-
       <div className="title">
-        <h3>Property Management</h3>
+        <h3>My Properties</h3>
+        <Link to="/addPost">
+          <button className="addnew-btn">+ Add New</button>
+        </Link>
       </div>
 
       <TableContainer component={Paper}>

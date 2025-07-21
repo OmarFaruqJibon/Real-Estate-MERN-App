@@ -39,7 +39,12 @@ nav {
       font-weight: 600;
       display: flex;
       align-items: flex-end;
-      gap: 13px;
+      align-items: center;
+      gap: 10px;
+
+      img {
+        width: 30px;
+      }
 
       h2 {
         @include small {
@@ -69,16 +74,18 @@ nav {
     .navbar-profile {
       display: flex;
       align-items: center;
+      gap: 5px;
 
       .profile-btn {
         color: #ffffff;
         cursor: pointer;
         position: relative;
 
-        span {
+        .profile-info {
           display: flex;
           align-items: center;
           gap: 8px;
+          font-weight: 500;
 
           img {
             width: 40px;
@@ -89,19 +96,14 @@ nav {
       }
 
       .message-btn {
-        color: #09aa57;
+        color: #ffffff;
         cursor: pointer;
         position: relative;
-        margin-right: 12px;
-
-        @include small {
-          margin-right: 0px;
-        }
 
         .notification {
           position: absolute;
           top: -10px;
-          right: -4px;
+          right: -8px;
           background-color: crimson;
           color: white;
           border-radius: 50%;

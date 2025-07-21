@@ -114,13 +114,16 @@ const Agents = () => {
                     variant="subtitle1"
                     component="div"
                     sx={{
-                      fontWeight: "500",
+                      fontWeight: "600",
                       color: "#3a307f",
                       marginTop: "40px",
                       fontSize: "15px",
                     }}
                   >
-                    For Sale: {agent?.sale || "5"}
+                    For Sale:{" "}
+                    <span style={{ color: "rgba(0, 0, 0, 0.87)" }}>
+                      {agent?.sale || "5"}
+                    </span>
                   </Typography>
                 </CardContent>
               </Box>

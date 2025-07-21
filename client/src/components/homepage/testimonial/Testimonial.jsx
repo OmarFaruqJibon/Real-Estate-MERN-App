@@ -84,7 +84,7 @@ const Testimonial = () => {
               <p className="testimonial-text">"{testimonial.review}"</p>
               <div className="testimonial-stars">
                 {Array.from({ length: testimonial.rating }, (_, i) => (
-                  <Star key={i} fill="#09aa57" stroke="none" size={20} />
+                  <Star key={i} fill="#ffb92a" stroke="none" size={20} />
                 ))}
               </div>
               <span className="testimonial-name">- {testimonial.name}</span>

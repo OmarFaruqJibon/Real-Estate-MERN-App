@@ -1,20 +1,19 @@
 /* Scrollbar */
 ::-webkit-scrollbar {
-    width: 10px;
-  }
-  
-  /* Track */
-  ::-webkit-scrollbar-track {
-    background: #e0e0e0;
-  }
-  
-  /* Gradient Thumb */
-  ::-webkit-scrollbar-thumb {
-    background: linear-gradient(45deg, #06d69e, #09aa57);
-  }
-  
-  /* Hover Effect */
-  ::-webkit-scrollbar-thumb:hover {
-    background: #09aa57;
-  }
-  
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #e0e0e0;
+}
+
+/* Gradient Thumb */
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, #06d69e, #09aa57);
+}
+
+/* Hover Effect */
+::-webkit-scrollbar-thumb:hover {
+  background: #09aa57;
+}
