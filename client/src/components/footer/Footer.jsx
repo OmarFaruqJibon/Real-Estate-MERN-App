@@ -123,7 +123,7 @@ const Footer = () => {
       </div>
       <hr />
 
-      <p className="copyright">&copy; 2025 Real Estate. All rights reserved.</p>
+      <p className="copyright">&copy; 2025 Darhub. All rights reserved.</p>
     </footer>
   );
 };
