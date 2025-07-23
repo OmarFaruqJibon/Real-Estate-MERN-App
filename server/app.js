@@ -20,12 +20,19 @@ dotenv.config();
 // Use environment port or default to 8800
 const port = process.env.PORT || 8800;
 
-// Middleware
-app.use(cors({ origin: process.env.CLIENT_URL, credentials: true }));
-app.use(express.json());
-app.use(cookieParser());
+// ✅ CORS — MUST come *before* express.json()
+app.use(
+  cors({
+    origin: "https://darhub.vercel.app",
+    credentials: true,
+  })
+);
 
-// Routes
+// ✅ Middleware
+app.use(cookieParser());
+app.use(express.json());
+
+// ✅ Routes
 app.use("/api/auth", authRoute);
 app.use("/api/posts", postRoute);
 app.use("/api/users", userRoute);
@@ -33,13 +40,13 @@ app.use("/api/check", checkRoute);
 app.use("/api/chats", chatRoute);
 app.use("/api/messages", messageRoute);
 
-// Default route
+// ✅ Default route
 app.get("/", (req, res) => {
   res.send("Welcome to real estate server");
   console.log("Home route accessed");
 });
 
-// Start server
+// ✅ Start server
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);
 });
