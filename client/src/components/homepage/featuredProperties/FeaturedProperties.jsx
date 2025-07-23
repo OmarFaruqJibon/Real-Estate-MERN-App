@@ -7,6 +7,7 @@ import apiCall from "../../../lib/apiCall";
 
 const FeaturedProperties = () => {
   const [properties, setProperties] = useState([]);
+  console.log(properties);
 
   useEffect(() => {
     const fetchData = async () => {
