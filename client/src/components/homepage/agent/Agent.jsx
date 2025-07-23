@@ -30,7 +30,7 @@ const Agent = () => {
 
       <div className="agent-card">
         {agents?.slice(0, 4).map((agent) => (
-          <Link to={`/profile/${agent.id}`}>
+          <Link key={agent.id} to={`/profile/${agent.id}`}>
             <Card sx={{ display: "flex" }} className="agent-single-card">
               <CardMedia
                 component="img"

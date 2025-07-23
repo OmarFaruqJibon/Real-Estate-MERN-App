@@ -14,14 +14,19 @@ import authorizeRole from "../middleware/authorizeRole.js";
 const router = express.Router();
 
 // router.get("/", verifyToken, authorizeRole(["ADMIN"]), getUsers);
-router.get("/", verifyToken, getUsers);
+router.get("/", getUsers);
+
 router.put("/:id", verifyToken, updateUser);
+
 router.delete("/:id", verifyToken, deleteUser);
+
 router.get("/profilePosts", verifyToken, profilePosts);
+
 router.get("/notification", verifyToken, getNotificationNumber);
+
 router.put("/role/:id", verifyToken, authorizeRole(["ADMIN"]), updateUserRole);
 
-router.get("/:id", verifyToken, getUser);
+router.get("/:id", getUser); // ⚠️ must be defined after all specific routes
 
 // router.post("/save", verifyToken, savePost);
 export default router;

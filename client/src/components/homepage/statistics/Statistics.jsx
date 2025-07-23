@@ -4,7 +4,7 @@ import "./Statistics.scss";
 const Statistics = () => {
   return (
     <section className="statistics-container">
-      <div class="overlay"></div>
+      <div className="overlay"></div>
       <div className="stat-body">
         <div className="counter">
           <h3>100+</h3>

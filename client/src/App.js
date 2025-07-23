@@ -43,6 +43,7 @@ const router = createBrowserRouter([
       { path: "/agent", element: <Agents /> },
       { path: "/register", element: <Register /> },
       { path: "/login", element: <Login /> },
+      { path: "/profile/:userId", element: <PublicUserProfile /> },
       {
         path: "/unauthorized",
         element: (
@@ -84,7 +85,6 @@ const router = createBrowserRouter([
         ),
         loader: profileLoader,
       },
-      { path: "/profile/:userId", element: <PublicUserProfile /> },
 
       // ADMIN DASHBOARD
       {

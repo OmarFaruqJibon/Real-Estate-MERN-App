@@ -30,7 +30,7 @@ const FeaturedProperties = () => {
 
       <div className="property-list">
         {properties?.slice(0, 6).map((property) => (
-          <div className="property-card">
+          <div key={property?.id} className="property-card">
             <Link to={"/list"}>
               <img src={property?.images[0]} alt="Property 1" />
             </Link>
