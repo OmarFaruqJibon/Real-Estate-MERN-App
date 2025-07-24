@@ -15,7 +15,7 @@
 
   .top {
     text-align: center;
-    margin-bottom: 60px;
+    margin-bottom: 35px;
 
     .lined-title {
       display: inline-flex;
@@ -23,6 +23,10 @@
       justify-content: center;
       color: #09aa57;
       position: relative;
+
+      @include small {
+        font-size: 14px;
+      }
     }
 
     .lined-title::before,
@@ -34,14 +38,21 @@
       height: 1px;
       background-color: #09aa57;
       margin: 0 10px;
+
+      @include small {
+        width: 25px;
+      }
     }
 
     h1 {
       font-size: 36px;
       margin-bottom: 10px;
       color: #2a303b;
-    }
 
+      @include small {
+        font-size: 27px;
+      }
+    }
     p {
       color: #636a76;
     }
@@ -50,7 +61,7 @@
   .property-list {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 30px;
     flex-wrap: wrap;
 
     .property-card {
@@ -62,7 +73,7 @@
       transition: transform 0.3s ease;
 
       @include small {
-        padding: 0px;
+        padding: 7px;
         flex: 1 1 100%;
       }
 
@@ -120,7 +131,7 @@
   button {
     background-color: #0fb45f;
     color: white;
-    margin-top: 60px;
+    margin-top: 45px;
     align-items: center;
     padding: 13px 36px;
     border: none;
@@ -129,7 +140,9 @@
   }
 
   button:hover {
-    background-color: #09aa57;
+    background-color: #ffffff;
+    border: 1px solid #0fb45f;
+    color: #0fb45f;
     transition: all 0.2 ease-in-out;
   }
 }

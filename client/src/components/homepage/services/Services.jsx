@@ -10,7 +10,7 @@ const Services = () => {
   return (
     <section data-aos="fade-up" className="services-container">
       <div className="top">
-        <span className="lined-title">SERVICES</span>
+        <span className="lined-title">SERVICE</span>
         <h1>Our Services</h1>
       </div>
 

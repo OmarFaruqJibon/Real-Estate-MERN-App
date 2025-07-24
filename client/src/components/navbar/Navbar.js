@@ -3,7 +3,12 @@ import "./Navbar.scss";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContex";
 import { useNotificationStore } from "../../lib/notificationStore";
-// import logo from "../../assets/logo-shape.png";
+import MenuIcon from "@mui/icons-material/Menu";
+import { Dashboard } from "@mui/icons-material";
+import RealEstateAgentIcon from "@mui/icons-material/RealEstateAgent";
+import ContactSupportIcon from "@mui/icons-material/ContactSupport";
+import ListIcon from "@mui/icons-material/List";
+import ChatIcon from "@mui/icons-material/Chat";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -26,7 +31,13 @@ const Navbar = () => {
     <div className="navbar-profile">
       <Link className="message-btn" to="/chats" onClick={handleLinkClick}>
         {number > 0 && <div className="notification">{number}</div>}
-        <span>MESSAGE</span>
+        <span>
+          <ChatIcon
+            className="chat-icon"
+            sx={{ color: "white", fontSize: "20px" }}
+          />
+          MESSAGE
+        </span>
       </Link>
 
       {currentUser?.role === "ADMIN" && (
@@ -74,73 +85,34 @@ const Navbar = () => {
   return (
     <nav className="navbar-container">
       <div className="left-side">
+        {" "}
+        {/* Logo */}
         <div className="logo">
           <Link to="/" onClick={handleLinkClick}>
-            {/* <img src={logo} alt="logo" /> */}
             <h2>DarHub</h2>
           </Link>
         </div>
       </div>
 
-      <div className="middle-side menu-items">
-        {currentUser?.role === "ADMIN" && (
-          <Link style={{ color: "#ffffffff" }} to="/admin/overview">
-            Dashboard
-          </Link>
-        )}
-
-        {currentUser?.role === "DEVELOPER" && (
-          <Link style={{ color: "#ffffffff" }} to="/dashboard/profile">
-            DASHBOARD
-          </Link>
-        )}
-
-        {currentUser?.role === "NORMAL" && (
-          <Link style={{ color: "#ffffffff" }} to="/dashboard/profile">
-            DASHBOARD
-          </Link>
-        )}
-
-        <Link to="/list" onClick={handleLinkClick}>
-          PROPERTY
-        </Link>
-        <Link to="/agent" onClick={handleLinkClick}>
-          AGENT
-        </Link>
-        <Link to="/contact" onClick={handleLinkClick}>
-          CONTACT
-        </Link>
-      </div>
-
-      <div className="right-side">
-        {currentUser ? (
-          renderUserProfile()
-        ) : (
-          <Link className="signin" to="/login" onClick={handleLinkClick}>
-            SIGN IN
-          </Link>
-        )}
-
-        {currentUser?.role !== "ADMIN" && (
-          <Link className="register" to="/addPost" onClick={handleLinkClick}>
-            LIST YOUR PROPERTY
-          </Link>
-        )}
-
-        {/* FOR SMALL SCREEN */}
-        <span
-          className="menu-icon"
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle menu"
-        >
-          <img
-            width="25px"
-            src="https://i.postimg.cc/NMbG8mX1/menu.png"
-            alt="menu icon"
-          />
-        </span>
-
-        <div className={menuOpen ? "side-menu active" : "side-menu"}>
+      <div className="middle-side">
+        {" "}
+        {/* Middle menu */}
+        <div className=" menu-items">
+          {currentUser?.role === "ADMIN" && (
+            <Link style={{ color: "#ffffffff" }} to="/admin/overview">
+              Dashboard
+            </Link>
+          )}
+          {currentUser?.role === "DEVELOPER" && (
+            <Link style={{ color: "#ffffffff" }} to="/dashboard/profile">
+              DASHBOARD
+            </Link>
+          )}
+          {currentUser?.role === "NORMAL" && (
+            <Link style={{ color: "#ffffffff" }} to="/dashboard/profile">
+              DASHBOARD
+            </Link>
+          )}
           <Link to="/list" onClick={handleLinkClick}>
             PROPERTY
           </Link>
@@ -150,24 +122,72 @@ const Navbar = () => {
           <Link to="/contact" onClick={handleLinkClick}>
             CONTACT
           </Link>
+        </div>
+      </div>
 
+      <div className="right-side">
+        {/* Profile */}
+        {currentUser ? (
+          renderUserProfile()
+        ) : (
+          <Link className="signin" to="/login" onClick={handleLinkClick}>
+            SIGN IN
+          </Link>
+        )}
+
+        {currentUser?.role !== "ADMIN" && (
+          <Link className="ad-btn" to="/addPost" onClick={handleLinkClick}>
+            POST AD
+            <span className="free">FREE</span>
+          </Link>
+        )}
+      </div>
+
+      <span
+        className="menu-icon"
+        onClick={() => setMenuOpen(!menuOpen)}
+        aria-label="Toggle menu"
+      >
+        <MenuIcon sx={{ fontSize: "30px" }} />
+      </span>
+
+      <div className="small-screen-menu">
+        {/* FOR SMALL SCREEN */}
+
+        <div className={menuOpen ? "side-menu active" : "side-menu"}>
           {currentUser?.role === "ADMIN" && (
-            <Link style={{ color: "#09aa57" }} to="/admin/overview">
+            <Link to="/admin/overview">
+              <Dashboard sx={{ color: "white", fontSize: "20px" }} />
               Dashboard
             </Link>
           )}
 
           {currentUser?.role === "DEVELOPER" && (
-            <Link style={{ color: "#09aa57" }} to="/dashboard/profile">
+            <Link to="/dashboard/profile">
+              <Dashboard sx={{ color: "white", fontSize: "20px" }} />
               DASHBOARD
             </Link>
           )}
 
           {currentUser?.role === "NORMAL" && (
-            <Link style={{ color: "#09aa57" }} to="/dashboard/profile">
+            <Link to="/dashboard/profile">
+              <Dashboard sx={{ color: "white", fontSize: "20px" }} />
               DASHBOARD
             </Link>
           )}
+
+          <Link to="/list" onClick={handleLinkClick}>
+            <ListIcon sx={{ color: "white", fontSize: "20px" }} />
+            PROPERTY
+          </Link>
+          <Link to="/agent" onClick={handleLinkClick}>
+            <RealEstateAgentIcon sx={{ color: "white", fontSize: "20px" }} />
+            AGENT
+          </Link>
+          <Link to="/contact" onClick={handleLinkClick}>
+            <ContactSupportIcon sx={{ color: "white", fontSize: "20px" }} />
+            CONTACT
+          </Link>
 
           <hr className="side-menu-devider" />
 
@@ -180,8 +200,9 @@ const Navbar = () => {
           )}
 
           {currentUser?.role !== "ADMIN" && (
-            <Link className="register" to="/addPost" onClick={handleLinkClick}>
-              LIST YOUR PROPERTY
+            <Link className="ad-btn" to="/addPost" onClick={handleLinkClick}>
+              POST AD
+              <span className="free">FREE</span>
             </Link>
           )}
         </div>

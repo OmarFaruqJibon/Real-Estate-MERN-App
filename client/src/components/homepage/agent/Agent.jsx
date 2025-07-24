@@ -25,16 +25,23 @@ const Agent = () => {
   return (
     <div className="agent-container">
       <div className="top">
+        <span className="lined-title">AGENT</span>
         <h1>Meets Our Agents</h1>
       </div>
 
       <div className="agent-card">
         {agents?.slice(0, 4).map((agent) => (
           <Link key={agent.id} to={`/profile/${agent.id}`}>
-            <Card sx={{ display: "flex" }} className="agent-single-card">
+            <Card
+              sx={{
+                display: "flex",
+                boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+              }}
+              className="agent-single-card"
+            >
               <CardMedia
                 component="img"
-                sx={{ width: 175 }}
+                sx={{ width: 150 }}
                 image={
                   agent?.avatar || "https://i.postimg.cc/zBDzSqBk/team-1.webp"
                 }
@@ -47,6 +54,9 @@ const Agent = () => {
                     display: "flex",
                     flexDirection: "column",
                     alignItems: "flex-start",
+                    p: "0px !important",
+                    pl: "15px !important",
+                    pb: "20px !important",
                   }}
                 >
                   <Typography

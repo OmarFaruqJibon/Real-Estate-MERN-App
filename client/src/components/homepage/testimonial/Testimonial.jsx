@@ -77,17 +77,17 @@ const Testimonial = () => {
           <SwiperSlide key={index}>
             <div className="testimonial-card">
               <img
-                src={testimonial.image}
-                alt={testimonial.name}
+                src={testimonial?.image}
+                alt={testimonial?.name}
                 className="testimonial-img"
               />
-              <p className="testimonial-text">"{testimonial.review}"</p>
+              <p className="testimonial-text">"{testimonial?.review}"</p>
               <div className="testimonial-stars">
-                {Array.from({ length: testimonial.rating }, (_, i) => (
+                {Array.from({ length: testimonial?.rating }, (_, i) => (
                   <Star key={i} fill="#ffb92a" stroke="none" size={20} />
                 ))}
               </div>
-              <span className="testimonial-name">- {testimonial.name}</span>
+              <span className="testimonial-name">- {testimonial?.name}</span>
             </div>
           </SwiperSlide>
         ))}

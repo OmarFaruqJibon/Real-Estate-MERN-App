@@ -9,7 +9,6 @@ nav {
   padding-right: 20px;
   color: rgb(226, 226, 226);
   font-weight: 500;
-  // background-color: rgb(9, 5, 31);
   background-color: #121621;
 
   a {
@@ -56,15 +55,18 @@ nav {
 
   .middle-side {
     flex: 3;
-  }
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-  .menu-items {
-    font-size: 14px;
-    font-weight: 500;
+    .menu-items {
+      font-size: 14px;
+      font-weight: 500;
+    }
   }
 
   .right-side {
-    flex: 3;
+    flex: 2;
     display: flex;
     justify-content: flex-end;
     font-size: 14px;
@@ -114,6 +116,19 @@ nav {
           justify-content: center;
           font-size: 13px;
         }
+        span {
+          @include small {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+          }
+          .chat-icon {
+            display: none;
+            @include small {
+              display: initial;
+            }
+          }
+        }
       }
 
       @include small {
@@ -126,52 +141,171 @@ nav {
     }
 
     .signin {
-      color: #09aa57;
+      color: #ffffff;
       transition: all 0.3s ease-in-out;
     }
 
     .signin:hover {
-      color: #ffffff;
-    }
-
-    .register {
-      background-color: #09aa57;
-      color: #fff;
-      transition: all 0.3s ease-in-out;
-
-      @include small {
-        width: 80%;
-        margin: 0 auto;
-        border-radius: 7px;
-        text-align: center;
-      }
-
-      @include medium {
-        width: 80%;
-        margin: 0 auto;
-        border-radius: 10px;
-        text-align: center;
-      }
-    }
-
-    .register:hover {
-      background-color: #ffffff;
       color: #09aa57;
     }
 
-    .menu-icon {
-      display: none;
-      cursor: pointer;
-      z-index: 999;
-      background-color: transparent !important;
+    .ad-btn {
+      background-color: #09aa57;
+      color: #fff;
+      transition: all 0.3s ease-in-out;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      margin-left: 5px;
 
       @include small {
-        display: initial;
+        display: none;
       }
 
       @include medium {
-        display: initial;
+        display: none;
       }
+
+      .free {
+        background-color: #faaa39;
+        padding: 2px 5px;
+        font-size: 10px;
+      }
+    }
+
+    .ad-btn:hover {
+      background-color: #ffffff;
+      color: #09aa57;
+    }
+  }
+
+  .menu-icon {
+    display: none;
+    cursor: pointer;
+    z-index: 999;
+
+    @include small {
+      display: initial;
+    }
+
+    @include medium {
+      display: initial;
+    }
+  }
+
+  .small-screen-menu {
+    .navbar-profile {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+
+      .profile-btn {
+        color: #ffffff;
+        cursor: pointer;
+        position: relative;
+        display: flex !important;
+        justify-content: center !important;
+
+        .profile-info {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          font-weight: 500;
+
+          img {
+            width: 40px;
+            height: 36px;
+            border-radius: 50%;
+          }
+        }
+      }
+
+      .message-btn {
+        color: #ffffff;
+        cursor: pointer;
+        position: relative;
+
+        .notification {
+          position: absolute;
+          top: -10px;
+          right: -8px;
+          background-color: crimson;
+          color: white;
+          border-radius: 50%;
+          width: 23px;
+          height: 23px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 13px;
+        }
+        span {
+          @include small {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+          }
+          .chat-icon {
+            display: none;
+
+            @include small {
+              display: initial;
+            }
+          }
+        }
+      }
+
+      @include small {
+        display: none;
+      }
+
+      @include medium {
+        display: none;
+      }
+    }
+
+    .signin {
+      color: #ffffff;
+      transition: all 0.3s ease-in-out;
+    }
+    .signin:hover {
+      color: #09aa57;
+    }
+
+    .ad-btn {
+      background-color: #09aa57;
+      color: #fff;
+      transition: all 0.3s ease-in-out;
+      display: flex !important;
+      gap: 10px;
+      align-items: center;
+      margin-left: 5px;
+      font-size: 14px;
+
+      @include small {
+        width: 80%;
+        margin: 0 auto;
+        text-align: center;
+        margin-top: 20px;
+      }
+
+      @include medium {
+        width: 80%;
+        margin: 0 auto;
+        text-align: center;
+        margin-left: 0px;
+      }
+
+      .free {
+        background-color: #faaa39;
+        padding: 2px 5px;
+        font-size: 10px;
+      }
+    }
+
+    .ad-btn:hover {
+      background-color: #ffffff;
+      color: #09aa57;
     }
 
     .side-menu {
@@ -182,14 +316,14 @@ nav {
       backdrop-filter: blur(10px);
       color: white;
       height: 100vh;
-      width: 40%;
+      width: 43%;
       transition: right 0.5s ease;
       display: flex;
       flex-direction: column;
       align-items: center;
       font-size: 17px;
       font-weight: 300;
-      padding-top: 100px;
+      padding-top: 80px;
       z-index: 998;
 
       &.active {
@@ -203,14 +337,17 @@ nav {
 
         a {
           display: initial;
+          padding: 11px 10px;
+          display: flex;
+          gap: 8px;
+          align-items: center;
         }
 
         .navbar-profile {
           display: flex;
           flex-direction: column;
-          align-items: center;
+          align-items: flex-start;
           gap: 10px;
-          margin-top: 20px;
         }
       }
 
@@ -226,16 +363,15 @@ nav {
         .navbar-profile {
           display: flex;
           flex-direction: column;
-          align-items: center;
+          align-items: flex-start;
           gap: 10px;
           margin-top: 20px;
         }
       }
 
       .side-menu-devider {
-        width: 80%;
-        margin: 30px 0;
-        border-color: rgba(255, 255, 255, 0.2);
+        margin: 20px 0;
+        border-color: rgb(255 255 255 / 50%);
       }
     }
   }

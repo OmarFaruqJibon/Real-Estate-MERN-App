@@ -23,6 +23,7 @@ const port = process.env.PORT || 8800;
 // ✅ CORS — MUST come *before* express.json()
 app.use(
   cors({
+    // origin: "http://localhost:3000",
     origin: "https://darhub.vercel.app",
     credentials: true,
   })
@@ -42,11 +43,11 @@ app.use("/api/messages", messageRoute);
 
 // ✅ Default route
 app.get("/", (req, res) => {
-  res.send("Welcome to real estate server");
+  res.send("Welcome to Darhub server");
   console.log("Home route accessed");
 });
 
 // ✅ Start server
 app.listen(port, () => {
-  console.log(`Server is running on port: ${port}`);
+  console.log(`Darhub Server is running on port: ${port}`);
 });

@@ -27,7 +27,7 @@ const Agents = () => {
     <>
       <div className="agent-container">
         <div className="top">
-          <h1>Meets Our Agents</h1>
+          <h1>Our Agents</h1>
         </div>
 
         <div className="agent-card">

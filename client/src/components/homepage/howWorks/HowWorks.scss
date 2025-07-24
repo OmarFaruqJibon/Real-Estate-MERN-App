@@ -8,7 +8,7 @@
 
   .top {
     text-align: center;
-    margin-bottom: 50px;
+    margin-bottom: 35px;
 
     .lined-title {
       display: inline-flex;
@@ -16,6 +16,10 @@
       justify-content: center;
       color: #09aa57;
       position: relative;
+
+      @include small {
+        font-size: 14px;
+      }
     }
 
     .lined-title::before,
@@ -27,16 +31,27 @@
       height: 1px;
       background-color: #09aa57;
       margin: 0 10px;
+
+      @include small {
+        width: 25px;
+      }
     }
 
     h1 {
       font-size: 36px;
       margin-bottom: 10px;
       color: #2a303b;
-    }
 
+      @include small {
+        font-size: 27px;
+      }
+    }
     p {
       color: #636a76;
+
+      @include small {
+        font-size: 13px;
+      }
     }
   }
 
@@ -80,6 +95,11 @@
           position: absolute;
           left: 37%;
           top: 75%;
+
+          @include small {
+            left: 40%;
+            top: 73%;
+          }
         }
       }
 

@@ -16,6 +16,10 @@
       justify-content: center;
       color: #09aa57;
       position: relative;
+
+      @include small {
+        font-size: 14px;
+      }
     }
 
     .lined-title::before,
@@ -27,16 +31,27 @@
       height: 1px;
       background-color: #09aa57;
       margin: 0 10px;
+
+      @include small {
+        width: 25px;
+      }
     }
 
     h1 {
       font-size: 36px;
       margin-bottom: 10px;
       color: #2a303b;
-    }
 
+      @include small {
+        font-size: 27px;
+      }
+    }
     p {
       color: #636a76;
+
+      @include small {
+        font-size: 13px;
+      }
     }
   }
 
@@ -47,6 +62,7 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
     margin: 10px;
+    margin-bottom: 50px;
 
     .testimonial-img {
       width: 70px;
@@ -70,6 +86,7 @@
     .testimonial-name {
       font-weight: bold;
       color: #444;
+      margin-bottom: 20px;
     }
   }
 
