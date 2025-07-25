@@ -105,13 +105,13 @@ const Property = ({ id }) => {
 
                 {/* PRICE */}
                 <div className="price">
-                  <span>৳ {post?.price}</span>
+                  <span>SR {post?.price}</span>
                 </div>
               </div>
 
               <div className="property-sizes">
                 <div className="wrapper">
-                  <p className="title">Sizes</p>
+                  <p>Sizes</p>
                   <div className="sizes">
                     <div className="size">
                       <img
@@ -136,7 +136,7 @@ const Property = ({ id }) => {
                     </div>
                   </div>
 
-                  <p className="title">Nearby Places</p>
+                  <p>Nearby Places</p>
                   <div className="listHorizontal">
                     <div className="feature">
                       <img
@@ -174,6 +174,7 @@ const Property = ({ id }) => {
 
               <div className="property-summary">
                 <h3 className="summary-title">Property Summary</h3>
+
                 <div className="summary-wrapper">
                   <div className="left">
                     <p>
@@ -290,7 +291,7 @@ const Property = ({ id }) => {
         <div className="others-info">
           <div className="wrapper">
             <div className="seller-details">
-              <h3 className="title">Property Owner Details</h3>
+              <h3>Property Owner Details</h3>
 
               <div className="contact-info">
                 <Link to={`/profile/${post.userId}`}>
@@ -336,7 +337,7 @@ const Property = ({ id }) => {
             </div>
 
             <div className="mapContainer">
-              <p className="title">Location in Map</p>
+              <p>Location in Map</p>
               <Map items={[post]} />
             </div>
 

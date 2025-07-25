@@ -32,7 +32,7 @@ const Card = ({ item }) => {
         </p>
 
         <div className="price-date">
-          <h3 className="item-price">৳ {item?.price}</h3>
+          <h3 className="item-price">SR {item?.price}</h3>
 
           <p className="date">{formattedDate}</p>
         </div>
