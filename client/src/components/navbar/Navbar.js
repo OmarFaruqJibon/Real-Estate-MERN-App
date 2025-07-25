@@ -84,6 +84,7 @@ const Navbar = () => {
 
   return (
     <nav className="navbar-container">
+      {/* FOR LEFT*/}
       <div className="left-side">
         {" "}
         {/* Logo */}
@@ -94,6 +95,7 @@ const Navbar = () => {
         </div>
       </div>
 
+      {/* FOR middle */}
       <div className="middle-side">
         {" "}
         {/* Middle menu */}
@@ -114,7 +116,10 @@ const Navbar = () => {
             </Link>
           )}
           <Link to="/list" onClick={handleLinkClick}>
-            PROPERTY
+            BUY
+          </Link>
+          <Link to="/list" onClick={handleLinkClick}>
+            RENT
           </Link>
           <Link to="/agent" onClick={handleLinkClick}>
             AGENT
@@ -125,6 +130,7 @@ const Navbar = () => {
         </div>
       </div>
 
+      {/* FOR right */}
       <div className="right-side">
         {/* Profile */}
         {currentUser ? (
@@ -143,6 +149,7 @@ const Navbar = () => {
         )}
       </div>
 
+      {/* SMALL SCREEN MENU ICON */}
       <span
         className="menu-icon"
         onClick={() => setMenuOpen(!menuOpen)}
@@ -151,9 +158,8 @@ const Navbar = () => {
         <MenuIcon sx={{ fontSize: "30px" }} />
       </span>
 
+      {/* FOR SMALL SCREEN */}
       <div className="small-screen-menu">
-        {/* FOR SMALL SCREEN */}
-
         <div className={menuOpen ? "side-menu active" : "side-menu"}>
           {currentUser?.role === "ADMIN" && (
             <Link to="/admin/overview">
@@ -178,7 +184,11 @@ const Navbar = () => {
 
           <Link to="/list" onClick={handleLinkClick}>
             <ListIcon sx={{ color: "white", fontSize: "20px" }} />
-            PROPERTY
+            BUY
+          </Link>
+          <Link to="/list" onClick={handleLinkClick}>
+            <ListIcon sx={{ color: "white", fontSize: "20px" }} />
+            RENT
           </Link>
           <Link to="/agent" onClick={handleLinkClick}>
             <RealEstateAgentIcon sx={{ color: "white", fontSize: "20px" }} />

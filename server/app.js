@@ -20,11 +20,11 @@ dotenv.config();
 // Use environment port or default to 8800
 const port = process.env.PORT || 8800;
 
-// ✅ CORS — MUST come *before* express.json()
+// CORS — MUST come *before* express.json()
 app.use(
   cors({
-    // origin: "http://localhost:3000",
-    origin: "https://darhub.vercel.app",
+    origin: process.env.CLIENT_URL,
+    // origin: "https://darhub.vercel.app",
     credentials: true,
   })
 );
