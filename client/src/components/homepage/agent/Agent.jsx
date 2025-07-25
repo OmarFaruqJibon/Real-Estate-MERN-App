@@ -41,7 +41,7 @@ const Agent = () => {
             >
               <CardMedia
                 component="img"
-                sx={{ width: 150 }}
+                sx={{ width: { lg: 175, xs: 150 } }}
                 image={
                   agent?.avatar || "https://i.postimg.cc/zBDzSqBk/team-1.webp"
                 }

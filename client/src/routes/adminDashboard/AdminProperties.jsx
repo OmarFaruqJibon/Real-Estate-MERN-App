@@ -17,6 +17,7 @@ import {
 } from "@mui/material";
 import apiCall from "../../lib/apiCall";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { Link } from "react-router-dom";
 
 const AdminProperties = () => {
   const [properties, setProperties] = useState([]);
@@ -113,6 +114,9 @@ const AdminProperties = () => {
     <Box>
       <div className="title">
         <h3>Property Management</h3>
+        <Link to="/addPost">
+          <button className="addnew-btn">+ Add New</button>
+        </Link>
       </div>
 
       <TableContainer component={Paper}>

@@ -98,7 +98,7 @@ const UserPosts = () => {
                 <strong>Title</strong>
               </TableCell>
               <TableCell>
-                <strong>Created At</strong>
+                <strong>Date</strong>
               </TableCell>
               <TableCell>
                 <strong>Status</strong>

@@ -36,7 +36,7 @@ const Agents = () => {
               <Card sx={{ display: "flex" }} className="agent-single-card">
                 <CardMedia
                   component="img"
-                  sx={{ width: 175 }}
+                  sx={{ width: { lg: 175, xs: 150 } }}
                   image={
                     agent?.avatar || "https://i.postimg.cc/zBDzSqBk/team-1.webp"
                   }
@@ -49,6 +49,9 @@ const Agents = () => {
                       display: "flex",
                       flexDirection: "column",
                       alignItems: "flex-start",
+                      p: "0px !important",
+                      pl: "15px !important",
+                      pb: "20px !important",
                     }}
                   >
                     <Typography
