@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./filter.scss";
 import { useSearchParams } from "react-router-dom";
 
-const Filter = () => {
+const Filter = ({ onClose }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [query, setQuery] = useState({
     type: searchParams.get("type") || "",
@@ -22,6 +22,7 @@ const Filter = () => {
 
   const handleFilter = () => {
     setSearchParams(query);
+    if (onClose) onClose();
   };
 
   const handleReset = () => {
@@ -35,6 +36,7 @@ const Filter = () => {
     };
     setQuery(clearedQuery);
     setSearchParams({});
+    if (onClose) setTimeout(onClose, 250);
   };
 
   return (
@@ -54,7 +56,6 @@ const Filter = () => {
           />
         </label>
 
-        {/* Use form with onSubmit to prevent reload */}
         <form
           onSubmit={(e) => {
             e.preventDefault(); // Prevent default form submission

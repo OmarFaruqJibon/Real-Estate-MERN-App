@@ -5,9 +5,19 @@
   margin-right: 30px;
   padding: 15px 30px;
 
+  @include small {
+    background: none;
+    margin-right: 0;
+    padding: 0 6px;
+  }
+
   h4 {
     text-align: center;
     text-transform: uppercase;
+
+    @include small {
+      display: none;
+    }
   }
 }
 
@@ -17,7 +27,6 @@
     flex-direction: column;
     margin-top: 10px;
     margin-bottom: 10px;
-    font-weight: 300;
     font-size: 12px;
 
     input {
@@ -72,6 +81,18 @@
       display: flex;
       gap: 5px;
       flex-direction: row;
+
+      #minPrice {
+        @include small {
+          width: 48%;
+          margin-right: 4%;
+        }
+      }
+      #maxPrice {
+        @include small {
+          width: 48%;
+        }
+      }
     }
 
     .btn-group {

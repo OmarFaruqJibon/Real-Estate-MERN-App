@@ -12,33 +12,51 @@
     background: #e7edee;
     padding: 16px 15px;
 
+    @include small {
+      background: none;
+      padding: 0;
+    }
+
     .cityLocation {
       display: flex;
       gap: 5px;
     }
 
-    .sort select {
-      width: 175px;
-      border: 1px solid #09aa57;
-      height: 34px;
-      padding: 5px;
-      background-color: #fff !important;
-      cursor: pointer;
-      border-radius: 3px;
-      box-shadow: none;
-      outline: none;
+    // .sort {
+    //   select {
+    //     width: 175px;
+    //     border: 1px solid #09aa57;
+    //     height: 34px;
+    //     padding: 5px;
+    //     background-color: #fff !important;
+    //     cursor: pointer;
+    //     border-radius: 3px;
+    //     box-shadow: none;
+    //     outline: none;
 
-      // Optional: Add custom focus style if you want
-      &:focus {
-        border: 1px solid #067d41; // or a different green
-        box-shadow: 0 0 0 2px rgba(9, 170, 87, 0.2);
+    //     &:focus {
+    //       border: 1px solid #067d41;
+    //       box-shadow: 0 0 0 2px rgba(9, 170, 87, 0.2);
+    //     }
+    //   }
+    // }
+
+    .mobileFilterIcon {
+      display: none;
+
+      @include small {
+        display: block;
+        margin-left: 10px;
+      }
+
+      @include medium {
+        display: block;
       }
     }
   }
 
   .listPageWrapper {
     display: flex;
-    // padding: 10px 20px;
     padding-bottom: 100px;
 
     @include small {
@@ -53,11 +71,9 @@
       flex: 4;
 
       .wrapper {
-        // padding: 10px 25px 5px 5px;
         display: flex;
         flex-direction: column;
-        gap: 20px;
-        // overflow-y: scroll;
+        gap: 40px;
         padding-bottom: 120px;
 
         @include small {
@@ -71,13 +87,9 @@
           gap: 35px;
         }
       }
-
-      // h3 {
-      //     font-weight: 300;
-      // }
     }
 
-    .mapContainer {
+    .filterContainer {
       flex: 2;
       height: 100%;
 

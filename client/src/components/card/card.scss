@@ -4,11 +4,16 @@
   display: flex;
   gap: 35px;
   height: 220px;
+  background: white;
 
   @include small {
     flex-direction: column;
     height: max-content;
     gap: 6px;
+    padding: 10px;
+    background: white;
+    border-radius: 6px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
 
   .img-container {
@@ -17,7 +22,11 @@
     img {
       width: 100%;
       height: 100%;
-      // border-radius: 10px;
+      border-radius: 6px;
+
+      @include small {
+        max-height: 220px;
+      }
     }
   }
 
@@ -28,7 +37,7 @@
     justify-content: space-between;
 
     @include small {
-      gap: 8px;
+      gap: 20px;
     }
 
     img {
@@ -50,7 +59,7 @@
     .price-date {
       display: flex;
       justify-content: space-between;
-
+      align-items: center;
       .item-price {
         font-weight: 700;
         color: #09aa57;
@@ -59,6 +68,10 @@
       .date {
         margin-right: 17px;
         font-size: 15px;
+
+        @include small {
+          font-size: 13px;
+        }
       }
     }
 

@@ -1,15 +1,18 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useState } from "react";
 import "./list.scss";
 import Filter from "../../components/filter/Filter";
 import Card from "../../components/card/Card";
 import { Await, useLoaderData, useSearchParams } from "react-router-dom";
-import { MapPin } from "lucide-react";
+import { MapPin, Sliders } from "lucide-react";
 import Footer from "../../components/footer/Footer";
+import { Drawer, IconButton, Box, Typography } from "@mui/material";
 
 const List = () => {
   const data = useLoaderData();
   const [searchParams] = useSearchParams();
   const city = searchParams.get("city") || "";
+
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   return (
     <>
@@ -20,27 +23,27 @@ const List = () => {
             <span>
               <MapPin color="#09aa57" size={19} style={{ marginTop: "3px" }} />
             </span>
-
             <span>{city || "Search Location"}</span>
           </div>
-          {/* Sort */}
-          <div className="sort">
-            <select title="Sort by" name="sort_by" id="sort_by">
-              <option value="">Sort by</option>
-              <option value="new_to_old" selected="">
-                Latest Post First
-              </option>
-              <option value="old_to_new">Oldest Post First</option>
-              <option value="bigger_to_samller">Biggest Size First</option>
-              <option value="smaller_to_bigger">Smallest Size First</option>
-              <option value="high_to_low">Highest Price First</option>
-              <option value="low_to_high">Lowest Price First</option>
-            </select>
+
+          {/* MUI IconButton for Filter */}
+          <div className="mobileFilterIcon">
+            <IconButton
+              onClick={() => setIsDrawerOpen(true)}
+              sx={{
+                borderRadius: "6px",
+                backgroundColor: "#3a307f",
+                "&:hover": { backgroundColor: "#3a307f" },
+                color: "white",
+              }}
+            >
+              <Sliders size={18} />
+            </IconButton>
           </div>
         </div>
 
         <div className="listPageWrapper">
-          <div className="mapContainer">
+          <div className="filterContainer">
             <Filter />
           </div>
 
@@ -49,7 +52,7 @@ const List = () => {
               <Suspense fallback={<p>Loading...</p>}>
                 <Await
                   resolve={data?.postResponse}
-                  errorElement={<p>Error loading posts!</p>}
+                  errorElement={<p>Error loading Properties!</p>}
                 >
                   {(postResponse) =>
                     postResponse?.data.map((post) => (
@@ -62,6 +65,33 @@ const List = () => {
           </div>
         </div>
       </div>
+
+      {/* MUI Drawer for mobile filters */}
+      <Drawer
+        anchor="right"
+        open={isDrawerOpen}
+        onClose={() => setIsDrawerOpen(false)}
+        ModalProps={{
+          sx: {
+            backdropFilter: "blur(3px)",
+            backgroundColor: "rgba(0, 0, 0, 0.2)",
+          },
+        }}
+        PaperProps={{
+          sx: { width: "80%", padding: 2 },
+        }}
+      >
+        <Box display="flex" justifyContent="space-between" alignItems="center">
+          <Typography
+            sx={{ fontSize: "14px", color: "black", fontWeight: "600" }}
+          >
+            Filters
+          </Typography>
+          <IconButton onClick={() => setIsDrawerOpen(false)}>✕</IconButton>
+        </Box>
+        <Filter onClose={() => setTimeout(() => setIsDrawerOpen(false), 250)} />
+      </Drawer>
+
       <Footer />
     </>
   );

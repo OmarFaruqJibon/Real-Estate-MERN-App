@@ -159,6 +159,7 @@ const Login = () => {
                     />
                   }
                   label="Remember me"
+                  fontSize="10px"
                   sx={{ mt: 1 }}
                 />
 
@@ -174,7 +175,7 @@ const Login = () => {
                   variant="contained"
                   sx={{ mt: 3, mb: 2, textTransform: "none" }}
                 >
-                  {isLoading ? "Logging in..." : "Login"}
+                  {isLoading ? "Signing in..." : "Sign in"}
                 </Button>
 
                 <Divider sx={{ my: 2 }} />
@@ -187,7 +188,7 @@ const Login = () => {
                     underline="hover"
                     color="primary"
                   >
-                    Register Here
+                    Sign up
                   </MuiLink>
                 </Typography>
               </Box>

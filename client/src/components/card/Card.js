@@ -20,7 +20,7 @@ const Card = ({ item }) => {
 
       <div className="text-container">
         <Link to={`/list/${item.id}`}>
-          <h3 className="item-title">{item.title}</h3>
+          <h3 className="item-title">{item?.title}</h3>
         </Link>
 
         <p className="item-location">
@@ -28,11 +28,11 @@ const Card = ({ item }) => {
             src="https://i.postimg.cc/mg8RNbwp/location.png"
             alt="location"
           />
-          <span>{item.address}</span>
+          <span>{item?.address}</span>
         </p>
 
         <div className="price-date">
-          <h3 className="item-price">৳ {item.price}</h3>
+          <h3 className="item-price">৳ {item?.price}</h3>
 
           <p className="date">{formattedDate}</p>
         </div>
