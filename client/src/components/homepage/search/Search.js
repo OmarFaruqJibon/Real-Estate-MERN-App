@@ -1,3 +1,4 @@
+// client\src\components\homepage\search\Search.js
 import React, { useState } from "react";
 import "./Search.scss";
 import { Link } from "react-router-dom";
