@@ -1,90 +1,182 @@
-// client\src\components\homepage\search\Search.scss
 @import "../../../responsive.scss";
 
 .searchBar {
-  button {
-    padding: 12px 25px;
-    border: none;
-    cursor: pointer;
-  }
   .type {
-    button {
-      text-transform: uppercase;
-      padding: 17px 30px;
-      font-size: 15px;
-      font-weight: 600;
-      color: #2c2c2c;
-      background-color: white;
-      border-radius: 0px;
+    display: inline-flex;
+    background: #f8f9fa;
+    padding: 4px;
+    border-radius: 8px;
+    margin-bottom: 24px;
 
-      @include small {
-        padding: 17px 20px;
+    .type-btn {
+      padding: 12px 28px;
+      border: none;
+      cursor: pointer;
+      text-transform: uppercase;
+      font-size: 14px;
+      font-weight: 600;
+      color: #6c757d;
+      background: transparent;
+      border-radius: 6px;
+      transition: all 0.2s ease;
+
+      &:hover {
+        color: #495057;
+        background: rgba(255, 255, 255, 0.8);
       }
 
       &.active {
-        background-color: #09aa57;
-        color: white;
+        background: white;
+        color: #09aa57;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      @include small {
+        padding: 10px 20px;
+        font-size: 13px;
       }
     }
   }
 
   .form {
-    display: flex;
-    background-color: #ffffff;
-    padding-left: 15px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
 
     @include small {
-      flex-direction: column;
-      padding-left: 20px;
-      padding-right: 20px;
-      margin: 0px 7px;
+      border-radius: 10px;
+      margin: 0;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
     }
 
-    .input-item {
+    .input-row {
       display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      padding-top: 15px;
-      padding-bottom: 3px;
-      outline: none;
+      align-items: stretch;
+      min-height: 70px;
 
-      label {
-        color: rgb(17, 17, 17);
-        font-weight: 500;
-        font-size: 14px;
-        text-transform: uppercase;
+      @include small {
+        flex-direction: column;
+        min-height: auto;
       }
     }
 
-    input {
-      border: none;
-      border: none;
-      padding: 9px 0px;
-      width: 300px;
-      outline: none;
+    .input-item {
+      flex: 1;
+      padding: 16px 24px;
+      border-right: 1px solid #e9ecef;
 
-      @include medium {
-        width: 210px;
+      &:last-child:not(.input-item-btn) {
+        border-right: none;
+      }
+
+      @include small {
+        padding: 15px 20px;
+        border-right: none;
+        border-bottom: 1px solid #e9ecef;
+
+        &:last-child {
+          border-bottom: none;
+        }
+      }
+
+      label {
+        display: block;
+        color: #495057;
+        font-weight: 600;
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 6px;
+      }
+
+      input {
+        border: none;
+        outline: none;
+        width: 100%;
+        font-size: 16px;
+        color: #212529;
+        background: transparent;
+
+        &::placeholder {
+          color: #adb5bd;
+        }
+
+        &:focus {
+          outline: none;
+        }
+
+        @include small {
+          font-size: 15px;
+        }
+      }
+
+      .price-input {
+        position: relative;
+        display: flex;
+        align-items: center;
+
+        .currency {
+          color: #09aa57;
+          font-weight: 600;
+          margin-right: 6px;
+          font-size: 16px;
+        }
+
+        input {
+          padding: 0;
+        }
       }
     }
 
     .input-item-btn {
-      .button {
-        background-color: #09aa57;
-        color: white;
-        font-weight: 600;
-        align-items: center;
-        padding: 28px 0px;
-        font-size: 15px;
-        width: 120px;
-        cursor: pointer;
-        text-transform: uppercase;
+      padding: 0;
+      display: flex;
+      align-items: stretch;
+
+      @include small {
+        padding: 15px 20px;
+      }
+
+      a {
+        text-decoration: none;
+        display: flex;
+        align-items: stretch;
+        width: 100%;
 
         @include small {
-          padding: 13px 0px;
-          margin-bottom: 20px;
-          margin-top: 10px;
-          width: 100%;
+          display: block;
+        }
+      }
+
+      .search-btn {
+        width: 100%;
+        background: #09aa57;
+        color: white;
+        border: none;
+        cursor: pointer;
+        text-transform: uppercase;
+        font-size: 15px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        padding: 0 32px;
+        transition: all 0.2s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+
+        &:hover {
+          background: #089a4d;
+        }
+
+        .search-icon {
+          font-size: 16px;
+        }
+
+        @include small {
+          padding: 14px;
+          border-radius: 8px;
         }
       }
     }
