@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./FeaturedProperties.scss";
 import { MapPin, Bath, BedDouble, Landmark } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
 import apiCall from "../../../lib/apiCall";
 
 const FeaturedProperties = () => {
@@ -26,53 +25,55 @@ const FeaturedProperties = () => {
       <div className="top">
         <span className="lined-title">PROPERTY</span>
         <h1>Featured Properties</h1>
+        <p>
+          Explore our curated selection of premium properties in prime locations
+        </p>
       </div>
 
       <div className="property-list">
         {properties?.slice(0, 6).map((property) => (
           <div key={property?.id} className="property-card">
-            <Link to={"/list"}>
-              <img src={property?.images[0]} alt="Property 1" />
-            </Link>
-            <Link to={"/list"}>
-              <h3>{property?.title}</h3>
-            </Link>
-
-            <div className="mid">
-              <p>
-                <MapPin color="#000000c7" size={18} />{" "}
-                <span>{property?.city}</span>
-              </p>
-              <p
-                style={{
-                  color: "#0FB45F",
-                  fontSize: "16px",
-                  fontWeight: "600",
-                }}
-              >
-                {property?.price}
-              </p>
+            <div className="card-image-container">
+              <Link to={`/list/${property.id}`}>
+                <img src={property?.images?.[0]} alt={property?.title} />
+              </Link>
             </div>
-            <div className="last">
-              <p>
-                <Landmark color="#000000c7" size={18} />{" "}
-                <span>{property?.size} SQFT</span>
-              </p>
-              <p>
-                <BedDouble color="#000000c7" size={18} />{" "}
-                <span>{property?.bedroom} Bed</span>
-              </p>
-              <p>
-                <Bath color="#000000c7" size={18} />{" "}
-                <span>{property?.bathroom} Bath</span>
-              </p>
+
+            <div className="card-content">
+              <Link to={`/list/${property.id}`} className="property-title-link">
+                <h3>{property?.title}</h3>
+              </Link>
+
+              <div className="mid">
+                <p className="location">
+                  <MapPin className="icon" />
+                  <span>{property?.city}</span>
+                </p>
+
+                <p className="price">SR {property?.price}</p>
+              </div>
+
+              <div className="last">
+                <p>
+                  <Landmark className="icon" />
+                  <span>{property?.size} SQFT</span>
+                </p>
+                <p>
+                  <BedDouble className="icon" />
+                  <span>{property?.bedroom} Bed</span>
+                </p>
+                <p>
+                  <Bath className="icon" />
+                  <span>{property?.bathroom} Bath</span>
+                </p>
+              </div>
             </div>
           </div>
         ))}
       </div>
 
-      <Link to={"/list"}>
-        <button>See More</button>
+      <Link to="/list" className="see-more-link">
+        <button className="see-more-btn">See More</button>
       </Link>
     </section>
   );

@@ -1,19 +1,28 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { MapPin, Bath, BedDouble, Landmark } from "lucide-react";
-import { Avatar, Box, Typography, Grid, Button } from "@mui/material";
+import { MapPin, Bath, BedDouble, Landmark, Star } from "lucide-react";
+import {
+  Avatar,
+  Typography,
+  Grid,
+  Button,
+  Chip,
+  Tabs,
+  Tab,
+} from "@mui/material";
 import EmailIcon from "@mui/icons-material/Email";
 import PhoneIcon from "@mui/icons-material/Phone";
-import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
+import VerifiedIcon from "@mui/icons-material/Verified";
 import ChatIcon from "@mui/icons-material/Chat";
 import apiCall from "../../lib/apiCall";
 import "./PublicUserProfile.scss";
-import Footer from "./../../components/footer/Footer";
+import Footer from "../../components/footer/Footer";
 
 const PublicUserProfile = () => {
   const { userId } = useParams();
   const [user, setUser] = useState(null);
   const [posts, setPosts] = useState([]);
+  const [tab, setTab] = useState(0);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -25,10 +34,9 @@ const PublicUserProfile = () => {
         setUser(userRes.data);
         setPosts(postRes.data);
       } catch (err) {
-        console.error("Error loading profile:", err);
+        console.error(err);
       }
     };
-
     fetchData();
   }, [userId]);
 
@@ -36,101 +44,141 @@ const PublicUserProfile = () => {
 
   return (
     <>
-      <Box className="public-profile-container">
-        <Box className="profile-header">
-          <Avatar src={user.avatar} className="profile-avatar" />
-          <Box>
-            <Typography variant="h2" className="username">
-              {user.username}
-            </Typography>
-            <Typography variant="body2" className="email">
-              <EmailIcon />
-              {user.email}
-            </Typography>
-            <Typography variant="body2" className="email">
-              <PhoneIcon />
-              {user.phone}
-            </Typography>
-          </Box>
-        </Box>
-
-        <Box className="contact-bts">
-          <Button
-            variant="outlined"
-            startIcon={<FormatListBulletedIcon />}
-            color="success"
-          >
-            View Properties
-          </Button>
-
-          <Button variant="outlined" startIcon={<ChatIcon />} color="secondary">
-            Chat Online
-          </Button>
-        </Box>
-
-        <div className="section-title ">
-          <h3>Properties by {user.username}</h3>
+      <div className="agent-pro-page">
+        {/* HERO */}
+        <div className="agent-hero">
+          <div className="hero-overlay"></div>
+          <div className="hero-content">
+            <h1>{user.username}</h1>
+            <p>Premium Real Estate Consultant</p>
+          </div>
         </div>
 
-        <Box className="listing-section">
-          <Grid
-            container
-            spacing={3}
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-            }}
-          >
-            {posts.map((post) => (
-              <Grid
-                item
-                xs={12}
-                sm={6}
-                md={4}
-                key={post.id}
-                sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  minWidth: 0,
-                }}
-              >
-                <Link to={`/list/${post.id}`}>
-                  <div className="property-card">
-                    <img src={post?.images[0]} alt="Property" />
+        {/* PROFILE CARD */}
+        <div className="agent-glass-card">
+          <Avatar src={user.avatar} className="agent-avatar" />
 
-                    <div className="card-body">
-                      <h3>{post.title}</h3>
+          <div className="agent-main-info">
+            <h2>{user.username}</h2>
 
-                      <div className="mid">
-                        <p>
-                          <MapPin color="#000000c7" size={18} />
-                          <span>{post?.city}</span>
-                        </p>
-                        <p className="price">BDT {post?.price}</p>
+            <div className="badges">
+              <Chip icon={<VerifiedIcon />} label="Verified Agent" />
+              <span className="rating">
+                <Star size={16} /> 4.8 (120 reviews)
+              </span>
+            </div>
+
+            <p className="agent-role">
+              {user.job || "Senior Real Estate Consultant"}
+            </p>
+
+            <div className="agent-meta">
+              <span>
+                <EmailIcon /> {user.email}
+              </span>
+              <span>
+                <PhoneIcon /> {user.phone || "Not available"}
+              </span>
+            </div>
+          </div>
+
+          {/* ACTIONS */}
+          <div className="agent-actions">
+            <Button variant="contained" color="success">
+              Contact Agent
+            </Button>
+            {/* <Button variant="outlined" startIcon={<ChatIcon />}>
+              Chat
+            </Button> */}
+          </div>
+        </div>
+
+        {/* STATS */}
+        <div className="agent-stats-bar">
+          <div>
+            <strong>{posts.length}</strong>
+            <span> Active Listings</span>
+          </div>
+          <div>
+            <strong>{user.experience || "5+"}</strong>
+            <span> Years Experience</span>
+          </div>
+          <div>
+            <strong>{user.clients || "120+"}</strong>
+            <span> Happy Clients</span>
+          </div>
+          <div>
+            <strong>{user.sales || "300+"}</strong>
+            <span> Properties Sold</span>
+          </div>
+        </div>
+
+        {/* TABS */}
+        <div className="agent-tabs">
+          <Tabs value={tab} onChange={(e, v) => setTab(v)}>
+            <Tab label="Properties" />
+            <Tab label="About Agent" />
+            <Tab label="Reviews" />
+          </Tabs>
+        </div>
+
+        {/* TAB CONTENT */}
+        <div className="agent-tab-content">
+          {tab === 0 && (
+            <Grid container spacing={3}>
+              {posts.map((post) => (
+                <Grid item xs={12} sm={6} md={4} lg={3} xl={3} key={post.id}>
+                  <Link to={`/list/${post.id}`} className="lux-property-link">
+                    <div className="lux-property-card">
+                      <div className="lux-image">
+                        <img src={post?.images[0]} alt="Property" />
+                        <div className="price">BDT {post?.price}</div>
                       </div>
 
-                      <div className="last">
-                        <p>
-                          <Landmark color="#000000c7" size={18} />
-                          <span>{post?.size} sqft</span>
-                        </p>
-                        <p>
-                          <BedDouble color="#000000c7" size={18} />
-                          <span>{post?.bedroom} Bed</span>
-                        </p>
-                        <p>
-                          <Bath color="#000000c7" size={18} />
-                          <span>{post?.bathroom} Bath</span>
-                        </p>
+                      <div className="lux-body">
+                        <h3>{post.title}</h3>
+
+                        <div className="location">
+                          <MapPin size={16} />
+                          <span>{post?.city}</span>
+                        </div>
+
+                        <div className="features">
+                          <span>
+                            <Landmark size={16} /> {post?.size} sqft
+                          </span>
+                          <span>
+                            <BedDouble size={16} /> {post?.bedroom} Bed
+                          </span>
+                          <span>
+                            <Bath size={16} /> {post?.bathroom} Bath
+                          </span>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </Link>
-              </Grid>
-            ))}
-          </Grid>
-        </Box>
-      </Box>
+                  </Link>
+                </Grid>
+              ))}
+            </Grid>
+          )}
+
+          {tab === 1 && (
+            <div className="about-agent">
+              <h3>About {user.username}</h3>
+              <p>
+                {user.bio ||
+                  "Experienced real estate agent specializing in residential and commercial properties. Known for delivering exceptional client service and market expertise."}
+              </p>
+            </div>
+          )}
+
+          {tab === 2 && (
+            <div className="reviews-box">
+              <p>⭐ Reviews feature coming soon...</p>
+            </div>
+          )}
+        </div>
+      </div>
 
       <Footer />
     </>

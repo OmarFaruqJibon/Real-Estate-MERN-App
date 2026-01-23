@@ -26,121 +26,68 @@ const Agent = () => {
     <div className="agent-container">
       <div className="top">
         <span className="lined-title">AGENT</span>
-        <h1>Meets Our Agents</h1>
+        <h1>Meet Our Agents</h1>
+        <p className="section-description">
+          Connect with our trusted real estate professionals
+        </p>
       </div>
 
-      <div className="agent-card">
+      <div className="agent-cards-grid">
         {agents?.slice(0, 4).map((agent) => (
-          <Link key={agent.id} to={`/profile/${agent.id}`}>
-            <Card
-              sx={{
-                display: "flex",
-                boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-              }}
-              className="agent-single-card"
-            >
-              <CardMedia
-                component="img"
-                sx={{ width: { lg: 175, xs: 150 } }}
-                image={
-                  agent?.avatar || "https://i.postimg.cc/zBDzSqBk/team-1.webp"
-                }
-                alt="agents"
-              />
+          <Link
+            key={agent.id}
+            to={`/profile/${agent.id}`}
+            className="agent-card-link"
+          >
+            <Card className="agent-card-item">
+              <div className="agent-image-wrapper">
+                <CardMedia
+                  component="img"
+                  className="agent-image"
+                  image={
+                    agent?.avatar || "https://i.postimg.cc/zBDzSqBk/team-1.webp"
+                  }
+                  alt={agent?.username}
+                />
+              </div>
 
-              <Box>
-                <CardContent
-                  sx={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "flex-start",
-                    p: "0px !important",
-                    pl: "15px !important",
-                    pb: "20px !important",
-                  }}
-                >
-                  <Typography
-                    component="div"
-                    sx={{ fontSize: "20px", fontWeight: "500" }}
-                  >
-                    {agent?.username}
+              <CardContent className="agent-card-content">
+                <Typography className="agent-name">
+                  {agent?.username}
+                </Typography>
+
+                <Typography className="agent-job">
+                  {agent?.job || "Sales Executive"}
+                </Typography>
+
+                <Box className="agent-badges">
+                  <Typography className="agent-type-badge">
+                    <VerifiedIcon className="verified-icon" />
+                    {agent?.agentTpye?.toUpperCase() || "SUPERAGENT"}
                   </Typography>
 
-                  <Typography
-                    variant="subtitle1"
-                    component="div"
-                    sx={{ color: "text.secondary", fontSize: "13px" }}
-                  >
-                    {agent?.job || "Sales Executive"}
+                  <Typography className="agent-rating">
+                    <StarIcon className="star-icon" />
+                    {agent?.rating || "4.5"}
                   </Typography>
+                </Box>
 
-                  <Box
-                    sx={{
-                      display: "flex",
-                      gap: "20px",
-                      marginTop: "10px",
-                      marginBottom: "10px",
-                    }}
-                  >
-                    <Typography
-                      sx={{
-                        backgroundColor: "#09aa57",
-                        color: "white",
-                        fontSize: "12px",
-                        padding: "2px 10px",
-                        borderRadius: "7px",
-                        display: "flex",
-                        gap: "5px",
-                        alignItems: "center",
-                      }}
-                      component="div"
-                    >
-                      <VerifiedIcon sx={{ fontSize: "15px" }} />
-                      {agent?.agentTpye?.toUpperCase() || "SUPERAFENT"}
-                    </Typography>
+                <Typography className="agent-nationality">
+                  Nationality: {agent?.country || "Bangladesh"}
+                </Typography>
 
-                    <Typography
-                      component="div"
-                      sx={{
-                        display: "flex",
-                        gap: "5px",
-                        alignItems: "center",
-                        fontSize: "15px",
-                      }}
-                    >
-                      <StarIcon sx={{ color: "#ffb92a" }} fontSize="small" />
-                      {agent?.rating || "4.5"}
-                    </Typography>
-                  </Box>
-
-                  <Typography
-                    component="div"
-                    sx={{ color: "text.secondary", fontSize: "14px" }}
-                  >
-                    Nationality: {agent?.country || "Bangladesh"}
-                  </Typography>
-
-                  <Typography
-                    variant="subtitle1"
-                    component="div"
-                    sx={{
-                      fontWeight: "500",
-                      color: "#09aa57",
-                      marginTop: "40px",
-                      fontSize: "15px",
-                    }}
-                  >
-                    For Sale: {agent?.sale || "5"}
-                  </Typography>
-                </CardContent>
-              </Box>
+                <Typography className="agent-sales">
+                  For Sale:{" "}
+                  <span className="sales-count">{agent?.sale || "5"}</span>
+                </Typography>
+              </CardContent>
             </Card>
           </Link>
         ))}
       </div>
 
-      <Link to={"/agent"}>
-        <button>See More</button>
+      <Link to={"/agent"} className="see-more-link">
+        <button className="see-more-btn">View All Agents</button>
       </Link>
     </div>
   );
