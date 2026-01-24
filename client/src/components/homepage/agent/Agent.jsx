@@ -33,7 +33,7 @@ const Agent = () => {
       </div>
 
       <div className="agent-cards-grid">
-        {agents?.slice(0, 4).map((agent) => (
+        {agents?.slice(0, 3).map((agent) => (
           <Link
             key={agent.id}
             to={`/profile/${agent.id}`}

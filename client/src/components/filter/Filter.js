@@ -1,3 +1,4 @@
+// client\src\components\filter\Filter.js
 import React, { useState } from "react";
 import "./filter.scss";
 import { useSearchParams } from "react-router-dom";
@@ -58,7 +59,7 @@ const Filter = ({ onClose }) => {
 
         <form
           onSubmit={(e) => {
-            e.preventDefault(); // Prevent default form submission
+            e.preventDefault();
             handleFilter();
           }}
         >

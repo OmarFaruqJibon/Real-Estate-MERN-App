@@ -4,7 +4,7 @@ import "./Services.scss";
 
 const Services = () => {
   useEffect(() => {
-    AOS.init({ duration: 1000 }); // Initialize AOS with a duration of 1000ms
+    AOS.init({ duration: 1000 });
   }, []);
 
   return (

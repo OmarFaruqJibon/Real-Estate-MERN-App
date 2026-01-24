@@ -1,106 +1,269 @@
 @import "../../responsive.scss";
 
-.single-card {
-  display: flex;
-  gap: 35px;
-  height: 220px;
+.card {
   background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e9ecef;
 
-  @include small {
-    flex-direction: column;
-    height: max-content;
-    gap: 6px;
-    padding: 10px;
-    background: white;
-    border-radius: 6px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+    border-color: #3a307f;
   }
 
-  .img-container {
-    flex: 2;
+  .cardImage {
+    position: relative;
+    overflow: hidden;
 
     img {
-      width: 100%;
-      height: 100%;
-      border-radius: 6px;
+      transition: transform 0.5s ease;
+    }
 
-      @include small {
-        max-height: 220px;
+    &:hover img {
+      transform: scale(1.05);
+    }
+
+    .imageOverlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0) 60%,
+        rgba(0, 0, 0, 0.3) 100%
+      );
+
+      .priceBadge {
+        position: absolute;
+        bottom: 25px;
+        left: 12px;
+        background: #09aa57;
+        color: white;
+        padding: 6px 12px;
+        border-radius: 6px;
+        font-weight: 600;
+        font-size: 0.875rem;
+        z-index: 1;
       }
     }
   }
 
-  .text-container {
-    flex: 3;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  &.list {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    height: 240px;
+
+    @include medium {
+      grid-template-columns: 250px 1fr;
+      height: 220px;
+    }
 
     @include small {
-      gap: 20px;
+      grid-template-columns: 1fr;
+      height: auto;
     }
 
-    img {
-      width: 17px;
-      margin-right: 7px;
+    .cardImage {
+      height: 100%;
+
+      @include small {
+        height: 200px;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
     }
 
-    .item-title {
-      font-weight: 600;
+    .cardContent {
+      padding: 20px;
+
+      @include small {
+        padding: 16px;
+      }
+    }
+  }
+
+  &.grid {
+    display: flex;
+    flex-direction: column;
+    height: 380px;
+
+    .cardImage {
+      height: 200px;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
     }
 
-    .item-location {
-      font-weight: 300;
-      font-size: 14px;
+    .cardContent {
+      padding: 16px;
+      flex: 1;
       display: flex;
-      align-items: center;
+      flex-direction: column;
+    }
+  }
+
+  .cardContent {
+    .cardHeader {
+      margin-bottom: 16px;
+
+      .cardTitleLink {
+        text-decoration: none;
+        color: inherit;
+
+        &:hover .cardTitle {
+          color: #09aa57;
+        }
+      }
+
+      .cardTitle {
+        font-size: 1.125rem;
+        font-weight: 600;
+        color: #333;
+        margin: 0 0 8px 0;
+        line-height: 1.4;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+
+      .cardAddress {
+        font-size: 0.875rem;
+        color: #666;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+
+        .locationIcon {
+          font-size: 1rem;
+        }
+      }
     }
 
-    .price-date {
+    .cardFeatures {
+      display: flex;
+      justify-content: space-between;
+      padding: 16px 0;
+      border-top: 1px solid #e9ecef;
+      border-bottom: 1px solid #e9ecef;
+      margin-bottom: 16px;
+
+      .featureItem {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.875rem;
+        color: #555;
+
+        svg {
+          color: #3a307f;
+        }
+      }
+    }
+
+    .cardFooter {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      .item-price {
-        font-weight: 700;
-        color: #09aa57;
+      margin-top: auto;
+
+      .dateInfo {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.875rem;
+        color: #666;
+
+        svg {
+          color: #09aa57;
+        }
       }
 
-      .date {
-        margin-right: 17px;
-        font-size: 15px;
+      .viewDetailsBtn {
+        background: linear-gradient(135deg, #09aa57, #0fb45f);
+        color: white;
+        padding: 8px 16px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-size: 0.875rem;
+        font-weight: 500;
+        transition: all 0.3s ease;
 
-        @include small {
-          font-size: 13px;
+        &:hover {
+          background: linear-gradient(135deg, #07ac56, #0cb35d);
+          transform: translateY(-1px);
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    &.list,
+    &.grid {
+      .cardContent {
+        .cardFeatures {
+          flex-direction: column;
+          gap: 12px;
+          align-items: flex-start;
+
+          .featureItem {
+            flex-direction: row;
+            gap: 8px;
+          }
+        }
+
+        .cardFooter {
+          flex-direction: column;
+          gap: 12px;
+          align-items: stretch;
+
+          .viewDetailsBtn {
+            text-align: center;
+          }
         }
       }
     }
 
-    .bottom-info {
-      .rooms {
-        display: flex;
-        justify-content: space-between;
-
-        p {
-          font-size: 14px;
-          font-weight: 300;
-          display: flex;
-          align-items: center;
+    &.list {
+      .cardImage {
+        .imageOverlay {
+          .priceBadge {
+            bottom: 8px;
+            left: 8px;
+            font-size: 0.813rem;
+            padding: 5px 10px;
+          }
         }
       }
+    }
 
-      span {
-        padding-right: 10px;
+    &.grid {
+      .cardImage {
+        .imageOverlay {
+          .priceBadge {
+            bottom: 8px;
+            left: 8px;
+            font-size: 0.813rem;
+            padding: 5px 10px;
+          }
+        }
       }
-
-      // .card-action {
-      //     span {
-      //         cursor: pointer;
-
-      //         img {
-      //             width: 20px;
-      //         }
-      //     }
-      // }
     }
   }
 }

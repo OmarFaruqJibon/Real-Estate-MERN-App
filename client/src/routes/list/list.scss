@@ -1,105 +1,293 @@
+// client\src\routes\list\list.scss
 @import "../../responsive.scss";
 
 .listPage {
-  padding: 25px 30px;
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
 
-  .upperPart {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  @include small {
+    padding: 16px;
+  }
+
+  .listHeader {
     margin-bottom: 30px;
-    margin-top: 20px;
-    background: #e7edee;
-    padding: 16px 15px;
 
-    @include small {
-      background: none;
-      padding: 0;
-    }
-
-    .cityLocation {
+    .headerTop {
       display: flex;
-      gap: 5px;
-    }
-
-    // .sort {
-    //   select {
-    //     width: 175px;
-    //     border: 1px solid #09aa57;
-    //     height: 34px;
-    //     padding: 5px;
-    //     background-color: #fff !important;
-    //     cursor: pointer;
-    //     border-radius: 3px;
-    //     box-shadow: none;
-    //     outline: none;
-
-    //     &:focus {
-    //       border: 1px solid #067d41;
-    //       box-shadow: 0 0 0 2px rgba(9, 170, 87, 0.2);
-    //     }
-    //   }
-    // }
-
-    .mobileFilterIcon {
-      display: none;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 24px;
 
       @include small {
-        display: block;
-        margin-left: 10px;
+        flex-direction: column;
+        gap: 16px;
       }
 
-      @include medium {
-        display: block;
+      .locationInfo {
+        flex: 1;
+
+        .cityLocation {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          margin-bottom: 8px;
+
+          h6 {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #333;
+
+            @include small {
+              font-size: 1.25rem;
+            }
+          }
+        }
+
+        .resultsCount {
+          font-size: 0.875rem;
+          color: #666;
+        }
+      }
+
+      .mobileFilterIcon {
+        .filterButton {
+          background: linear-gradient(135deg, #3a307f 0%, #5a4bb5 100%);
+          color: white;
+          padding: 8px 16px;
+          border-radius: 8px;
+          text-transform: none;
+          font-weight: 500;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          transition: all 0.3s ease;
+
+          &:hover {
+            background: linear-gradient(135deg, #2a207f 0%, #4a3ba5 100%);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(58, 48, 127, 0.3);
+          }
+
+          span {
+            font-size: 0.875rem;
+
+            @include small {
+              display: inline;
+            }
+          }
+        }
+      }
+    }
+
+    .listControls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px;
+      background: #f8f9fa;
+      border-radius: 12px;
+      border: 1px solid #e9ecef;
+
+      @include small {
+        flex-direction: column;
+        gap: 16px;
+        align-items: stretch;
+      }
+
+      .viewControls {
+        .MuiToggleButtonGroup-root {
+          background: white;
+          border-radius: 8px;
+          overflow: hidden;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+
+          .MuiToggleButton-root {
+            border: 1px solid #dee2e6;
+            padding: 8px 16px;
+
+            &.Mui-selected {
+              background: #3a307f;
+              color: white;
+
+              &:hover {
+                background: #2a207f;
+              }
+            }
+
+            &:hover {
+              background: #f8f9fa;
+            }
+          }
+        }
+      }
+
+      .sortControls {
+        .MuiStack-root {
+          @include small {
+            flex-direction: column;
+            gap: 12px;
+            align-items: stretch;
+          }
+        }
+
+        .MuiFormControl-root {
+          background: white;
+          border-radius: 8px;
+
+          .MuiOutlinedInput-root {
+            border-radius: 8px;
+          }
+        }
       }
     }
   }
 
   .listPageWrapper {
-    display: flex;
-    padding-bottom: 100px;
-
-    @include small {
-      flex-direction: column;
-    }
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 30px;
+    min-height: 600px;
 
     @include medium {
-      flex-direction: column;
+      grid-template-columns: 1fr;
+      gap: 24px;
     }
 
-    .listContainer {
-      flex: 4;
-
-      .wrapper {
-        display: flex;
-        flex-direction: column;
-        gap: 40px;
-        padding-bottom: 120px;
-
-        @include small {
-          padding: 0px;
-          gap: 50px;
-        }
-
-        .card-wrapper {
-          display: flex;
-          flex-direction: column;
-          gap: 35px;
-        }
-      }
+    @include small {
+      grid-template-columns: 1fr;
+      gap: 20px;
     }
 
     .filterContainer {
-      flex: 2;
-      height: 100%;
-
-      @include small {
-        display: none;
-      }
+      height: fit-content;
+      position: sticky;
+      top: 20px;
 
       @include medium {
         display: none;
       }
+
+      @include small {
+        display: none;
+      }
+    }
+
+    .listContainer {
+      .propertiesWrapper {
+        display: grid;
+        gap: 24px;
+        margin-bottom: 40px;
+
+        &.list {
+          grid-template-columns: 1fr;
+        }
+
+        &.grid {
+          grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+          gap: 24px;
+
+          @include small {
+            grid-template-columns: 1fr;
+          }
+        }
+
+        .noResults {
+          text-align: center;
+          padding: 60px 20px;
+          background: white;
+          border-radius: 12px;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+
+          h6 {
+            margin-bottom: 8px;
+            color: #6c757d;
+          }
+        }
+      }
+
+      .paginationContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        padding: 30px 0;
+        border-top: 1px solid #e9ecef;
+        margin-top: 30px;
+
+        .MuiPagination-root {
+          .MuiPaginationItem-root {
+            border-radius: 8px;
+            margin: 0 4px;
+            font-weight: 500;
+
+            &.Mui-selected {
+              background: #3a307f;
+              color: white;
+
+              &:hover {
+                background: #2a207f;
+              }
+            }
+
+            &:hover {
+              background: #f8f9fa;
+            }
+          }
+        }
+
+        .pageInfo {
+          font-size: 0.875rem;
+          color: #6c757d;
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+
+.drawerHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e9ecef;
+  margin-bottom: 20px;
+
+  h6 {
+    font-size: 1.25rem;
+    color: #333;
+  }
+}
+
+.drawerContent {
+  overflow-y: auto;
+  height: calc(100vh - 80px);
+  padding-right: 8px;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 3px;
+  }
+}
+
+@media (max-width: 480px) {
+  .listPage {
+    padding: 12px;
+  }
+
+  .listHeader {
+    .listControls {
+      padding: 12px;
     }
   }
 }

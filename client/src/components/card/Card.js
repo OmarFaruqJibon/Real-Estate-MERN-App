@@ -1,65 +1,61 @@
+// client\src\components\card\Card.js
 import React from "react";
 import "./card.scss";
 import { Link } from "react-router-dom";
+import { Bed, Bath, Square, Calendar } from "lucide-react";
 
-const Card = ({ item }) => {
-  // console.log(item);
+const Card = ({ item, viewMode = "list" }) => {
   const formattedDate = new Date(item.createdAt).toLocaleDateString("en-GB", {
     day: "2-digit",
-    month: "long",
+    month: "short",
     year: "numeric",
   });
 
   return (
-    <div className="single-card">
-      <div className="img-container">
+    <div className={`card ${viewMode}`}>
+      <div className="cardImage">
         <Link to={`/list/${item.id}`}>
-          <img src={item?.images[0]} alt="Property" />
+          <img src={item?.images[0]} alt={item?.title} loading="lazy" />
+          <div className="imageOverlay">
+            <span className="priceBadge">SR {item?.price}</span>
+          </div>
         </Link>
       </div>
 
-      <div className="text-container">
-        <Link to={`/list/${item.id}`}>
-          <h3 className="item-title">{item?.title}</h3>
-        </Link>
-
-        <p className="item-location">
-          <img
-            src="https://i.postimg.cc/mg8RNbwp/location.png"
-            alt="location"
-          />
-          <span>{item?.address}</span>
-        </p>
-
-        <div className="price-date">
-          <h3 className="item-price">SR {item?.price}</h3>
-
-          <p className="date">{formattedDate}</p>
+      <div className="cardContent">
+        <div className="cardHeader">
+          <Link to={`/list/${item.id}`} className="cardTitleLink">
+            <h3 className="cardTitle">{item?.title}</h3>
+          </Link>
+          <p className="cardAddress">
+            <span className="locationIcon">📍</span>
+            {item?.address}
+          </p>
         </div>
 
-        <div className="bottom-info">
-          <div className="rooms">
-            <p>
-              <img
-                src="https://i.postimg.cc/T14h90rB/bed-1.png"
-                alt="bedroom"
-              />
-              <span>{item?.bedroom} Bed</span>
-            </p>
-
-            <p>
-              <img
-                src="https://i.postimg.cc/ZRYRz2H1/bathroom-1.png"
-                alt="bathroom"
-              />
-              <span>{item?.bathroom} Bath</span>
-            </p>
-
-            <p>
-              <img src="https://i.postimg.cc/zD6r0tT5/room.png" alt="" />
-              <span>{item?.size} sqft</span>
-            </p>
+        <div className="cardFeatures">
+          <div className="featureItem">
+            <Bed size={18} />
+            <span>{item?.bedroom} Bed</span>
           </div>
+          <div className="featureItem">
+            <Bath size={18} />
+            <span>{item?.bathroom} Bath</span>
+          </div>
+          <div className="featureItem">
+            <Square size={18} />
+            <span>{item?.size} sqft</span>
+          </div>
+        </div>
+
+        <div className="cardFooter">
+          <div className="dateInfo">
+            <Calendar size={16} />
+            <span>Listed: {formattedDate}</span>
+          </div>
+          <Link to={`/list/${item.id}`} className="viewDetailsBtn">
+            View Details
+          </Link>
         </div>
       </div>
     </div>
