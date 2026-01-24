@@ -1,22 +1,14 @@
-// client\src\components\common\LoadingSpinner.jsx
+// client/src/components/common/LoadingSpinner.jsx
 import "./LoadingSpinner.scss";
 
-const LoadingSpinner = ({ fullScreen = false }) => {
-  if (fullScreen) {
-    return (
-      <div className="loading-spinner-fullscreen">
-        <div className="spinner">
-          <div className="double-bounce1"></div>
-          <div className="double-bounce2"></div>
-        </div>
-        <div className="loading-text">Loading...</div>
-      </div>
-    );
-  }
-
+const LoadingSpinner = ({ fullScreen = false, text = "Loading..." }) => {
   return (
-    <div className="loading-spinner">
-      <div className="spinner"></div>
+    <div className={fullScreen ? "loader-overlay" : "loader-inline"}>
+      <div className="loader-wrapper">
+        <div className="loader-ring"></div>
+        <div className="loader-ring inner"></div>
+      </div>
+      {fullScreen && <p className="loader-text">{text}</p>}
     </div>
   );
 };

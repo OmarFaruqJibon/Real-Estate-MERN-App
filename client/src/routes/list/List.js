@@ -1,3 +1,4 @@
+// client\src\routes\list\List.js
 import React, { Suspense, useState } from "react";
 import "./list.scss";
 import Filter from "../../components/filter/Filter";
@@ -6,6 +7,7 @@ import { Await, useLoaderData, useSearchParams } from "react-router-dom";
 import { MapPin, Sliders } from "lucide-react";
 import Footer from "../../components/footer/Footer";
 import { Drawer, IconButton, Box, Typography } from "@mui/material";
+import LoadingSpinner from "../../components/common/LoadingSpinner";
 
 const List = () => {
   const data = useLoaderData();
@@ -26,7 +28,6 @@ const List = () => {
             <span>{city || "Search Location"}</span>
           </div>
 
-          {/* MUI IconButton for Filter */}
           <div className="mobileFilterIcon">
             <IconButton
               onClick={() => setIsDrawerOpen(true)}
@@ -49,7 +50,7 @@ const List = () => {
 
           <div className="listContainer">
             <div className="wrapper">
-              <Suspense fallback={<p>Loading...</p>}>
+              <Suspense fallback={<LoadingSpinner fullScreen />}>
                 <Await
                   resolve={data?.postResponse}
                   errorElement={<p>Error loading Properties!</p>}
@@ -66,7 +67,6 @@ const List = () => {
         </div>
       </div>
 
-      {/* MUI Drawer for mobile filters */}
       <Drawer
         anchor="right"
         open={isDrawerOpen}

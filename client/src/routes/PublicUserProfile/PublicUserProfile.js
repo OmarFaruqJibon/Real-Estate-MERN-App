@@ -17,6 +17,7 @@ import ChatIcon from "@mui/icons-material/Chat";
 import apiCall from "../../lib/apiCall";
 import "./PublicUserProfile.scss";
 import Footer from "../../components/footer/Footer";
+import LoadingSpinner from "../../components/common/LoadingSpinner";
 
 const PublicUserProfile = () => {
   const { userId } = useParams();
@@ -40,7 +41,7 @@ const PublicUserProfile = () => {
     fetchData();
   }, [userId]);
 
-  if (!user) return <Typography>Loading...</Typography>;
+  if (!user) return <LoadingSpinner fullScreen />;
 
   return (
     <>
