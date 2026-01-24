@@ -1,50 +1,100 @@
 import React from "react";
 import "./Contact.scss";
-import Footer from "./../../components/footer/Footer";
+import Footer from "../../components/footer/Footer";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Clock,
+  Building2,
+  MessageSquare,
+} from "lucide-react";
 
 const Contact = () => {
   return (
     <>
-      <section className="contact-page">
-        <div className="overlay"></div>
-        <div className="contact-left">
-          {/* <div className="contact-header">
-                        <h1>Contact Us</h1>
-                        <p>We'd love to hear from you. Get in touch with us!</p>
-                    </div> */}
+      <section className="contact-page-pro">
+        <div className="contact-container">
+          {/* LEFT - INFO */}
+          <div className="contact-info">
+            <h1>Get in Touch</h1>
+            <p>
+              Have questions about properties, listings, or partnerships? Our
+              team is here to help you with professional real estate solutions.
+            </p>
 
-          <div className="contact-form-section">
-            <form className="contact-form">
-              <div className="form-group">
-                <label>Name</label>
-                <input type="text" placeholder="Enter your name" />
+            <div className="info-cards">
+              <div className="info-card">
+                <Building2 size={22} />
+                <div>
+                  <h4>Head Office</h4>
+                  <p>Riyadh, Saudi Arabia</p>
+                </div>
               </div>
-              <div className="form-group">
-                <label>Email</label>
-                <input type="email" placeholder="Enter your email" />
+
+              <div className="info-card">
+                <Mail size={22} />
+                <div>
+                  <h4>Email</h4>
+                  <p>contact@realestate.com</p>
+                </div>
               </div>
+
+              <div className="info-card">
+                <Phone size={22} />
+                <div>
+                  <h4>Phone</h4>
+                  <p>+966 500 123 456</p>
+                </div>
+              </div>
+
+              <div className="info-card">
+                <Clock size={22} />
+                <div>
+                  <h4>Working Hours</h4>
+                  <p>Sun – Thu: 9:00 AM – 6:00 PM</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* RIGHT - FORM */}
+          <div className="contact-form-card">
+            <h2>
+              <MessageSquare size={20} /> Send us a message
+            </h2>
+
+            <form className="contact-form-pro">
+              <div className="form-row">
+                <div className="form-group">
+                  <label>Full Name</label>
+                  <input type="text" placeholder="Your full name" />
+                </div>
+
+                <div className="form-group">
+                  <label>Email Address</label>
+                  <input type="email" placeholder="you@example.com" />
+                </div>
+              </div>
+
+              <div className="form-group">
+                <label>Subject</label>
+                <input type="text" placeholder="How can we help you?" />
+              </div>
+
               <div className="form-group">
                 <label>Message</label>
-                <textarea placeholder="Write your message"></textarea>
+                <textarea
+                  rows="5"
+                  placeholder="Write your message..."
+                ></textarea>
               </div>
-              <button className="contact-btn" type="submit">
+
+              <button type="submit" className="contact-btn-pro">
                 Send Message
               </button>
             </form>
           </div>
-        </div>
-
-        <div className="contact-details">
-          <h2>Head Office</h2>
-          <p>
-            <strong>Address:</strong> 123 Real Estate St, City, Country
-          </p>
-          <p>
-            <strong>Email:</strong> contact@realestate.com
-          </p>
-          <p>
-            <strong>Phone:</strong> +123 456 7890
-          </p>
         </div>
       </section>
 

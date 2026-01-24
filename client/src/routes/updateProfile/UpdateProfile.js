@@ -31,81 +31,100 @@ function UpdateProfile() {
       navigate("/dashboard/profile");
     } catch (err) {
       console.log(err);
-      setError(err.response.data.message);
+      setError(err.response?.data?.message || "Something went wrong!");
     }
   };
 
   return (
-    <>
-      <div className="sectionTitle">
-        <h3>Update Profile Info</h3>
+    <div className="profile-wrapper">
+      <div className="profile-header">
+        <h3>Update Profile</h3>
+        <p>Manage your personal information and account settings</p>
       </div>
-      <div className="profileUpdatePage">
-        <div className="avaterContainer">
+
+      <div className="profile-card">
+        {/* Avatar Section */}
+        <div className="avatar-section">
           <img
             src={
               avatar[0] ||
               currentUser?.avatar ||
               "https://i.postimg.cc/J7dgwngh/profile-picture.png"
             }
-            alt=""
-            className="avatar"
+            alt="avatar"
+            className="avatar-img"
           />
-          <UploadWidget
-            uwConfig={{
-              cloudName: "jiboncode",
-              uploadPreset: "estate",
-              multiple: false,
-              maxImageFileSize: 2000000,
-              folder: "avatars",
-            }}
-            setState={setAvatar}
-          />
+
+          <div className="upload-btn">
+            <UploadWidget
+              uwConfig={{
+                cloudName: "jiboncode",
+                uploadPreset: "estate",
+                multiple: false,
+                maxImageFileSize: 2000000,
+                folder: "avatars",
+              }}
+              setState={setAvatar}
+            />
+          </div>
+
+          <h4>{currentUser?.username}</h4>
+          <span>{currentUser?.email}</span>
         </div>
 
-        <div className="formContainer">
+        {/* Form Section */}
+        <div className="form-section">
           <form onSubmit={handleSubmit}>
-            <div className="item">
-              <label htmlFor="username">Username</label>
-              <input
-                id="username"
-                name="username"
-                type="text"
-                defaultValue={currentUser?.username}
-              />
-            </div>
-            <div className="item">
-              <label htmlFor="email">Email</label>
-              <input
-                id="email"
-                name="email"
-                type="email"
-                defaultValue={currentUser?.email}
-              />
-            </div>
-            <div className="item">
-              <label htmlFor="phone">Phone</label>
-              <input
-                id="phone"
-                name="phone"
-                type="text"
-                defaultValue={currentUser?.phone || ""}
-              />
-            </div>
-            <div className="item">
-              <label htmlFor="password">Password</label>
-              <input id="password" name="password" type="password" />
+            <div className="form-grid">
+              <div className="form-item">
+                <label>Username</label>
+                <input
+                  name="username"
+                  type="text"
+                  defaultValue={currentUser?.username}
+                  placeholder="Enter username"
+                />
+              </div>
+
+              <div className="form-item">
+                <label>Email</label>
+                <input
+                  name="email"
+                  type="email"
+                  defaultValue={currentUser?.email}
+                  placeholder="Enter email"
+                />
+              </div>
+
+              <div className="form-item">
+                <label>Phone</label>
+                <input
+                  name="phone"
+                  type="text"
+                  defaultValue={currentUser?.phone || ""}
+                  placeholder="Enter phone number"
+                />
+              </div>
+
+              <div className="form-item">
+                <label>Password</label>
+                <input
+                  name="password"
+                  type="password"
+                  placeholder="Enter new password"
+                />
+              </div>
             </div>
 
-            <button type="submit" className="submit-btn">
-              Update Info
+            <button type="submit" className="save-btn">
+              Save Changes
             </button>
 
             {error && <Alert severity="error">{error}</Alert>}
           </form>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
