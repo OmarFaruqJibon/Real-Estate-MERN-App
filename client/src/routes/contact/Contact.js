@@ -36,7 +36,7 @@ const Contact = () => {
                 <Mail size={22} />
                 <div>
                   <h4>Email</h4>
-                  <p>contact@realestate.com</p>
+                  <p>omarfaruq.jb@gmail.com</p>
                 </div>
               </div>
 
@@ -44,7 +44,7 @@ const Contact = () => {
                 <Phone size={22} />
                 <div>
                   <h4>Phone</h4>
-                  <p>+966 500 123 456</p>
+                  <p>+966 55 082 5421</p>
                 </div>
               </div>
 

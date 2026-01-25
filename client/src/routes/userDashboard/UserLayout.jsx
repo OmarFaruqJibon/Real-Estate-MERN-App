@@ -41,18 +41,18 @@ const UserLayout = () => {
   const drawerWidth = isMobile
     ? fullDrawerWidth
     : collapsed
-    ? collapsedDrawerWidth
-    : fullDrawerWidth;
+      ? collapsedDrawerWidth
+      : fullDrawerWidth;
 
   const drawer = (
     <List sx={{ color: "white", marginTop: "17px" }}>
       {[
         { label: "Home", icon: <Home sx={{ color: "white" }} />, to: "/" },
-        {
-          label: "Overview",
-          icon: <Dashboard sx={{ color: "white" }} />,
-          to: "",
-        },
+        // {
+        //   label: "Overview",
+        //   icon: <Dashboard sx={{ color: "white" }} />,
+        //   to: "/dashboard/overview",
+        // },
         {
           label: "My Profile",
           icon: <Person sx={{ color: "white" }} />,

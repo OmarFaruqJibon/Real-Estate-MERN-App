@@ -36,10 +36,8 @@ const Property = ({ id }) => {
     }
 
     try {
-      // Send a request to create or get the chat
       const response = await apiCall.post("/chats", { receiverId: userId });
 
-      // Redirect to the profile page with the chatId in the state
       navigate("/chats", { state: { chatId: response.data.id } });
     } catch (err) {
       console.log("Error found in sending message btn", err);
@@ -326,7 +324,7 @@ const Property = ({ id }) => {
                 <div className="chat">
                   <Link
                     to="/chats"
-                    state={{ chatId: post.chatId, userId: post.userId }} // send chatId or userId if available
+                    state={{ chatId: post.chatId, userId: post.userId }}
                   >
                     <button onClick={() => handleSendMessage(post.userId)}>
                       Chat Online

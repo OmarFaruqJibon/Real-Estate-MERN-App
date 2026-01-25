@@ -27,7 +27,6 @@ import UserPosts from "./routes/userDashboard/UserPosts";
 import EditPost from "./routes/userDashboard/EditPost";
 import PublicUserProfile from "./routes/PublicUserProfile/PublicUserProfile";
 import Agents from "./routes/agents/Agents";
-
 import { listPageLoader, profileLoader, propertyLoader } from "./lib/loader";
 
 const router = createBrowserRouter([
@@ -113,6 +112,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         children: [
+          // { path: "overview", element: <DashboardOverview /> },
           { path: "profile", element: <Profile /> },
           { path: "posts", element: <UserPosts /> },
           { path: "edit/:postId", element: <EditPost /> },

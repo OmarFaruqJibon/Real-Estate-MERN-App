@@ -5,7 +5,6 @@ const UploadWidget = ({ uwConfig, setState }) => {
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    // Load the Cloudinary Upload Widget script if not already loaded
     if (!window.cloudinary) {
       const script = document.createElement("script");
       script.src = "https://upload-widget.cloudinary.com/global/all.js";
@@ -24,10 +23,9 @@ const UploadWidget = ({ uwConfig, setState }) => {
       uwConfig,
       (error, result) => {
         if (!error && result && result.event === "success") {
-          // Append the uploaded image URL to the state
           setState((prev) => [...prev, result.info.secure_url]);
         }
-      }
+      },
     );
 
     widget.open();

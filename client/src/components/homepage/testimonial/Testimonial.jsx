@@ -55,16 +55,16 @@ const Testimonial = () => {
       <Swiper
         modules={[Pagination, Navigation, Autoplay]}
         spaceBetween={20}
-        slidesPerView={3} // Show 3 testimonials at a time
-        slidesPerGroup={1} // Slide one by one
-        loop={true} // Ensures infinite loop
-        loopFillGroupWithBlank={true} // Fix stopping issue
-        centeredSlides={false} // Prevent shifting
+        slidesPerView={3}
+        slidesPerGroup={1}
+        loop={true}
+        loopFillGroupWithBlank={true}
+        centeredSlides={false}
         autoplay={{
-          delay: 2500, // Slide every 2.5 seconds
-          disableOnInteraction: false, // Continue autoplay after manual swipe
+          delay: 2500,
+          disableOnInteraction: false,
         }}
-        speed={800} // Smooth transition speed
+        speed={800}
         pagination={{ clickable: true }}
         navigation
         breakpoints={{

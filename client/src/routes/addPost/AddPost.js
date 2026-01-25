@@ -44,7 +44,7 @@ function AddPost() {
   const handleAmenityChange = (e) => {
     const { value, checked } = e.target;
     setAmenities((prev) =>
-      checked ? [...prev, value] : prev.filter((item) => item !== value)
+      checked ? [...prev, value] : prev.filter((item) => item !== value),
     );
   };
   // amenities ....................................
@@ -94,7 +94,7 @@ function AddPost() {
 
       console.log(res.data);
       alert(
-        "Your property has been submitted for review. Please wait for admin approval."
+        "Your property has been submitted for review. Please wait for admin approval.",
       );
     } catch (err) {
       console.log(err);
@@ -104,10 +104,8 @@ function AddPost() {
   };
 
   const getOrdinalSuffix = (n) => {
-    // Special case: numbers ending in 11, 12, 13 are always "th"
     if (n % 100 >= 11 && n % 100 <= 13) return "th";
 
-    // Otherwise, use the last digit to decide
     switch (n % 10) {
       case 1:
         return "st"; // 1st
