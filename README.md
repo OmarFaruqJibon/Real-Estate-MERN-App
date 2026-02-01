@@ -10,19 +10,7 @@
 
 ### 🏠 Homepage
 
-![Homepage Screenshot](https://i.postimg.cc/wvkLSHkq/darhub.png)
-
-### 📋 Property Listings
-
-![Listings Screenshot]
-
-### 👤 User Dashboard
-
-![Dashboard Screenshot]
-
-### 🗨️ Chat Page
-
-![Chat Screenshot]
+![Homepage Screenshot](https://i.postimg.cc/BQc5JxSW/darhub.png)
 
 ---
 
